@@ -1,0 +1,99 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.6.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'java-library'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: "jacoco"
+//apply plugin: "spotbugs"
+
+
+bootJar {
+    baseName = 'tourGuide'
+    version =  '1.0.0'
+}
+
+repositories {
+
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile group: 'org.javamoney', name: 'moneta', version: '1.3'
+	compile group: 'com.jsoniter', name: 'jsoniter', version: '0.9.23'
+	
+    compile(name:'gpsUtil', ext:'jar')
+    compile(name:'RewardCentral', ext:'jar')
+    compile(name:'TripPricer', ext:'jar')
+    
+    testCompile("junit:junit")
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.1.6.RELEASE'
+    // https://mvnrepository.com/artifact/org.jacoco/org.jacoco.agent //EDE ajout
+    testCompile group: 'org.jacoco', name: 'org.jacoco.agent', version: '0.8.4'
+    // https://mvnrepository.com/artifact/org.jacoco/org.jacoco.ant//EDE ajout
+    testCompile group: 'org.jacoco', name: 'org.jacoco.ant', version: '0.8.4'
+    // https://mvnrepository.com/artifact/org.modelmapper/modelmapper//EDE ajout
+    compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.8'
+
+    // https://mvnrepository.com/artifact/gradle.plugin.com.github.spotbugs/spotbugs-gradle-plugin//EDE ajout
+    //compile group: 'gradle.plugin.com.github.spotbugs', name: 'spotbugs-gradle-plugin', version: '2.0.0'
+    //spotbugsPlugins 'com.h3xstream.findsecbugs:findsecbugs-plugin:1.10.1'
+    // https://mvnrepository.com/artifact/gradle.plugin.com.github.spotbugs.snom/spotbugs-gradle-plugin
+    //compile group: 'gradle.plugin.com.github.spotbugs.snom', name: 'spotbugs-gradle-plugin', version: '4.5.0'
+    //compileOnly "com.github.spotbugs:spotbugs-annotations:${spotbugs.toolVersion.get()}"
+
+
+
+
+
+}
+//Ajout EDE
+/*
+spotbugs {
+    toolVersion = '4.5.0'
+}
+*/
+
+jacoco {
+    toolVersion = "0.8.4"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
+test.finalizedBy jacocoTestReport
+check.dependsOn jacocoTestCoverageVerification
+
+jacocoTestCoverageVerification {
+  violationRules {
+    rule {
+      limit {
+        counter = 'LINE'
+        value = 'COVEREDRATIO'
+        minimum = 0.5
+      }
+    }
+  }
+}

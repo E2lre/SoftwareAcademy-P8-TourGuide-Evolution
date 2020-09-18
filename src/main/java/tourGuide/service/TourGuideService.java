@@ -2,14 +2,11 @@ package tourGuide.service;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -128,6 +125,48 @@ public class TourGuideService {
 		//logger.debug("trackUserLocation end"+ user.getUserName());
 		return visitedLocation;
 	}
+	public void trackUserLocationList(List<User> users) {
+		//logger.debug("trackUserLocationList start List : " + users.size());
+		if (users.size() <11) { //Call en synchrone
+			logger.debug("trackUserLocationList SYNCHRONE");
+			for (User user: users) {
+					//logger.debug("run-Synchone trackUserLocationList------------------------- Start");
+					trackUserLocation(user);
+					//logger.debug("run-Synchone trackUserLocationList------------------------- End");
+				};
+		} else { //Call en asynchrone
+			ExecutorService executorService = Executors.newFixedThreadPool(1000);
+			logger.debug("trackUserLocationList AAAAAASYNCHRONE");
+			for (User user : users) {
+				Runnable runnableTask = () -> {
+					//logger.debug("run-ASYNC trackUserLocationList------------------------- Start");
+					trackUserLocation(user);
+					//logger.debug("run-ASYNC trackUserLocationList------------------------- End");
+				};
+				//logger.debug("trackUserLocationList execute");
+				executorService.execute(runnableTask);
+			}
+			//logger.debug("trackUserLocationList shutdown");
+			executorService.shutdown();
+			//logger.debug("trackUserLocationList waiting");
+			try {
+				//if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
+				if (!executorService.awaitTermination(15, TimeUnit.MINUTES)) { //15 minutes est notre objectif
+					System.out.println("**********************************************************************************************************");
+					System.out.println("************************ WARNING - TIME OUT ON trackUserLocationList - WARNING ****************************");
+					System.out.println("**********************************************************************************************************");
+					executorService.shutdownNow();
+				}
+			} catch (InterruptedException e) {
+				System.out.println("**********************************************************************************************************");
+				System.out.println("************************ WARNING - Exception ON trackUserLocationList - WARNING ***************************");
+				System.out.println("message : " + e.getMessage());
+				System.out.println("localized message : " + e.getLocalizedMessage());
+				executorService.shutdownNow();
+			}
+		}
+		return;
+	}
 /* retreive by EDE*/
 /*	public List<Attraction> getNearByAttractions(VisitedLocation visitedLocation) {
 		List<Attraction> nearbyAttractions = new ArrayList<>();
@@ -139,9 +178,9 @@ public class TourGuideService {
 
 		return nearbyAttractions;
 	}*/
-//EDE Add for getNearbyAttractions
-	//TODO amélioer la perf sur Reward
 
+
+//EDE Add for getNearbyAttractions
 	/**
 	 * Give the 5 nearest attraction for a user (EDE august 2020)
 	 * @param user user to check attraction
@@ -151,6 +190,8 @@ public class TourGuideService {
 	public NearestAttractionsForUser getNearByAttractionsForUSer(User user, VisitedLocation visitedLocation) {
 		List<NearestAttraction> nearestAttractions = new ArrayList();
 		List<NearestAttraction> nearestAttractionList = new ArrayList();
+		List<NearestAttraction> nearestAttractionFinal= new ArrayList();
+
 
 		Util util = new Util();
 		UserDTO userDto = util.convertToDto(user);
@@ -160,7 +201,7 @@ public class TourGuideService {
 
 
 
-//TODO : Transformer en stream et lambda
+
 					List<Attraction> attractionListLambda = gpsUtil.getAttractions().parallelStream().collect(Collectors.toList());
 					logger.debug("fin lambda");
 					//users.forEach(u -> tourGuideService.trackUserLocation(u));
@@ -168,7 +209,8 @@ public class TourGuideService {
 						logger.debug("	start loop");
 						Location locationAttraction = new Location(attractionLb.latitude, attractionLb.longitude);
 						logger.debug("		fin Location");
-						NearestAttraction nearestAttraction = new NearestAttraction(attractionLb, rewardsService.getDistance(locationAttraction, userDto.getLastVisitedLocation().location), rewardsService.getRewardPoints(attractionLb, user));
+						//NearestAttraction nearestAttraction = new NearestAttraction(attractionLb, rewardsService.getDistance(locationAttraction, userDto.getLastVisitedLocation().location), rewardsService.getRewardPoints(attractionLb, user));
+						NearestAttraction nearestAttraction = new NearestAttraction(attractionLb, rewardsService.getDistance(locationAttraction, userDto.getLastVisitedLocation().location), 0);
 						logger.debug("		fin nearestAttraction");
 						//GetREward had bad performance. th reward will be call only for the 5 destination, not for all
 						//NearestAttraction nearestAttraction = new NearestAttraction(attraction,rewardsService.getDistance(locationAttraction, userDto.getLastVisitedLocation().location),0);
@@ -177,26 +219,26 @@ public class TourGuideService {
 					});
 
 
-//				}).get();
-		/*
-		for(Attraction attraction : attractionListLambda) {
-		//for(Attraction attraction : gpsUtil.getAttractions()) {
-			logger.debug("	start loop");
-			Location locationAttraction = new Location(attraction.latitude,attraction.longitude);
-			logger.debug("		fin Location");
-			NearestAttraction nearestAttraction = new NearestAttraction(attraction,rewardsService.getDistance(locationAttraction, userDto.getLastVisitedLocation().location),rewardsService.getRewardPoints(attraction,user));
-			logger.debug("		fin nearestAttraction");
-			//GetREward had bad performance. th reward will be call only for the 5 destination, not for all
-			//NearestAttraction nearestAttraction = new NearestAttraction(attraction,rewardsService.getDistance(locationAttraction, userDto.getLastVisitedLocation().location),0);
-			nearestAttractions.add(nearestAttraction);
-			logger.debug("	End loop");
-		} */
+
+
 		logger.debug("end count");
 		nearestAttractionList = util.selectFiveProxyAttraction(nearestAttractions);
 
+		logger.debug("nearestAttractionList.size : "+nearestAttractionList.size());
+
+		nearestAttractionList.parallelStream().forEach(na->{
+			int reward =0;
+			reward = rewardsService.getRewardPoints(na.getAttraction(), user);
+			logger.debug("reward : "+reward);
+			na.setRewardPoints(reward);
+			nearestAttractionFinal.add(na);
+		});
+		//}
+
 		logger.debug("end 5");
 		//NearestAttractionsForUser nearestAttractionsForUserResult = new NearestAttractionsForUser(userDto.convertToDto(user),nearestAttractionList);
-		NearestAttractionsForUser nearestAttractionsForUserResult = new NearestAttractionsForUser(userDto,nearestAttractionList);
+		NearestAttractionsForUser nearestAttractionsForUserResult = new NearestAttractionsForUser(userDto,nearestAttractionFinal);
+		//NearestAttractionsForUser nearestAttractionsForUserResult = new NearestAttractionsForUser(userDto,nearestAttractionList);
 		logger.debug("end test");
 		return nearestAttractionsForUserResult;
 	}

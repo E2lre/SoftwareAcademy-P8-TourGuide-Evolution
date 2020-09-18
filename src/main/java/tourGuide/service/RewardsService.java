@@ -12,6 +12,7 @@ import tourGuide.user.User;
 import tourGuide.user.UserReward;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -256,6 +257,49 @@ public class RewardsService  {
 		/****** fin de Mise en place de Executor Services ****************/
 		//logger.debug("End of calculateRewards");
 	}
+
+	public  void calculateRewardsList(List<User> users) {
+		Locale.setDefault(Locale.US);
+		//logger.debug("calculateRewardsList Start");
+		if (users.size() <11) { //Call en synchrone
+			logger.debug("calculateRewardsList SYNCHRONE");
+			for (User user : users) {
+					calculateRewards_standard(user);
+				};
+		} else {
+			logger.debug("calculateRewardsList AAAAAASYNCHRONE");
+			ExecutorService executorServiceLocal = Executors.newFixedThreadPool(1000);
+			for (User user : users) {
+				Runnable runnableTask = () -> {
+					//logger.debug("run-------------------------- Start");
+					calculateRewards_standard(user);
+					//logger.debug("run-------------------------- End");
+				};
+				//logger.debug("execute");
+				executorServiceLocal.execute(runnableTask);
+			}
+
+			//logger.debug("shutdown");
+			executorServiceLocal.shutdown();
+			//logger.debug("calculateRewardsList waiting");
+			try {
+				//if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
+				if (!executorServiceLocal.awaitTermination(20, TimeUnit.MINUTES)) { //15 minutes est notre objectif
+					System.out.println("**********************************************************************************************************");
+					System.out.println("************************ WARNING - TIME OUT ON calculateRewardsList - WARNING ****************************");
+					System.out.println("**********************************************************************************************************");
+					executorServiceLocal.shutdownNow();
+				}
+			} catch (InterruptedException e) {
+				System.out.println("**********************************************************************************************************");
+				System.out.println("************************ WARNING - Exception ON calculateRewardsList - WARNING ***************************");
+				System.out.println("message : " + e.getMessage());
+				System.out.println("localized message : " + e.getLocalizedMessage());
+				executorServiceLocal.shutdownNow();
+			}
+		}
+
+	}
 	public  void calculateRewards(User user) {
 		calculateRewards_standard(user);
 		//calculateRewards_async(user);
@@ -278,7 +322,7 @@ public class RewardsService  {
 /*		 List<VisitedLocation> userLocations = user.getVisitedLocations();
 		 List<Attraction> attractions = gpsUtil.getAttractions();
 */
-		logger.debug("calculateRewards_standard start");
+		//logger.debug("calculateRewards_standard start");
 		CopyOnWriteArrayList<VisitedLocation> userLocations = new CopyOnWriteArrayList<>();
 		userLocations.addAll(user.getVisitedLocations());
 
@@ -286,7 +330,7 @@ public class RewardsService  {
 		attractions.addAll(gpsUtil.getAttractions());
 
 		/****** Mise en place de Executor Services ****************/
-		ExecutorService executor = Executors.newFixedThreadPool(1000);
+		//ExecutorService executor = Executors.newFixedThreadPool(1000);
 
 
 		userLocations.stream().forEach(visitedLocation -> {
@@ -299,7 +343,7 @@ public class RewardsService  {
 			});
 		});
 		//logger.debug("End of calculateRewards");
-		logger.debug("calculateRewards_standard End");
+		//logger.debug("calculateRewards_standard End");
 	}
 	public  void calculateRewards_async(User user) {
 //E2LRE August 2020 :Correction to avoid ConcurrentModificationException in TestPerform
@@ -313,7 +357,7 @@ public class RewardsService  {
 		attractions.addAll(gpsUtil.getAttractions());
 
 		/****** Mise en place de Executor Services ****************/
-		ExecutorService executor = Executors.newFixedThreadPool(1000);
+		//ExecutorService executor = Executors.newFixedThreadPool(1000);
 
 		//userLocations.parallelStream().forEach(visitedLocation -> rewardsService.calculateRewards(u));
 		//for (VisitedLocation visitedLocation : userLocations) {
@@ -334,7 +378,7 @@ public class RewardsService  {
 									logger.debug("run- calculateRewards_async------------------------- end"+ user.getUserName());
 								};
 						//logger.debug("exec ");
-								executor.execute(runnableTask);
+								executorService.execute(runnableTask);
 
 					}
 				}
@@ -342,17 +386,17 @@ public class RewardsService  {
 		});
 
 			logger.debug("calculateRewards_async shutdown");
-			executor.shutdown();
+			executorService.shutdown();
 
 			try {
 				//if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
-				if (!executor.awaitTermination(1, TimeUnit.MINUTES)) { //15 minutes est notre objectif
+				if (!executorService.awaitTermination(1, TimeUnit.MINUTES)) { //15 minutes est notre objectif
 					logger.debug("************* calculateRewards_async end now REward********************");
-					executor.shutdownNow();
+					executorService.shutdownNow();
 				}
 			} catch (InterruptedException e) {
 				logger.debug("************* calculateRewards_async end now catch REward *************");
-				executor.shutdownNow();
+				executorService.shutdownNow();
 			}
 			logger.debug(" calculateRewards_async end");
 		/****** fin de Mise en place de Executor Services ****************/

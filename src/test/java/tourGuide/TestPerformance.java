@@ -46,7 +46,39 @@ public class TestPerformance {
 	static Semaphore semaphore = new Semaphore(1);
 	private int cpt;
 	//@Ignore
+
 	@Test
+	public void highVolumeTrackLocationNew() {
+		Locale.setDefault(Locale.US);
+		logger.debug("Start highVolumeTrackLocation");
+		GpsUtil gpsUtil = new GpsUtil();
+		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
+		// Users should be incremented up to 100,000, and test finishes within 15 minutes
+		InternalTestHelper.setInternalUserNumber(50000);
+		TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService);
+
+		List<User> allUsers = new ArrayList<>();
+		allUsers = tourGuideService.getAllUsers();
+
+		StopWatch stopWatch = new StopWatch();
+		stopWatch.start();
+		logger.debug("highVolumeTrackLocationNew 1");
+		tourGuideService.trackUserLocationList(allUsers);
+		/*for(User user : allUsers) {
+			tourGuideService.trackUserLocation(user);
+		}*/
+		//allUsers.parallelStream().forEach(u -> tourGuideService.trackUserLocation(u));
+		logger.debug("highVolumeTrackLocationNew 2");
+
+		stopWatch.stop();
+		tourGuideService.tracker.stopTracking();
+
+		System.out.println("highVolumeTrackLocation: Time Elapsed: " + TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()) + " seconds.");
+		assertTrue(TimeUnit.MINUTES.toSeconds(15) >= TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
+		logger.debug("End of highVolumeTrackLocation");
+	}
+
+	//@Test
 	public void highVolumeTrackLocation() {
 		Locale.setDefault(Locale.US);
 		logger.debug("Start highVolumeTrackLocation");
@@ -111,14 +143,14 @@ public class TestPerformance {
 	
 	//@Ignore
 	@Test
-	public void highVolumeGetRewards() {
+	public void highVolumeGetRewardsNew() {
 		//Locale.setDefault(Locale.US);
-		logger.debug("Start highVolumeGetRewards");
+		logger.debug("Start highVolumeGetRewardsNew");
 		GpsUtil gpsUtil = new GpsUtil();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 
 		// Users should be incremented up to 100,000, and test finishes within 20 minutes
-		InternalTestHelper.setInternalUserNumber(10);
+		InternalTestHelper.setInternalUserNumber(100000);
 //position historique des stopWatch ci dessous
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
@@ -129,54 +161,21 @@ public class TestPerformance {
 		List<User> allUsers = new ArrayList<>();
 		allUsers = tourGuideService.getAllUsers();
 
-
-//		allUsers.forEach(u -> u.addToVisitedLocations(new VisitedLocation(u.getUserId(), attraction, new Date()))); // mis dans la boucle
+		logger.debug("highVolumeGetRewardsnew 1");
+		allUsers.forEach(u -> u.addToVisitedLocations(new VisitedLocation(u.getUserId(), attraction, new Date()))); // mis dans la boucle
 		//allUsers.parallelStream().forEach(u -> u.addToVisitedLocations(new VisitedLocation(u.getUserId(), attraction, new Date())));
 
-
+		logger.debug("highVolumeGetRewardsnew 2");
+		rewardsService.calculateRewardsList(allUsers);
 			//allUsers.forEach(u -> rewardsService.calculateRewards(u));
 			//allUsers.parallelStream().forEach(u -> rewardsService.calculateRewards(u));
-
-		/****** Mise en place de Executor Services ****************/
-		logger.debug("start exec");
-		ExecutorService executor = Executors.newFixedThreadPool(1000);
-
+		logger.debug("highVolumeGetRewardsnew 3");
 		for(User user : allUsers) {
-		//allUsers.parallelStream().forEach(user -> {
-					//logger.debug("debut boucle" + cpt+ " "+ user.getUserName());
-					Runnable runnableTask = () -> {
-						user.addToVisitedLocations(new VisitedLocation(user.getUserId(), attraction, new Date()));// AJouté du déébut
-						rewardsService.calculateRewards(user);
-						assertTrue(user.getUserRewards().size() > 0); // AJouté de la fin
-						//logger.debug("run--------------------------"+cpt+ " "+ user.getUserName());
-					};
-					//logger.debug("exec ");
-					executor.execute(runnableTask);
-					//logger.debug("fin boucle");
-
-		//		});
+			assertTrue(user.getUserRewards().size() > 0);// mis dans la boucle
 		}
-		logger.debug("shutdown");
-		executor.shutdown();
-
-		try {
-			if (!executor.awaitTermination(20, TimeUnit.MINUTES)) { //15 minutes est notre objectif
-				logger.debug("************* end now ********************");
-				executor.shutdownNow();
-				assertTrue(false);
-			}
-		} catch (InterruptedException e) {
-			logger.debug("************* end now catch *************");
-			executor.shutdownNow();
-			assertTrue(false);
-		}
-		logger.debug("end");
-		/****** fin de Mise en place de Executor Services ****************/
+		logger.debug("highVolumeGetRewardsnew 4");
 
 
-//		for(User user : allUsers) {
-//			assertTrue(user.getUserRewards().size() > 0);// mis dans la boucle
-//		}
 		stopWatch.stop();
 		tourGuideService.tracker.stopTracking();
 
@@ -184,9 +183,8 @@ public class TestPerformance {
 		assertTrue(TimeUnit.MINUTES.toSeconds(20) >= TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
 		logger.debug("End of highVolumeGetRewards");
 	}
-
-	@Test
-	public void highVolumeGetRewards_OLD() {
+	//@Test
+	public void highVolumeGetRewards() {
 		//Locale.setDefault(Locale.US);
 		logger.debug("Start highVolumeGetRewards");
 		GpsUtil gpsUtil = new GpsUtil();
@@ -212,15 +210,92 @@ public class TestPerformance {
 		//allUsers.forEach(u -> rewardsService.calculateRewards(u));
 		//allUsers.parallelStream().forEach(u -> rewardsService.calculateRewards(u));
 
+		/****** Mise en place de Executor Services ****************/
+		logger.debug("start exec");
+		ExecutorService executor = Executors.newFixedThreadPool(1000);
 
+		for(User user : allUsers) {
+			//allUsers.parallelStream().forEach(user -> {
+			//logger.debug("debut boucle" + cpt+ " "+ user.getUserName());
+			Runnable runnableTask = () -> {
+				user.addToVisitedLocations(new VisitedLocation(user.getUserId(), attraction, new Date()));// AJouté du déébut
+				//rewardsService.calculateRewards(user);
+				rewardsService.calculateRewards_async(user);
+				assertTrue(user.getUserRewards().size() > 0); // AJouté de la fin
+				//logger.debug("run--------------------------"+cpt+ " "+ user.getUserName());
+			};
+			//logger.debug("exec ");
+			executor.execute(runnableTask);
+			//logger.debug("fin boucle");
+
+			//		});
+		}
+		logger.debug("shutdown");
+		executor.shutdown();
+
+		try {
+			if (!executor.awaitTermination(20, TimeUnit.MINUTES)) { //15 minutes est notre objectif
+				logger.debug("************* end now ********************");
+				executor.shutdownNow();
+				assertTrue(false);
+			}
+		} catch (InterruptedException e) {
+			logger.debug("************* end now catch *************");
+			executor.shutdownNow();
+			assertTrue(false);
+		}
+		logger.debug("end");
+		/****** fin de Mise en place de Executor Services ****************/
+
+
+//		for(User user : allUsers) {
+//			assertTrue(user.getUserRewards().size() > 0);// mis dans la boucle
+//		}
+		stopWatch.stop();
+		tourGuideService.tracker.stopTracking();
+
+		System.out.println("highVolumeGetRewards: Time Elapsed: " + TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()) + " seconds.");
+		assertTrue(TimeUnit.MINUTES.toSeconds(20) >= TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
+		logger.debug("End of highVolumeGetRewards");
+	}
+	//@Test
+	public void highVolumeGetRewards_OLD() {
+		//Locale.setDefault(Locale.US);
+		logger.debug("Start highVolumeGetRewards");
+		GpsUtil gpsUtil = new GpsUtil();
+		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
+
+		// Users should be incremented up to 100,000, and test finishes within 20 minutes
+		InternalTestHelper.setInternalUserNumber(10);
+//position historique des stopWatch ci dessous
+		logger.debug("stopWatch");
+		StopWatch stopWatch = new StopWatch();
+		logger.debug("start");
+		stopWatch.start();
+		logger.debug("tourguide");
+		TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService);
+		logger.debug("get attraction");
+
+		Attraction attraction = gpsUtil.getAttractions().get(0);
+		List<User> allUsers = new ArrayList<>();
+		logger.debug("get aull user");
+		allUsers = tourGuideService.getAllUsers();
+
+
+//		allUsers.forEach(u -> u.addToVisitedLocations(new VisitedLocation(u.getUserId(), attraction, new Date()))); // mis dans la boucle
+		//allUsers.parallelStream().forEach(u -> u.addToVisitedLocations(new VisitedLocation(u.getUserId(), attraction, new Date())));
+
+
+		//allUsers.forEach(u -> rewardsService.calculateRewards(u));
+		//allUsers.parallelStream().forEach(u -> rewardsService.calculateRewards(u));
+
+		logger.debug("for all users");
 		for(User user : allUsers) {
 
 				user.addToVisitedLocations(new VisitedLocation(user.getUserId(), attraction, new Date()));// AJouté du déébut
 				//rewardsService.calculateRewards_New(user);
 				rewardsService.calculateRewards(user);
 				assertTrue(user.getUserRewards().size() > 0); // AJouté de la fin
-
-
 		}
 
 
@@ -228,7 +303,9 @@ public class TestPerformance {
 //		for(User user : allUsers) {
 //			assertTrue(user.getUserRewards().size() > 0);// mis dans la boucle
 //		}
+		logger.debug("stop watch 2");
 		stopWatch.stop();
+		logger.debug("stop Tracking");
 		tourGuideService.tracker.stopTracking();
 
 		System.out.println("highVolumeGetRewards: Time Elapsed: " + TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()) + " seconds.");

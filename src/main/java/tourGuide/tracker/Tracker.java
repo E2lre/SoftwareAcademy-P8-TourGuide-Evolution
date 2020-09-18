@@ -24,20 +24,9 @@ public class Tracker extends Thread {
 		this.tourGuideService = tourGuideService;
 		executorService.submit(this);
 
-/*
-		CompletableFuture<String> completableFuture
-				= new CompletableFuture<>();
-		executorService.submit(completableFuture.supplyAsync(this));
-*/
+
 		logger.debug("tracker submit");
-		//TODO EDE : ajouter un log avec
-		/*Future<String> future = executorService.submit(callableTask);
-String result = null;
-try {
-    result = future.get();
-} catch (InterruptedException | ExecutionException e) {
-    e.printStackTrace();
-}*/
+
 	}
 	
 	/**
@@ -48,7 +37,7 @@ try {
 		executorService.shutdownNow();
 	}
 	
-	@Override
+/*	@Override
 	public void run() {
 		StopWatch stopWatch = new StopWatch();
 		while(true) {
@@ -56,13 +45,15 @@ try {
 				logger.debug("Tracker stopping");
 				break;
 			}
-			
+
 			List<User> users = tourGuideService.getAllUsers();
 			logger.debug("Begin Tracker. Tracking " + users.size() + " users.");
 			stopWatch.start();
+			logger.debug("start loop");
 			users.forEach(u -> tourGuideService.trackUserLocation(u));
+			logger.debug("End loop");
 			stopWatch.stop();
-			logger.debug("Tracker Time Elapsed: " + TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()) + " seconds."); 
+			logger.debug("Tracker Time Elapsed: " + TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()) + " seconds.");
 			stopWatch.reset();
 			try {
 				logger.debug("Tracker sleeping");
@@ -72,8 +63,39 @@ try {
 				break;
 			}
 		}
-		
+
+	}*/
+	//EDE SPtembre 2020 : call de trackUserLocationList pour gérer l'async
+	@Override
+	public void run() {
+		StopWatch stopWatch = new StopWatch();
+		while(true) {
+			if(Thread.currentThread().isInterrupted() || stop) {
+				logger.debug("Tracker stopping");
+				break;
+			}
+
+			List<User> users = tourGuideService.getAllUsers();
+			logger.debug("Begin Tracker. Tracking " + users.size() + " users.");
+			stopWatch.start();
+			logger.debug("start loop");
+			tourGuideService.trackUserLocationList(users);
+			//users.forEach(u -> tourGuideService.trackUserLocation(u));
+			logger.debug("End loop");
+			stopWatch.stop();
+			logger.debug("Tracker Time Elapsed: " + TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()) + " seconds.");
+			stopWatch.reset();
+			try {
+				logger.debug("Tracker sleeping");
+				TimeUnit.SECONDS.sleep(trackingPollingInterval);
+				logger.debug("Tracker END of sleeping"); //TODO EDE a retirer
+			} catch (InterruptedException e) {
+				break;
+			}
+		}
+
 	}
+	/* EDE Septmbre 2020 evolution du tracker pour lance les trackUserLocation en asynchrone */
 	/*@Override
 	public void run() {
 		StopWatch stopWatch = new StopWatch();
@@ -89,10 +111,11 @@ try {
 			logger.debug("start exec");
 			ExecutorService executor = Executors.newFixedThreadPool(1000);
 			users.forEach(u -> {
-//				logger.debug("loop");
+				logger.debug("loop");
 				Runnable runnableTask = () -> {
+					logger.debug("run- Start-------------------------"+ u.getUserName());
 					tourGuideService.trackUserLocation(u);
-//					logger.debug("run--------------------------"+ u.getUserName());
+					logger.debug("run- END -------------------------"+ u.getUserName());
 			};
 				executor.execute(runnableTask);
 			});
@@ -100,8 +123,7 @@ try {
 			executor.shutdown();
 
 			try {
-				//if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
-				if (!executor.awaitTermination(15, TimeUnit.MINUTES)) { //15 minutes est notre objectif
+				if (!executor.awaitTermination(15, TimeUnit.MINUTES)) {
 					logger.debug("************* end now ********************");
 					executor.shutdownNow();
 				}

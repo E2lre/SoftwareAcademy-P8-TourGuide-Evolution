@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">1.360s</div>
+<div class="counter">3m53.25s</div>
 <p>duration</p>
 </div>
 </td>
@@ -81,8 +81,8 @@
 </tr>
 </thead>
 <tr>
-<td class="success">highVolumeGetRewards</td>
-<td class="success">1.360s</td>
+<td class="success">highVolumeGetRewardsNew</td>
+<td class="success">3m53.25s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -90,45 +90,33 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>17:20:35.987 [Test worker] DEBUG tourGuide.TestPerformance - Start highVolumeGetRewards
-17:20:36.112 [Test worker] INFO tourGuide.service.TourGuideService - TestMode enabled
-17:20:36.112 [Test worker] DEBUG tourGuide.service.TourGuideService - Initializing users
-17:20:36.347 [Test worker] DEBUG tourGuide.service.TourGuideService - Created 10 internal test users.
-17:20:36.347 [Test worker] DEBUG tourGuide.service.TourGuideService - Finished initializing users
-17:20:36.362 [Test worker] DEBUG tourGuide.tracker.Tracker - tracker submit
-17:20:36.409 [Test worker] DEBUG tourGuide.TestPerformance - start exec
-17:20:36.409 [pool-4-thread-1] DEBUG tourGuide.service.RewardsService - calculateRewards_standard start
-17:20:36.409 [pool-4-thread-5] DEBUG tourGuide.service.RewardsService - calculateRewards_standard start
-17:20:36.425 [Test worker] DEBUG tourGuide.TestPerformance - shutdown
-17:20:36.425 [pool-4-thread-2] DEBUG tourGuide.service.RewardsService - calculateRewards_standard start
-17:20:36.441 [pool-4-thread-6] DEBUG tourGuide.service.RewardsService - calculateRewards_standard start
-17:20:36.441 [pool-4-thread-10] DEBUG tourGuide.service.RewardsService - calculateRewards_standard start
-17:20:36.441 [pool-4-thread-9] DEBUG tourGuide.service.RewardsService - calculateRewards_standard start
-17:20:36.441 [pool-3-thread-1] DEBUG tourGuide.tracker.Tracker - Begin Tracker. Tracking 10 users.
-17:20:36.456 [pool-4-thread-4] DEBUG tourGuide.service.RewardsService - calculateRewards_standard start
-17:20:36.456 [pool-4-thread-8] DEBUG tourGuide.service.RewardsService - calculateRewards_standard start
-17:20:36.472 [pool-4-thread-7] DEBUG tourGuide.service.RewardsService - calculateRewards_standard start
-17:20:36.472 [pool-4-thread-3] DEBUG tourGuide.service.RewardsService - calculateRewards_standard start
-17:20:36.520 [pool-4-thread-4] DEBUG tourGuide.service.RewardsService - calculateRewards_standard End
-17:20:36.677 [pool-4-thread-7] DEBUG tourGuide.service.RewardsService - calculateRewards_standard End
-17:20:36.732 [pool-4-thread-6] DEBUG tourGuide.service.RewardsService - calculateRewards_standard End
-17:20:36.835 [pool-4-thread-3] DEBUG tourGuide.service.RewardsService - calculateRewards_standard End
-17:20:36.859 [pool-4-thread-5] DEBUG tourGuide.service.RewardsService - calculateRewards_standard End
-17:20:37.029 [pool-4-thread-10] DEBUG tourGuide.service.RewardsService - calculateRewards_standard End
-17:20:37.220 [pool-4-thread-1] DEBUG tourGuide.service.RewardsService - calculateRewards_standard End
-17:20:37.227 [pool-4-thread-9] DEBUG tourGuide.service.RewardsService - calculateRewards_standard End
-17:20:37.232 [pool-4-thread-2] DEBUG tourGuide.service.RewardsService - calculateRewards_standard End
-17:20:37.350 [pool-4-thread-8] DEBUG tourGuide.service.RewardsService - calculateRewards_standard End
-17:20:37.351 [Test worker] DEBUG tourGuide.TestPerformance - end
-highVolumeGetRewards: Time Elapsed: 1 seconds.
-17:20:37.351 [Test worker] DEBUG tourGuide.TestPerformance - End of highVolumeGetRewards
+<pre>15:02:45.416 [Test worker] DEBUG tourGuide.TestPerformance - Start highVolumeGetRewardsNew
+15:02:45.486 [Test worker] INFO tourGuide.service.TourGuideService - TestMode enabled
+15:02:45.486 [Test worker] DEBUG tourGuide.service.TourGuideService - Initializing users
+15:02:48.445 [Test worker] DEBUG tourGuide.service.TourGuideService - Created 100000 internal test users.
+15:02:48.445 [Test worker] DEBUG tourGuide.service.TourGuideService - Finished initializing users
+15:02:48.445 [Test worker] DEBUG tourGuide.tracker.Tracker - tracker submit
+15:02:48.486 [Test worker] DEBUG tourGuide.TestPerformance - highVolumeGetRewardsnew 1
+15:02:48.497 [pool-3-thread-1] DEBUG tourGuide.tracker.Tracker - Begin Tracker. Tracking 100000 users.
+15:02:48.497 [pool-3-thread-1] DEBUG tourGuide.tracker.Tracker - start loop
+15:02:48.497 [pool-3-thread-1] DEBUG tourGuide.service.TourGuideService - trackUserLocationList AAAAAASYNCHRONE
+15:02:48.514 [Test worker] DEBUG tourGuide.TestPerformance - highVolumeGetRewardsnew 2
+15:02:48.514 [Test worker] DEBUG tourGuide.service.RewardsService - calculateRewardsList AAAAAASYNCHRONE
+15:06:38.982 [Test worker] DEBUG tourGuide.TestPerformance - highVolumeGetRewardsnew 3
+15:06:39.051 [Test worker] DEBUG tourGuide.TestPerformance - highVolumeGetRewardsnew 4
+highVolumeGetRewards: Time Elapsed: 232 seconds.
+**********************************************************************************************************
+15:06:39.053 [Test worker] DEBUG tourGuide.TestPerformance - End of highVolumeGetRewards
+************************ WARNING - Exception ON trackUserLocationList - WARNING ***************************
+message : null
+localized message : null
 </pre>
 </span>
 </div>
 <div id="tab2" class="tab">
 <h2>Standard error</h2>
 <span class="code">
-<pre>sept. 16, 2020 5:20:36 PM org.javamoney.moneta.DefaultMonetaryContextFactory createMonetaryContextNonNullConfig
+<pre>sept. 18, 2020 3:02:45 PM org.javamoney.moneta.DefaultMonetaryContextFactory createMonetaryContextNonNullConfig
 INFOS: Using custom MathContext: precision=256, roundingMode=HALF_EVEN
 </pre>
 </span>
@@ -141,7 +129,7 @@ INFOS: Using custom MathContext: precision=256, roundingMode=HALF_EVEN
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 4.8.1</a> at 16 sept. 2020 17:20:37</p>
+<a href="http://www.gradle.org">Gradle 4.8.1</a> at 18 sept. 2020 15:06:39</p>
 </div>
 </div>
 </body>

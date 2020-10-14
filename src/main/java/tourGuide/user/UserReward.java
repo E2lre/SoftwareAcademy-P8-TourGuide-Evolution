@@ -1,7 +1,9 @@
 package tourGuide.user;
 
-import gpsUtil.location.Attraction;
-import gpsUtil.location.VisitedLocation;
+//import gpsUtil.location.Attraction;
+import tourGuide.beans.Attraction;
+//import gpsUtil.location.VisitedLocation;
+import tourGuide.beans.VisitedLocation;
 
 public class UserReward {
 

@@ -2,7 +2,7 @@ package tourGuide;
 
 import java.util.List;
 
-import gpsUtil.location.Attraction;
+//import gpsUtil.location.Attraction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import com.jsoniter.output.JsonStream;
 
-import gpsUtil.location.VisitedLocation;
+//import gpsUtil.location.VisitedLocation;
+import tourGuide.beans.VisitedLocation;
+
 import tourGuide.exceptions.UserNameNotFoundException;
 import tourGuide.exceptions.UserPreferenceEmptyException;
 import tourGuide.model.NearestAttractionsForUser;

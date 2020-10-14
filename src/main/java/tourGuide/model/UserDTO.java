@@ -1,6 +1,7 @@
 package tourGuide.model;
 
-import gpsUtil.location.VisitedLocation;
+//import gpsUtil.location.VisitedLocation;
+import tourGuide.beans.VisitedLocation;
 import org.modelmapper.ModelMapper;
 import tourGuide.user.User;
 

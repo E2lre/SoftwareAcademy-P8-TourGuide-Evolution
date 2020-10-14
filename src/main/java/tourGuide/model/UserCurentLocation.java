@@ -1,6 +1,7 @@
 package tourGuide.model;
 
-import gpsUtil.location.Location;
+//import gpsUtil.location.Location;
+import tourGuide.beans.Location;
 
 import java.util.UUID;
 

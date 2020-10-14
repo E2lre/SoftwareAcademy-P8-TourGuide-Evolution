@@ -10,13 +10,18 @@ import java.util.UUID;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import gpsUtil.GpsUtil;
-import gpsUtil.location.Attraction;
-import gpsUtil.location.VisitedLocation;
+//import gpsUtil.GpsUtil;
+//import gpsUtil.location.Attraction;
+import tourGuide.beans.Attraction;
+//import gpsUtil.location.VisitedLocation;
+import tourGuide.beans.VisitedLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import rewardCentral.RewardCentral;
 import tourGuide.helper.InternalTestHelper;
+import tourGuide.proxies.GpsUtilProxy;
+import tourGuide.service.GpsUtilProxyService;
 import tourGuide.service.RewardsService;
 import tourGuide.service.TourGuideService;
 import tourGuide.tracker.Tracker;
@@ -25,10 +30,12 @@ import tourGuide.user.UserReward;
 
 public class TestRewardsService {
 	private Logger logger = LoggerFactory.getLogger(TestRewardsService.class);
+	@Autowired
+	private GpsUtilProxyService gpsUtil;
 	@Test
 	public void userGetRewards() {
 		Locale.setDefault(Locale.US);
-		GpsUtil gpsUtil = new GpsUtil();
+		//GpsUtil gpsUtil = new GpsUtil();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 
 		InternalTestHelper.setInternalUserNumber(0);
@@ -45,7 +52,7 @@ public class TestRewardsService {
 	
 	@Test
 	public void isWithinAttractionProximity() {
-		GpsUtil gpsUtil = new GpsUtil();
+		//GpsUtil gpsUtil = new GpsUtil();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		Attraction attraction = gpsUtil.getAttractions().get(0);
 		assertTrue(rewardsService.isWithinAttractionProximity(attraction, attraction));
@@ -55,7 +62,7 @@ public class TestRewardsService {
 	//EDE (August 2020) - test correction : correction dans addUserReward pour supprimer la negation
 	@Test
 	public void nearAllAttractions() {
-		GpsUtil gpsUtil = new GpsUtil();
+		//GpsUtil gpsUtil = new GpsUtil();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		rewardsService.setProximityBuffer(Integer.MAX_VALUE);
 

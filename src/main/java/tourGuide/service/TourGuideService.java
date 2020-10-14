@@ -12,15 +12,21 @@ import java.util.stream.IntStream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import gpsUtil.GpsUtil;
-import gpsUtil.location.Attraction;
-import gpsUtil.location.Location;
-import gpsUtil.location.VisitedLocation;
+//import gpsUtil.location.Attraction;
+import tourGuide.beans.Attraction;
+//import gpsUtil.location.Location;
+import tourGuide.beans.Location;
+//import gpsUtil.location.VisitedLocation;
+import tourGuide.beans.VisitedLocation;
 import tourGuide.helper.InternalTestHelper;
 import tourGuide.helper.Util;
 import tourGuide.model.*;
+import tourGuide.proxies.GpsUtilProxy;
 import tourGuide.tracker.Tracker;
 import tourGuide.user.User;
 import tourGuide.user.UserPreferences;
@@ -31,16 +37,33 @@ import tripPricer.TripPricer;
 @Service
 public class TourGuideService {
 	private Logger logger = LoggerFactory.getLogger(TourGuideService.class);
-	private final GpsUtil gpsUtil;
+	//private final GpsUtil gpsUtil;
+
+	@Qualifier("gpsUtilProxyServiceImpl")
+	@Autowired
+	private GpsUtilProxyService gpsUtilProxyService;
 	private final RewardsService rewardsService;
 	private final TripPricer tripPricer = new TripPricer();
 	public final Tracker tracker;
 	boolean testMode = true;
 	
-	public TourGuideService(GpsUtil gpsUtil, RewardsService rewardsService) {
+	/*public TourGuideService(GpsUtil gpsUtil, RewardsService rewardsService) {
 		this.gpsUtil = gpsUtil;
 		this.rewardsService = rewardsService;
-		
+
+		if(testMode) {
+			logger.info("TestMode enabled");
+			logger.debug("Initializing users");
+			initializeInternalUsers();
+			logger.debug("Finished initializing users");
+		}
+		tracker = new Tracker(this);
+		addShutDownHook();
+	}*/
+	public TourGuideService(GpsUtilProxyService gpsUtil, RewardsService rewardsService) { //FEIGN
+		this.gpsUtilProxyService = gpsUtil;
+		this.rewardsService = rewardsService;
+
 		if(testMode) {
 			logger.info("TestMode enabled");
 			logger.debug("Initializing users");
@@ -50,7 +73,6 @@ public class TourGuideService {
 		tracker = new Tracker(this);
 		addShutDownHook();
 	}
-	
 	public List<UserReward> getUserRewards(User user) {
 		return user.getUserRewards();
 	}
@@ -119,7 +141,8 @@ public class TourGuideService {
 	
 	public VisitedLocation trackUserLocation(User user) {
 		//logger.debug("trackUserLocation start" + user.getUserName());
-		VisitedLocation visitedLocation = gpsUtil.getUserLocation(user.getUserId());
+		//VisitedLocation visitedLocation = gpsUtil.getUserLocation(user.getUserId());
+		VisitedLocation visitedLocation = gpsUtilProxyService.getUserLocation(user.getUserId().toString()); //FEIGN
 		user.addToVisitedLocations(visitedLocation);
 		rewardsService.calculateRewards(user);
 		//logger.debug("trackUserLocation end"+ user.getUserName());
@@ -202,7 +225,8 @@ public class TourGuideService {
 
 
 
-					List<Attraction> attractionListLambda = gpsUtil.getAttractions().parallelStream().collect(Collectors.toList());
+					//List<Attraction> attractionListLambda = gpsUtil.getAttractions().parallelStream().collect(Collectors.toList());
+					List<Attraction> attractionListLambda = gpsUtilProxyService.getAttractions().parallelStream().collect(Collectors.toList()); //FEIGN
 					logger.debug("fin lambda");
 					//users.forEach(u -> tourGuideService.trackUserLocation(u));
 					attractionListLambda.parallelStream().forEach(attractionLb -> {

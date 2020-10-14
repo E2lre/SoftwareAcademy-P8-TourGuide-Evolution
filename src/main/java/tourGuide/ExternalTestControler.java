@@ -1,4 +1,4 @@
-package tourGuide;
+/*package tourGuide;
 
 
 import org.springframework.http.HttpMethod;
@@ -8,15 +8,15 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RestController;*/
 //import org.springframework.web.reactive.function.BodyInserter;
 //import org.springframework.web.reactive.function.BodyInserters;
-import org.springframework.web.reactive.function.BodyInserter;
+/*import org.springframework.web.reactive.function.BodyInserter;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.util.LinkedMultiValueMap;
+import reactor.util.LinkedMultiValueMap;*/
 //import reactor.util.MultiValueMap;
-
+/*
 @RestController
 public class ExternalTestControler {
 
@@ -67,14 +67,7 @@ public class ExternalTestControler {
         map.add("attractionId", "123e4567-e89b-12d3-a456-426614174000");
         map.add("userId", "123e4567-e89b-12d3-a456-426614174000");
 
-  /*     BodyInserter<MultiValueMap, ClientHttpRequest> inserter2
-                = BodyInserters.fromMultipartData(map);
 
-
-        WebClient.ResponseSpec response1 = uri1
-                .body(inserter2)
-                .retrieve();
-*/
         result = uri1.exchange()
                 .block()
                 .bodyToMono(String.class)
@@ -82,3 +75,4 @@ public class ExternalTestControler {
         return testString + " " + result;
     }
 }
+*/

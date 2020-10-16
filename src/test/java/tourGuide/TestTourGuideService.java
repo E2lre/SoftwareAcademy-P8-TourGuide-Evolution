@@ -28,7 +28,8 @@ import tourGuide.service.RewardCentralProxyService;
 import tourGuide.service.RewardsService;
 import tourGuide.service.TourGuideService;
 import tourGuide.user.User;
-import tripPricer.Provider;
+//import tripPricer.Provider;
+import tourGuide.model.external.Provider;
 
 @SpringBootTest
 public class TestTourGuideService {

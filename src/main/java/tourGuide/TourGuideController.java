@@ -22,7 +22,8 @@ import tourGuide.model.UserPreferenceDTO;
 import tourGuide.service.TourGuideService;
 import tourGuide.user.User;
 import tourGuide.user.UserPreferences;
-import tripPricer.Provider;
+//import tripPricer.Provider;
+import tourGuide.model.external.Provider;
 
 @RestController
 public class TourGuideController {

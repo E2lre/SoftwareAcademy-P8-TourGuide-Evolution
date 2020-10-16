@@ -7,7 +7,8 @@ import java.util.UUID;
 
 //import gpsUtil.location.VisitedLocation;
 import tourGuide.beans.VisitedLocation;
-import tripPricer.Provider;
+//import tripPricer.Provider;
+import tourGuide.model.external.Provider;
 
 public class User {
 	private final UUID userId;

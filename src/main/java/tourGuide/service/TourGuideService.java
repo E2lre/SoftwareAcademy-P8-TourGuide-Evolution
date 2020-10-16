@@ -31,7 +31,8 @@ import tourGuide.tracker.Tracker;
 import tourGuide.user.User;
 import tourGuide.user.UserPreferences;
 import tourGuide.user.UserReward;
-import tripPricer.Provider;
+//import tripPricer.Provider;
+import tourGuide.model.external.Provider;
 import tripPricer.TripPricer;
 
 @Service
@@ -48,7 +49,10 @@ public class TourGuideService {
 	private RewardCentralProxyService rewardCentralProxy;*/
 
 	private final RewardsService rewardsService;
-	private final TripPricer tripPricer = new TripPricer();
+	//private final TripPricer tripPricer = new TripPricer();
+	@Autowired
+	private TripPricerProxyService tripPricer;
+
 	public final Tracker tracker;
 	boolean testMode = true;
 	

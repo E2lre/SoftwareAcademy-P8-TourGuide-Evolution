@@ -2,7 +2,6 @@ package tourGuide.model;
 
 //import gpsUtil.location.Attraction;
 import tourGuide.beans.Attraction;
-import gpsUtil.location.VisitedLocation;
 
 import java.util.ArrayList;
 import java.util.List;

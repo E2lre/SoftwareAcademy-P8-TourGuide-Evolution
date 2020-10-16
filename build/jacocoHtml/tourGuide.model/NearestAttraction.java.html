@@ -2,7 +2,6 @@
 
 //import gpsUtil.location.Attraction;
 import tourGuide.beans.Attraction;
-import gpsUtil.location.VisitedLocation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,39 +24,39 @@ public class NearestAttraction {
     private Double distance;
     private int rewardPoints;
 
-<span class="nc" id="L28">    public NearestAttraction(Attraction attraction, Double distance, int rewardPoints) {</span>
-<span class="nc" id="L29">        this.attraction = attraction;</span>
-<span class="nc" id="L30">        this.distance = distance;</span>
-<span class="nc" id="L31">        this.rewardPoints = rewardPoints;</span>
-<span class="nc" id="L32">    }</span>
+<span class="nc" id="L27">    public NearestAttraction(Attraction attraction, Double distance, int rewardPoints) {</span>
+<span class="nc" id="L28">        this.attraction = attraction;</span>
+<span class="nc" id="L29">        this.distance = distance;</span>
+<span class="nc" id="L30">        this.rewardPoints = rewardPoints;</span>
+<span class="nc" id="L31">    }</span>
 
     public Attraction getAttraction() {
-<span class="nc" id="L35">        return attraction;</span>
+<span class="nc" id="L34">        return attraction;</span>
     }
 
     public void setAttraction(Attraction attraction) {
-<span class="nc" id="L39">        this.attraction = attraction;</span>
-<span class="nc" id="L40">    }</span>
+<span class="nc" id="L38">        this.attraction = attraction;</span>
+<span class="nc" id="L39">    }</span>
 
     public Double getDistance() {
-<span class="nc" id="L43">        return distance;</span>
+<span class="nc" id="L42">        return distance;</span>
     }
 
     public void setDistance(Double distance) {
-<span class="nc" id="L47">        this.distance = distance;</span>
-<span class="nc" id="L48">    }</span>
+<span class="nc" id="L46">        this.distance = distance;</span>
+<span class="nc" id="L47">    }</span>
 
     public int getRewardPoints() {
-<span class="nc" id="L51">        return rewardPoints;</span>
+<span class="nc" id="L50">        return rewardPoints;</span>
     }
 
     public void setRewardPoints(int rewardPoints) {
-<span class="nc" id="L55">        this.rewardPoints = rewardPoints;</span>
-<span class="nc" id="L56">    }</span>
+<span class="nc" id="L54">        this.rewardPoints = rewardPoints;</span>
+<span class="nc" id="L55">    }</span>
 
     @Override
     public String toString() {
-<span class="nc" id="L60">        return &quot;NearestAttraction{&quot; +</span>
+<span class="nc" id="L59">        return &quot;NearestAttraction{&quot; +</span>
                 &quot;attraction=&quot; + attraction +
                 &quot;, distance=&quot; + distance +
                 &quot;, rewardPoints=&quot; + rewardPoints +

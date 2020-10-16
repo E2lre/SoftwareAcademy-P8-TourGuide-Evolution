@@ -9,20 +9,25 @@ import org.springframework.stereotype.Service;
 import tourGuide.proxies.GpsUtilProxy;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
-<span class="nc" id="L14">public class GpsUtilProxyServiceImpl implements GpsUtilProxyService {</span>
+<span class="fc" id="L15">public class GpsUtilProxyServiceImpl implements GpsUtilProxyService {</span>
     @Autowired
     private  GpsUtilProxy gpsUtilProxy;
     @Override
-    public VisitedLocation getUserLocation(String userId){
-<span class="nc" id="L19">        VisitedLocation visitedLocation = gpsUtilProxy.getUserLocation(userId) ;</span>
-<span class="nc" id="L20">        return visitedLocation;</span>
+//    public VisitedLocation getUserLocation(String userId){
+    public VisitedLocation getUserLocation(UUID userId){
+/*        if (gpsUtilProxy==null) {
+            gpsUtilProxy = new GpsUtilProxy();
+        }*/
+<span class="nc" id="L24">        VisitedLocation visitedLocation = gpsUtilProxy.getUserLocation(userId) ;</span>
+<span class="nc" id="L25">        return visitedLocation;</span>
         //return gpsUtilProxy.getUserLocation(userId);
     }
     @Override
     public List&lt;Attraction&gt; getAttractions(){
-<span class="nc" id="L25">        return  gpsUtilProxy.getAttractions();</span>
+<span class="nc" id="L30">        return  gpsUtilProxy.getAttractions();</span>
     }
 
 

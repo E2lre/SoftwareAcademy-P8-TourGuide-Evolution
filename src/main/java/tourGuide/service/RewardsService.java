@@ -1,6 +1,5 @@
 package tourGuide.service;
 
-import gpsUtil.GpsUtil;
 //import gpsUtil.location.Attraction;
 import tourGuide.beans.Attraction;
 //import gpsUtil.location.Location;
@@ -14,6 +13,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import rewardCentral.RewardCentral;
 //import tourGuide.proxies.GpsUtilProxy;
+import tourGuide.proxies.GpsUtilProxy;
+import tourGuide.proxies.RewardCentralProxy;
 import tourGuide.user.User;
 import tourGuide.user.UserReward;
 
@@ -45,16 +46,30 @@ public class RewardsService  {
 	private int attractionProximityRange = 20000; //TODO EDE a enlever
 	//private final GpsUtil gpsUtil;
 
-	@Qualifier("gpsUtilProxyServiceImpl")
+	//@Qualifier("gpsUtilProxyServiceImpl")
 	@Autowired
 	private GpsUtilProxyService gpsUtil;
+	//private final GpsUtilProxy gpsUtil;
+	//private  GpsUtilProxy gpsUtil;
 
-	private final RewardCentral rewardsCentral;
+	//private final RewardCentral rewardsCentral;
+	@Autowired
+	private RewardCentralProxyService rewardsCentral;
+	//private final RewardCentralProxy rewardsCentral;
+	//private  RewardCentralProxy rewardsCentral;
 	
 	//public RewardsService(GpsUtil gpsUtil, RewardCentral rewardCentral) {
-	public RewardsService(@Qualifier("gpsUtilProxyServiceImpl") GpsUtilProxyService gpsUtil, RewardCentral rewardCentral) { //FEIGN
+	//public RewardsService(@Qualifier("gpsUtilProxyServiceImpl") GpsUtilProxyService gpsUtil, RewardCentral rewardCentral) { //FEIGN
+	//public RewardsService(GpsUtilProxyService gpsUtil, RewardCentral rewardCentral) { //FEIGN
+	//public RewardsService(GpsUtilProxy gpsUtil, RewardCentralProxy rewardCentral) { //FEIGN
+	public RewardsService(GpsUtilProxyService gpsUtil, RewardCentralProxyService rewardCentral) { //FEIGN
 		this.gpsUtil = gpsUtil;
 		this.rewardsCentral = rewardCentral;
+	}
+
+	//Ajout EDE
+	public RewardsService() { //FEIGN
+
 	}
 	
 	public void setProximityBuffer(int proximityBuffer) {
@@ -209,12 +224,12 @@ public class RewardsService  {
 	}
 
 	public int getRewardPoints(Attraction attraction, User user) {
-		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId, user.getUserId());
+		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId.toString(), user.getUserId().toString());
 	//	return getRewardPoints_Async(attraction, user);
 
 	}
 	public int getRewardPoints_exec(Attraction attraction, User user) {
-		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId, user.getUserId());
+		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId.toString(), user.getUserId().toString());
 	}
 
 	public int getRewardPoints_Async(Attraction attraction, User user) {

@@ -3,6 +3,7 @@
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rewardCentral.RewardCentral;
+import tourGuide.proxies.RewardCentralProxy;
 
 import java.util.UUID;
 
@@ -10,15 +11,17 @@ import java.util.UUID;
 public class RewardCentralServiceImpl implements RewardCentralService{
 
     @Autowired
-    private final RewardCentral rewardsCentral;
+    private RewardCentralProxy rewardsCentral;
+    //private final RewardCentral rewardsCentral;
 
-<span class="nc" id="L15">    public RewardCentralServiceImpl() {</span>
-<span class="nc" id="L16">        this.rewardsCentral = new RewardCentral();</span>
-<span class="nc" id="L17">    }</span>
+<span class="nc" id="L17">    public RewardCentralServiceImpl() {</span>
+        //this.rewardsCentral = new RewardCentralPro();
+<span class="nc" id="L19">    }</span>
 
     @Override
     public int getAttractionRewardPoints(UUID attractionId, UUID userId){
-<span class="nc" id="L21">        return rewardsCentral.getAttractionRewardPoints(attractionId,userId);</span>
+        //return rewardsCentral.getAttractionRewardPoints(attractionId,userId);
+<span class="nc" id="L24">        return rewardsCentral.getAttractionRewardPoints(attractionId.toString(),userId.toString());</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

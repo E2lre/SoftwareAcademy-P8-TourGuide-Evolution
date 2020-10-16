@@ -8,35 +8,36 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import rewardCentral.RewardCentral;
 //import tourGuide.proxies.GpsUtilProxy;
-import tourGuide.service.GpsUtilProxyService;
-import tourGuide.service.GpsUtilProxyServiceImpl;
-import tourGuide.service.RewardsService;
+import tourGuide.proxies.GpsUtilProxy;
+import tourGuide.service.*;
 
 @Configuration
-<span class="nc" id="L16">public class TourGuideModule {</span>
-	/*@Autowired
-	private GpsUtilProxyService gpsUtilProxy;*/
+<span class="nc" id="L15">public class TourGuideModule {</span>
+/*
 
-	//@Bean
-	//public GpsUtil getGpsUtil() {
-/*	public GpsUtil getGpsUtil() {
-		return new GpsUtil();
-	}*/
+
 	@Bean
-	@Primary
-	public GpsUtilProxyServiceImpl getGpsUtil() {
-<span class="nc" id="L28">		return new GpsUtilProxyServiceImpl();</span>
-		//return new GpsUtilProxy(); //ICICICICICIC METTRE COUCHE D'ABSTRACTION
+	//@Primary
+	public GpsUtilProxyService getGpsUtilProxy() {
+		return new GpsUtilProxyServiceImpl();
+	}
+	@Bean
+	//@Primary
+	public RewardCentralProxyService getRewardCentralProxy() {
+		return new RewardCentralProxyServiceImpl();
 	}
 	@Bean
 	public RewardsService getRewardsService() {
-<span class="nc" id="L33">		return new RewardsService(getGpsUtil(), getRewardCentral());</span>
+		//return new RewardsService(getGpsUtil(), getRewardCentral());
+		//return new RewardsService(getGpsUtil, getRewardCentral());
+		return new RewardsService(getGpsUtilProxy(), getRewardCentralProxy());
 	}
 	
 	@Bean
 	public RewardCentral getRewardCentral() {
-<span class="nc" id="L38">		return new RewardCentral();</span>
+		return new RewardCentral();
 	}
-	
+*/
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

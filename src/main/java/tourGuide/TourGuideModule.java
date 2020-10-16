@@ -8,34 +8,35 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import rewardCentral.RewardCentral;
 //import tourGuide.proxies.GpsUtilProxy;
-import tourGuide.service.GpsUtilProxyService;
-import tourGuide.service.GpsUtilProxyServiceImpl;
-import tourGuide.service.RewardsService;
+import tourGuide.proxies.GpsUtilProxy;
+import tourGuide.service.*;
 
 @Configuration
 public class TourGuideModule {
-	/*@Autowired
-	private GpsUtilProxyService gpsUtilProxy;*/
+/*
 
-	//@Bean
-	//public GpsUtil getGpsUtil() {
-/*	public GpsUtil getGpsUtil() {
-		return new GpsUtil();
-	}*/
+
 	@Bean
-	@Primary
-	public GpsUtilProxyServiceImpl getGpsUtil() {
+	//@Primary
+	public GpsUtilProxyService getGpsUtilProxy() {
 		return new GpsUtilProxyServiceImpl();
-		//return new GpsUtilProxy(); //ICICICICICIC METTRE COUCHE D'ABSTRACTION
+	}
+	@Bean
+	//@Primary
+	public RewardCentralProxyService getRewardCentralProxy() {
+		return new RewardCentralProxyServiceImpl();
 	}
 	@Bean
 	public RewardsService getRewardsService() {
-		return new RewardsService(getGpsUtil(), getRewardCentral());
+		//return new RewardsService(getGpsUtil(), getRewardCentral());
+		//return new RewardsService(getGpsUtil, getRewardCentral());
+		return new RewardsService(getGpsUtilProxy(), getRewardCentralProxy());
 	}
 	
 	@Bean
 	public RewardCentral getRewardCentral() {
 		return new RewardCentral();
 	}
-	
+*/
+
 }

@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import gpsUtil.GpsUtil;
 //import gpsUtil.location.Attraction;
 import tourGuide.beans.Attraction;
 //import gpsUtil.location.Location;
@@ -27,6 +26,7 @@ import tourGuide.helper.InternalTestHelper;
 import tourGuide.helper.Util;
 import tourGuide.model.*;
 import tourGuide.proxies.GpsUtilProxy;
+import tourGuide.proxies.RewardCentralProxy;
 import tourGuide.tracker.Tracker;
 import tourGuide.user.User;
 import tourGuide.user.UserPreferences;
@@ -39,9 +39,14 @@ public class TourGuideService {
 	private Logger logger = LoggerFactory.getLogger(TourGuideService.class);
 	//private final GpsUtil gpsUtil;
 
-	@Qualifier("gpsUtilProxyServiceImpl")
-	@Autowired
-	private GpsUtilProxyService gpsUtilProxyService;
+	//@Qualifier("gpsUtilProxyServiceImpl")
+	//@Autowired
+	//private GpsUtilProxyService gpsUtilProxyService;
+	private final GpsUtilProxyService gpsUtilProxyService;
+	//private GpsUtilProxy gpsUtilProxyService;
+	/*@Autowired
+	private RewardCentralProxyService rewardCentralProxy;*/
+
 	private final RewardsService rewardsService;
 	private final TripPricer tripPricer = new TripPricer();
 	public final Tracker tracker;
@@ -61,6 +66,9 @@ public class TourGuideService {
 		addShutDownHook();
 	}*/
 	public TourGuideService(GpsUtilProxyService gpsUtil, RewardsService rewardsService) { //FEIGN
+	//public TourGuideService(GpsUtilProxy gpsUtil, RewardsService rewardsService) { //FEIGN
+		Locale.setDefault(Locale.US);
+
 		this.gpsUtilProxyService = gpsUtil;
 		this.rewardsService = rewardsService;
 
@@ -73,6 +81,22 @@ public class TourGuideService {
 		tracker = new Tracker(this);
 		addShutDownHook();
 	}
+	//Ajout EDE
+/*	public TourGuideService() { //FEIGN
+
+
+		if(testMode) {
+			logger.info("TestMode enabled");
+			logger.debug("Initializing users");
+			initializeInternalUsers();
+			logger.debug("Finished initializing users");
+		}
+		rewardsService = new RewardsService(gpsUtilProxyService, rewardCentralProxy);
+
+		tracker = new Tracker(this);
+		addShutDownHook();
+	}*/
+
 	public List<UserReward> getUserRewards(User user) {
 		return user.getUserRewards();
 	}
@@ -142,7 +166,7 @@ public class TourGuideService {
 	public VisitedLocation trackUserLocation(User user) {
 		//logger.debug("trackUserLocation start" + user.getUserName());
 		//VisitedLocation visitedLocation = gpsUtil.getUserLocation(user.getUserId());
-		VisitedLocation visitedLocation = gpsUtilProxyService.getUserLocation(user.getUserId().toString()); //FEIGN
+		VisitedLocation visitedLocation = gpsUtilProxyService.getUserLocation(user.getUserId()); //FEIGN
 		user.addToVisitedLocations(visitedLocation);
 		rewardsService.calculateRewards(user);
 		//logger.debug("trackUserLocation end"+ user.getUserName());

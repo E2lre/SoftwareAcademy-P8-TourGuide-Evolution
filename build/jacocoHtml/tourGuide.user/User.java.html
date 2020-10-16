@@ -15,19 +15,19 @@ public class User {
 	private String phoneNumber;
 	private String emailAddress;
 	private Date latestLocationTimestamp;
-<span class="nc" id="L18">	private List&lt;VisitedLocation&gt; visitedLocations = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L19">	private List&lt;UserReward&gt; userRewards = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L20">	private UserPreferences userPreferences = new UserPreferences();</span>
-<span class="nc" id="L21">	private List&lt;Provider&gt; tripDeals = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L22">	public User(UUID userId, String userName, String phoneNumber, String emailAddress) {</span>
-<span class="nc" id="L23">		this.userId = userId;</span>
-<span class="nc" id="L24">		this.userName = userName;</span>
-<span class="nc" id="L25">		this.phoneNumber = phoneNumber;</span>
-<span class="nc" id="L26">		this.emailAddress = emailAddress;</span>
-<span class="nc" id="L27">	}</span>
+<span class="fc" id="L18">	private List&lt;VisitedLocation&gt; visitedLocations = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L19">	private List&lt;UserReward&gt; userRewards = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L20">	private UserPreferences userPreferences = new UserPreferences();</span>
+<span class="fc" id="L21">	private List&lt;Provider&gt; tripDeals = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L22">	public User(UUID userId, String userName, String phoneNumber, String emailAddress) {</span>
+<span class="fc" id="L23">		this.userId = userId;</span>
+<span class="fc" id="L24">		this.userName = userName;</span>
+<span class="fc" id="L25">		this.phoneNumber = phoneNumber;</span>
+<span class="fc" id="L26">		this.emailAddress = emailAddress;</span>
+<span class="fc" id="L27">	}</span>
 	
 	public UUID getUserId() {
-<span class="nc" id="L30">		return userId;</span>
+<span class="fc" id="L30">		return userId;</span>
 	}
 	
 	public String getUserName() {
@@ -59,8 +59,8 @@ public class User {
 	}
 	
 	public void addToVisitedLocations(VisitedLocation visitedLocation) {
-<span class="nc" id="L62">		visitedLocations.add(visitedLocation);</span>
-<span class="nc" id="L63">	}</span>
+<span class="fc" id="L62">		visitedLocations.add(visitedLocation);</span>
+<span class="fc" id="L63">	}</span>
 	
 	public List&lt;VisitedLocation&gt; getVisitedLocations() {
 <span class="nc" id="L66">		return visitedLocations;</span>

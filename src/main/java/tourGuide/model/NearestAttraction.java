@@ -1,10 +1,7 @@
 package tourGuide.model;
 
 //import gpsUtil.location.Attraction;
-import tourGuide.beans.Attraction;
-
-import java.util.ArrayList;
-import java.util.List;
+import tourGuide.model.external.Attraction;
 
 /**
  * Give information about 1 nearest attraction

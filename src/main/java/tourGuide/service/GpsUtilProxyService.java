@@ -1,7 +1,7 @@
 package tourGuide.service;
 
 //import gpsUtil.location.Attraction;
-import tourGuide.beans.Attraction;
+import tourGuide.model.external.Attraction;
 //import gpsUtil.location.VisitedLocation;
 import tourGuide.beans.VisitedLocation;
 

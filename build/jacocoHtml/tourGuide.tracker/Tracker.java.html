@@ -70,9 +70,9 @@ public class Tracker extends Thread {
 	public void run() {
 <span class="fc" id="L71">		StopWatch stopWatch = new StopWatch();</span>
 		while(true) {
-<span class="pc bpc" id="L73" title="2 of 4 branches missed.">			if(Thread.currentThread().isInterrupted() || stop) {</span>
-<span class="nc" id="L74">				logger.debug(&quot;Tracker stopping&quot;);</span>
-<span class="nc" id="L75">				break;</span>
+<span class="pc bpc" id="L73" title="1 of 4 branches missed.">			if(Thread.currentThread().isInterrupted() || stop) {</span>
+<span class="fc" id="L74">				logger.debug(&quot;Tracker stopping&quot;);</span>
+<span class="fc" id="L75">				break;</span>
 			}
 
 <span class="fc" id="L78">			List&lt;User&gt; users = tourGuideService.getAllUsers();</span>

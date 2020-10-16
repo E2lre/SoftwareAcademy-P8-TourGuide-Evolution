@@ -1,7 +1,7 @@
 package tourGuide.service;
 
 //import gpsUtil.location.Attraction;
-import tourGuide.beans.Attraction;
+import tourGuide.model.external.Attraction;
 //import gpsUtil.location.Location;
 import tourGuide.beans.Location;
 //import gpsUtil.location.VisitedLocation;
@@ -9,21 +9,14 @@ import tourGuide.beans.VisitedLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import rewardCentral.RewardCentral;
 //import tourGuide.proxies.GpsUtilProxy;
-import tourGuide.proxies.GpsUtilProxy;
-import tourGuide.proxies.RewardCentralProxy;
 import tourGuide.user.User;
 import tourGuide.user.UserReward;
 
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.*;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.function.Supplier;
 
 
 @Service
@@ -158,18 +151,16 @@ public class RewardsService  {
 		//logger.debug("End of calculateRewards");
 		//logger.debug("calculateRewards_standard End");
 	}
-	public  void calculateRewards_async(User user) {
+/*	public  void calculateRewards_async(User user) {
 //E2LRE August 2020 :Correction to avoid ConcurrentModificationException in TestPerform
-/*		 List<VisitedLocation> userLocations = user.getVisitedLocations();
-		 List<Attraction> attractions = gpsUtil.getAttractions();
-*/
+
 		CopyOnWriteArrayList<VisitedLocation> userLocations = new CopyOnWriteArrayList<>();
 		userLocations.addAll(user.getVisitedLocations());
 
 		CopyOnWriteArrayList<Attraction> attractions = new CopyOnWriteArrayList<>();
 		attractions.addAll(gpsUtil.getAttractions());
 
-		/****** Mise en place de Executor Services ****************/
+		*//****** Mise en place de Executor Services ****************//*
 		//ExecutorService executor = Executors.newFixedThreadPool(1000);
 
 		//userLocations.parallelStream().forEach(visitedLocation -> rewardsService.calculateRewards(u));
@@ -212,9 +203,9 @@ public class RewardsService  {
 				executorService.shutdownNow();
 			}
 			logger.debug(" calculateRewards_async end");
-		/****** fin de Mise en place de Executor Services ****************/
+		*//****** fin de Mise en place de Executor Services ****************//*
 		//logger.debug("End of calculateRewards");
-	}
+	}*/
 	public boolean isWithinAttractionProximity(Attraction attraction, Location location) {
 		return getDistance(attraction, location) > attractionProximityRange ? false : true;
 	}
@@ -232,45 +223,18 @@ public class RewardsService  {
 		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId.toString(), user.getUserId().toString());
 	}
 
+/*
 	public int getRewardPoints_Async(Attraction attraction, User user) {
 		logger.debug("getRewardPoints_Async start Ascyn");
 		String result ="";
 		int res = 0;
-/*		CompletableFuture<Void> completableFuture = new CompletableFuture<>();
-		completableFuture.supplyAsync(() -> {
-			logger.debug("call exec");
-			getRewardPoints_exec( attraction, user);
-		});*/
-		//CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(new Supplier<String>() {
-/*
-		 completableFuture = CompletableFuture.supplyAsync(new Supplier<String>() {
-			@Override
-			public String get() {
-				String result ="0";
-				int res = 0;
-				res = getRewardPoints_exec( attraction, user);
-				result.valueOf(res);
-				return result;
-			}
-		});
 
-		try {
-			logger.debug("getRewardPoints_Async get start");
-			result = completableFuture.get();
-			logger.debug("getRewardPoints_Async get end");
-		} catch (InterruptedException e) {
-			logger.debug("************* end now catch REward *************" + e.getMessage());
-			//ExecutionException, InterruptedException
-		} catch (ExecutionException e) {
-			logger.debug("************* end now catch REward *************" + e.getMessage());
-			e.printStackTrace();
-		}
-		res = Integer.parseInt(result);
-		logger.debug("getRewardPoints_Async get Finish");
-*/
+		//CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(new Supplier<String>() {
+
 
 		return res;
 	}
+*/
 
 
 	

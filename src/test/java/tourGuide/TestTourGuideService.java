@@ -161,6 +161,7 @@ public class TestTourGuideService {
 
 	@Test
 	public void getTripDeals() {
+		Locale.setDefault(Locale.US);
 		//GpsUtil gpsUtil = new GpsUtil();
 		//RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral);

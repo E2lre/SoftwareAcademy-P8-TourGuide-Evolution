@@ -20,13 +20,13 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">1</div>
+<div class="counter">19</div>
 <p>tests</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">0</div>
+<div class="counter">6</div>
 <p>failures</p>
 </div>
 </td>
@@ -38,7 +38,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">4.640s</div>
+<div class="counter">1m5.83s</div>
 <p>duration</p>
 </div>
 </td>
@@ -47,8 +47,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="infoBox failures" id="successRate">
+<div class="percent">68%</div>
 <p>successful</p>
 </div>
 </td>
@@ -58,13 +58,45 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Packages</a>
+<a href="#tab0">Failed tests</a>
 </li>
 <li>
-<a href="#tab1">Classes</a>
+<a href="#tab1">Packages</a>
+</li>
+<li>
+<a href="#tab2">Classes</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<ul class="linkList">
+<li>
+<a href="classes/tourGuide.TI.TestTourGuideControler.html">TestTourGuideControler</a>.
+<a href="classes/tourGuide.TI.TestTourGuideControler.html#getLocation_existingUserName_aLoacationIsDone()">getLocation_existingUserName_aLoacationIsDone()</a>
+</li>
+<li>
+<a href="classes/tourGuide.TI.TestTourGuideControler.html">TestTourGuideControler</a>.
+<a href="classes/tourGuide.TI.TestTourGuideControler.html#getRewards_existingUserName_RewardIsDone()">getRewards_existingUserName_RewardIsDone()</a>
+</li>
+<li>
+<a href="classes/tourGuide.TI.TestTourGuideControler.html">TestTourGuideControler</a>.
+<a href="classes/tourGuide.TI.TestTourGuideControler.html#getTripDeals_existingUserName_aTripIsDone()">getTripDeals_existingUserName_aTripIsDone()</a>
+</li>
+<li>
+<a href="classes/tourGuide.TI.TestTourGuideControler.html">TestTourGuideControler</a>.
+<a href="classes/tourGuide.TI.TestTourGuideControler.html#getUserPreference_existingUserName_UserPreferenceIsDone()">getUserPreference_existingUserName_UserPreferenceIsDone()</a>
+</li>
+<li>
+<a href="classes/tourGuide.TestRewardsService.html">TestRewardsService</a>.
+<a href="classes/tourGuide.TestRewardsService.html#nearAllAttractions()">nearAllAttractions()</a>
+</li>
+<li>
+<a href="classes/tourGuide.TestTourGuideService.html">TestTourGuideService</a>.
+<a href="classes/tourGuide.TestTourGuideService.html#getTripDeals()">getTripDeals()</a>
+</li>
+</ul>
+</div>
+<div id="tab1" class="tab">
 <h2>Packages</h2>
 <table>
 <thead>
@@ -79,19 +111,49 @@
 </thead>
 <tbody>
 <tr>
-<td class="success">
+<td class="failures">
 <a href="packages/tourGuide.html">tourGuide</a>
+</td>
+<td>11</td>
+<td>2</td>
+<td>0</td>
+<td>16.799s</td>
+<td class="failures">81%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="packages/tourGuide.TI.html">tourGuide.TI</a>
+</td>
+<td>5</td>
+<td>4</td>
+<td>0</td>
+<td>14.756s</td>
+<td class="failures">20%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="packages/tourGuide.TP.html">tourGuide.TP</a>
+</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>34.142s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="packages/tourGuide.TU.html">tourGuide.TU</a>
 </td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td>4.640s</td>
+<td>0.135s</td>
 <td class="success">100%</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="tab1" class="tab">
+<div id="tab2" class="tab">
 <h2>Classes</h2>
 <table>
 <thead>
@@ -107,12 +169,62 @@
 <tbody>
 <tr>
 <td class="success">
-<a href="classes/tourGuide.TestPerformance.html">tourGuide.TestPerformance</a>
+<a href="classes/tourGuide.TestPerformanceProxy.html">tourGuide.TestPerformanceProxy</a>
 </td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td>4.640s</td>
+<td>0.040s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="classes/tourGuide.TestRewardsService.html">tourGuide.TestRewardsService</a>
+</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>14.268s</td>
+<td class="failures">66%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="classes/tourGuide.TestTourGuideService.html">tourGuide.TestTourGuideService</a>
+</td>
+<td>7</td>
+<td>1</td>
+<td>0</td>
+<td>2.491s</td>
+<td class="failures">85%</td>
+</tr>
+<tr>
+<td class="failures">
+<a href="classes/tourGuide.TI.TestTourGuideControler.html">tourGuide.TI.TestTourGuideControler</a>
+</td>
+<td>5</td>
+<td>4</td>
+<td>0</td>
+<td>14.756s</td>
+<td class="failures">20%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/tourGuide.TP.TestPerformance.html">tourGuide.TP.TestPerformance</a>
+</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>34.142s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/tourGuide.TU.TestTourGuideControlerTU.html">tourGuide.TU.TestTourGuideControlerTU</a>
+</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.135s</td>
 <td class="success">100%</td>
 </tr>
 </tbody>
@@ -126,7 +238,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 5.6.2</a> at 16 oct. 2020 09:49:12</p>
+<a href="http://www.gradle.org">Gradle 5.6.2</a> at 16 oct. 2020 19:16:00</p>
 </div>
 </div>
 </body>

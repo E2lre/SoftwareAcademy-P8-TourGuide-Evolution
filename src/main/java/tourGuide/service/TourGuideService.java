@@ -5,7 +5,6 @@ import java.time.ZoneOffset;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -13,11 +12,10 @@ import java.util.stream.IntStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 //import gpsUtil.location.Attraction;
-import tourGuide.beans.Attraction;
+import tourGuide.model.external.Attraction;
 //import gpsUtil.location.Location;
 import tourGuide.beans.Location;
 //import gpsUtil.location.VisitedLocation;
@@ -25,15 +23,12 @@ import tourGuide.beans.VisitedLocation;
 import tourGuide.helper.InternalTestHelper;
 import tourGuide.helper.Util;
 import tourGuide.model.*;
-import tourGuide.proxies.GpsUtilProxy;
-import tourGuide.proxies.RewardCentralProxy;
 import tourGuide.tracker.Tracker;
 import tourGuide.user.User;
 import tourGuide.user.UserPreferences;
 import tourGuide.user.UserReward;
 //import tripPricer.Provider;
 import tourGuide.model.external.Provider;
-import tripPricer.TripPricer;
 
 @Service
 public class TourGuideService {

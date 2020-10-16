@@ -8,10 +8,11 @@ import java.util.Locale;
 import java.util.UUID;
 
 import org.junit.Ignore;
-import org.junit.Test;
-
+//import org.junit.Test;
+import org.junit.jupiter.api.Test;
 //import gpsUtil.GpsUtil;
 //import gpsUtil.location.Attraction;
+import org.springframework.boot.test.context.SpringBootTest;
 import tourGuide.beans.Attraction;
 //import gpsUtil.location.VisitedLocation;
 import tourGuide.beans.VisitedLocation;
@@ -30,6 +31,7 @@ import tourGuide.tracker.Tracker;
 import tourGuide.user.User;
 import tourGuide.user.UserReward;
 
+@SpringBootTest
 public class TestRewardsService {
 	private Logger logger = LoggerFactory.getLogger(TestRewardsService.class);
 	@Autowired

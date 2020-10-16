@@ -8,11 +8,12 @@ import java.util.Locale;
 import java.util.UUID;
 
 import org.junit.Ignore;
-import org.junit.Test;
-
+//import org.junit.Test;
+import org.junit.jupiter.api.Test;
 //import gpsUtil.GpsUtil;
 //import gpsUtil.location.Attraction;
 //import gpsUtil.location.VisitedLocation;
+import org.springframework.boot.test.context.SpringBootTest;
 import tourGuide.beans.VisitedLocation;
 import org.springframework.beans.factory.annotation.Autowired;
 import rewardCentral.RewardCentral;
@@ -29,6 +30,7 @@ import tourGuide.service.TourGuideService;
 import tourGuide.user.User;
 import tripPricer.Provider;
 
+@SpringBootTest
 public class TestTourGuideService {
 	@Autowired
 	//private GpsUtilProxy gpsUtil;

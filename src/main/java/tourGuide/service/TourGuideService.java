@@ -141,11 +141,15 @@ public class TourGuideService {
 		}
 	}
 
+	//Ajout EDE 10/2020
+	public void setTripPricer(TripPricerProxyService tripPricer) {
+		this.tripPricer = tripPricer;
+	}
 	//EDE August 2020 : modification to check price with preference
 	public List<Provider> getTripDeals(User user) {
 
 		int cumulatativeRewardPoints = user.getUserRewards().stream().mapToInt(i -> i.getRewardPoints()).sum();
-		List<Provider> providers = tripPricer.getPrice(tripPricerApiKey, user.getUserId(), user.getUserPreferences().getNumberOfAdults(), 
+		List<Provider> providers = tripPricer.getPrice(tripPricerApiKey, user.getUserId(), user.getUserPreferences().getNumberOfAdults(),
 				user.getUserPreferences().getNumberOfChildren(), user.getUserPreferences().getTripDuration(), cumulatativeRewardPoints);
 
 		List<Provider> providersResult = new ArrayList<>();
@@ -198,16 +202,15 @@ public class TourGuideService {
 			try {
 				//if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
 				if (!executorService.awaitTermination(15, TimeUnit.MINUTES)) { //15 minutes est notre objectif
-					System.out.println("**********************************************************************************************************");
+					//System.out.println("**********************************************************************************************************");
 					System.out.println("************************ WARNING - TIME OUT ON trackUserLocationList - WARNING ****************************");
-					System.out.println("**********************************************************************************************************");
+					//System.out.println("**********************************************************************************************************");
 					executorService.shutdownNow();
 				}
 			} catch (InterruptedException e) {
-				System.out.println("**********************************************************************************************************");
+				//System.out.println("**********************************************************************************************************");
 				System.out.println("************************ WARNING - Exception ON trackUserLocationList - WARNING ***************************");
-				System.out.println("message : " + e.getMessage());
-				System.out.println("localized message : " + e.getLocalizedMessage());
+				System.out.println("message : " + e.getMessage() +" -- localized message : " + e.getLocalizedMessage());
 				executorService.shutdownNow();
 			}
 		}

@@ -33,15 +33,15 @@ import java.util.*;
      */
     public UserPreferenceDTO convertUserPreferenceToDto(UserPreferences userPreference) {
 
-<span class="nc" id="L36">        UserPreferenceDTO userPreferenceDTO = new UserPreferenceDTO (userPreference.getAttractionProximity(),</span>
-<span class="nc" id="L37">                userPreference.getCurrency().getCurrencyCode(),</span>
-<span class="nc" id="L38">                userPreference.getLowerPricePoint().getNumber().doubleValue(),</span>
-<span class="nc" id="L39">                userPreference.getHighPricePoint().getNumber().doubleValue(),</span>
-<span class="nc" id="L40">                userPreference.getTripDuration(),</span>
-<span class="nc" id="L41">                userPreference.getTicketQuantity(),</span>
-<span class="nc" id="L42">                userPreference.getNumberOfAdults(),</span>
-<span class="nc" id="L43">                userPreference.getNumberOfChildren());</span>
-<span class="nc" id="L44">        return userPreferenceDTO;</span>
+<span class="fc" id="L36">        UserPreferenceDTO userPreferenceDTO = new UserPreferenceDTO (userPreference.getAttractionProximity(),</span>
+<span class="fc" id="L37">                userPreference.getCurrency().getCurrencyCode(),</span>
+<span class="fc" id="L38">                userPreference.getLowerPricePoint().getNumber().doubleValue(),</span>
+<span class="fc" id="L39">                userPreference.getHighPricePoint().getNumber().doubleValue(),</span>
+<span class="fc" id="L40">                userPreference.getTripDuration(),</span>
+<span class="fc" id="L41">                userPreference.getTicketQuantity(),</span>
+<span class="fc" id="L42">                userPreference.getNumberOfAdults(),</span>
+<span class="fc" id="L43">                userPreference.getNumberOfChildren());</span>
+<span class="fc" id="L44">        return userPreferenceDTO;</span>
     }
 
     /**
@@ -50,18 +50,18 @@ import java.util.*;
      * @return UserPreferenceDTO converted to UserPreferences
      */
     public UserPreferences convertDtoToUserPreference(UserPreferenceDTO userPreferenceDto) {
-<span class="nc" id="L53">         CurrencyUnit currency = Monetary.getCurrency(userPreferenceDto.getCurrency());</span>
-<span class="nc" id="L54">         Money lowerPricePoint = Money.of(userPreferenceDto.getLowerPricePoint(), currency);</span>
-<span class="nc" id="L55">         Money highPricePoint = Money.of(userPreferenceDto.getHighPricePoint(), currency);</span>
-<span class="nc" id="L56">        UserPreferences userPreference  = new UserPreferences(userPreferenceDto.getAttractionProximity(),</span>
+<span class="fc" id="L53">         CurrencyUnit currency = Monetary.getCurrency(userPreferenceDto.getCurrency());</span>
+<span class="fc" id="L54">         Money lowerPricePoint = Money.of(userPreferenceDto.getLowerPricePoint(), currency);</span>
+<span class="fc" id="L55">         Money highPricePoint = Money.of(userPreferenceDto.getHighPricePoint(), currency);</span>
+<span class="fc" id="L56">        UserPreferences userPreference  = new UserPreferences(userPreferenceDto.getAttractionProximity(),</span>
                 currency,
                 lowerPricePoint,
                 highPricePoint,
-<span class="nc" id="L60">                userPreferenceDto.getTripDuration(),</span>
-<span class="nc" id="L61">                userPreferenceDto.getTicketQuantity(),</span>
-<span class="nc" id="L62">                userPreferenceDto.getNumberOfAdults(),</span>
-<span class="nc" id="L63">                userPreferenceDto.getNumberOfChildren());</span>
-<span class="nc" id="L64">        return userPreference;</span>
+<span class="fc" id="L60">                userPreferenceDto.getTripDuration(),</span>
+<span class="fc" id="L61">                userPreferenceDto.getTicketQuantity(),</span>
+<span class="fc" id="L62">                userPreferenceDto.getNumberOfAdults(),</span>
+<span class="fc" id="L63">                userPreferenceDto.getNumberOfChildren());</span>
+<span class="fc" id="L64">        return userPreference;</span>
     }
     /**
      * Identify the 5 proxy attractions

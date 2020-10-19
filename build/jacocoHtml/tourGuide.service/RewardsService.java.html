@@ -101,15 +101,15 @@ public class RewardsService  {
 			try {
 				//if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
 <span class="pc bpc" id="L103" title="1 of 2 branches missed.">				if (!executorServiceLocal.awaitTermination(20, TimeUnit.MINUTES)) { //15 minutes est notre objectif</span>
-<span class="nc" id="L104">					System.out.println(&quot;**********************************************************************************************************&quot;);</span>
+					//System.out.println(&quot;**********************************************************************************************************&quot;);
 <span class="nc" id="L105">					System.out.println(&quot;************************ WARNING - TIME OUT ON calculateRewardsList - WARNING ****************************&quot;);</span>
-<span class="nc" id="L106">					System.out.println(&quot;**********************************************************************************************************&quot;);</span>
+					//System.out.println(&quot;**********************************************************************************************************&quot;);
 <span class="nc" id="L107">					executorServiceLocal.shutdownNow();</span>
 				}
 <span class="nc" id="L109">			} catch (InterruptedException e) {</span>
-<span class="nc" id="L110">				System.out.println(&quot;**********************************************************************************************************&quot;);</span>
+				//System.out.println(&quot;**********************************************************************************************************&quot;);
 <span class="nc" id="L111">				System.out.println(&quot;************************ WARNING - Exception ON calculateRewardsList - WARNING ***************************&quot;);</span>
-<span class="nc" id="L112">				System.out.println(&quot;message : &quot; + e.getMessage());</span>
+				//System.out.println(&quot;message : &quot; + e.getMessage());
 <span class="nc" id="L113">				System.out.println(&quot;localized message : &quot; + e.getLocalizedMessage());</span>
 <span class="nc" id="L114">				executorServiceLocal.shutdownNow();</span>
 <span class="fc" id="L115">			}</span>
@@ -138,19 +138,21 @@ public class RewardsService  {
 		/****** Mise en place de Executor Services ****************/
 		//ExecutorService executor = Executors.newFixedThreadPool(1000);
 
-
+<span class="fc" id="L141">logger.debug(&quot;calculate rewards start&quot;);</span>
 <span class="fc" id="L142">		userLocations.stream().forEach(visitedLocation -&gt; {</span>
 <span class="fc" id="L143">				attractions.stream().forEach(attraction -&gt; {</span>
 <span class="fc bfc" id="L144" title="All 2 branches covered.">				if (user.getUserRewards().stream().filter(r -&gt; r.attraction.attractionName.equals(attraction.attractionName)).count() == 0) { //TODO voir efficacitÃ© du parallel ==&gt;0</span>
 <span class="fc bfc" id="L145" title="All 2 branches covered.">					if (nearAttraction(visitedLocation, attraction)) {</span>
-<span class="fc" id="L146">							user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));</span>
+<span class="fc" id="L146">						logger.debug(&quot;calculate rewards start&quot;);</span>
+<span class="fc" id="L147">							user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));</span>
 					}
 				}
-<span class="fc" id="L149">			});</span>
-<span class="fc" id="L150">		});</span>
+<span class="fc" id="L150">			});</span>
+<span class="fc" id="L151">		});</span>
+<span class="fc" id="L152">logger.debug(&quot;calculate rewards start&quot;);</span>
 		//logger.debug(&quot;End of calculateRewards&quot;);
 		//logger.debug(&quot;calculateRewards_standard End&quot;);
-<span class="fc" id="L153">	}</span>
+<span class="fc" id="L155">	}</span>
 /*	public  void calculateRewards_async(User user) {
 //E2LRE August 2020 :Correction to avoid ConcurrentModificationException in TestPerform
 
@@ -207,21 +209,23 @@ public class RewardsService  {
 		//logger.debug(&quot;End of calculateRewards&quot;);
 	}*/
 	public boolean isWithinAttractionProximity(Attraction attraction, Location location) {
-<span class="pc bpc" id="L210" title="1 of 2 branches missed.">		return getDistance(attraction, location) &gt; attractionProximityRange ? false : true;</span>
+<span class="pc bpc" id="L212" title="1 of 2 branches missed.">		return getDistance(attraction, location) &gt; attractionProximityRange ? false : true;</span>
 	}
 	
 	private boolean nearAttraction(VisitedLocation visitedLocation, Attraction attraction) {
-<span class="fc bfc" id="L214" title="All 2 branches covered.">		return getDistance(attraction, visitedLocation.location) &gt; proximityBuffer ? false : true;</span>
+<span class="fc bfc" id="L216" title="All 2 branches covered.">		return getDistance(attraction, visitedLocation.location) &gt; proximityBuffer ? false : true;</span>
 	}
 
 	public int getRewardPoints(Attraction attraction, User user) {
-<span class="fc" id="L218">		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId.toString(), user.getUserId().toString());</span>
+<span class="fc" id="L220">		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId.toString(), user.getUserId().toString());</span>
 	//	return getRewardPoints_Async(attraction, user);
 
 	}
+/*
 	public int getRewardPoints_exec(Attraction attraction, User user) {
-<span class="nc" id="L223">		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId.toString(), user.getUserId().toString());</span>
+		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId.toString(), user.getUserId().toString());
 	}
+*/
 
 /*
 	public int getRewardPoints_Async(Attraction attraction, User user) {
@@ -239,17 +243,17 @@ public class RewardsService  {
 
 	
 	public double getDistance(Location loc1, Location loc2) {
-<span class="fc" id="L242">        double lat1 = Math.toRadians(loc1.latitude);</span>
-<span class="fc" id="L243">        double lon1 = Math.toRadians(loc1.longitude);</span>
-<span class="fc" id="L244">        double lat2 = Math.toRadians(loc2.latitude);</span>
-<span class="fc" id="L245">        double lon2 = Math.toRadians(loc2.longitude);</span>
+<span class="fc" id="L246">        double lat1 = Math.toRadians(loc1.latitude);</span>
+<span class="fc" id="L247">        double lon1 = Math.toRadians(loc1.longitude);</span>
+<span class="fc" id="L248">        double lat2 = Math.toRadians(loc2.latitude);</span>
+<span class="fc" id="L249">        double lon2 = Math.toRadians(loc2.longitude);</span>
 
-<span class="fc" id="L247">        double angle = Math.acos(Math.sin(lat1) * Math.sin(lat2)</span>
-<span class="fc" id="L248">                               + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));</span>
+<span class="fc" id="L251">        double angle = Math.acos(Math.sin(lat1) * Math.sin(lat2)</span>
+<span class="fc" id="L252">                               + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));</span>
 
-<span class="fc" id="L250">        double nauticalMiles = 60 * Math.toDegrees(angle);</span>
-<span class="fc" id="L251">        double statuteMiles = STATUTE_MILES_PER_NAUTICAL_MILE * nauticalMiles;</span>
-<span class="fc" id="L252">        return statuteMiles;</span>
+<span class="fc" id="L254">        double nauticalMiles = 60 * Math.toDegrees(angle);</span>
+<span class="fc" id="L255">        double statuteMiles = STATUTE_MILES_PER_NAUTICAL_MILE * nauticalMiles;</span>
+<span class="fc" id="L256">        return statuteMiles;</span>
 	}
 
 }

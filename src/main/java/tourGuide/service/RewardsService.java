@@ -101,15 +101,15 @@ public class RewardsService  {
 			try {
 				//if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
 				if (!executorServiceLocal.awaitTermination(20, TimeUnit.MINUTES)) { //15 minutes est notre objectif
-					System.out.println("**********************************************************************************************************");
+					//System.out.println("**********************************************************************************************************");
 					System.out.println("************************ WARNING - TIME OUT ON calculateRewardsList - WARNING ****************************");
-					System.out.println("**********************************************************************************************************");
+					//System.out.println("**********************************************************************************************************");
 					executorServiceLocal.shutdownNow();
 				}
 			} catch (InterruptedException e) {
-				System.out.println("**********************************************************************************************************");
+				//System.out.println("**********************************************************************************************************");
 				System.out.println("************************ WARNING - Exception ON calculateRewardsList - WARNING ***************************");
-				System.out.println("message : " + e.getMessage());
+				//System.out.println("message : " + e.getMessage());
 				System.out.println("localized message : " + e.getLocalizedMessage());
 				executorServiceLocal.shutdownNow();
 			}
@@ -138,16 +138,18 @@ public class RewardsService  {
 		/****** Mise en place de Executor Services ****************/
 		//ExecutorService executor = Executors.newFixedThreadPool(1000);
 
-
+logger.debug("calculate rewards start");
 		userLocations.stream().forEach(visitedLocation -> {
 				attractions.stream().forEach(attraction -> {
 				if (user.getUserRewards().stream().filter(r -> r.attraction.attractionName.equals(attraction.attractionName)).count() == 0) { //TODO voir efficacité du parallel ==>0
 					if (nearAttraction(visitedLocation, attraction)) {
+						logger.debug("calculate rewards start");
 							user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
 					}
 				}
 			});
 		});
+logger.debug("calculate rewards start");
 		//logger.debug("End of calculateRewards");
 		//logger.debug("calculateRewards_standard End");
 	}
@@ -219,9 +221,11 @@ public class RewardsService  {
 	//	return getRewardPoints_Async(attraction, user);
 
 	}
+/*
 	public int getRewardPoints_exec(Attraction attraction, User user) {
 		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId.toString(), user.getUserId().toString());
 	}
+*/
 
 /*
 	public int getRewardPoints_Async(Attraction attraction, User user) {

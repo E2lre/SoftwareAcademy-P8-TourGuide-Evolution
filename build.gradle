@@ -64,7 +64,7 @@ dependencies {
     // https://mvnrepository.com/artifact/org.modelmapper/modelmapper//EDE ajout
     compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.8'
 
-     //Ajout EDE pout Feign
+     //Ajout EDE pour Feign
     compile 'org.springframework.cloud:spring-cloud-starter-openfeign'
     compile 'org.springframework.cloud:spring-cloud-starter-netflix-ribbon'
     compile 'io.github.openfeign:feign-httpclient'

@@ -31,6 +31,7 @@ public class UserPreferenceDTO {
     }
 
 
+
     public int getAttractionProximity() {
         return attractionProximity;
     }

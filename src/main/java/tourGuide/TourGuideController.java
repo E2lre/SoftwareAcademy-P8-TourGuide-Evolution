@@ -121,11 +121,11 @@ public class TourGuideController {
             logger.error(message);
             throw new UserNameNotFoundException(message);
         }
-        if (userPreference == null ) {
+   /*     if (userPreference == null ) {
             String message = " userPreference is empty  ";
             logger.error(message);
             throw new UserPreferenceEmptyException(message);
-        }
+        }*/
 
         return tourGuideService.setUserPreference(userName,userPreference);
     }

@@ -13,10 +13,15 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import tourGuide.beans.Location;
+import tourGuide.beans.VisitedLocation;
 import tourGuide.model.UserPreferenceDTO;
+import tourGuide.model.external.Attraction;
 import tourGuide.service.TourGuideService;
 import tourGuide.user.User;
+import tourGuide.user.UserReward;
 
+import java.security.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -65,8 +70,29 @@ public class TestTourGuideControlerTU {
         //WHEN //THEN return the user préference
         mockMvc.perform(get("/getUserPreference?userName="+user))
                 .andExpect(status().isOk());
-
-  //TODO : voir si pour le controleur, ce ne serait pas un test d'integ
     }
+    /*------------------------------ Get ------------------------------*/
+    @Test
+    public void getRewards_existingUserName_RewardIsDone() throws Exception {
+//"019b04a9-067a-4c76-8817-ee75088c3822": {"longitude":-48.188821,"latitude":74.84371}
+        // initliaze VisitedLocation
 
+        String userId="019b04a9-067a-4c76-8817-ee75088c3822";
+        String sDate="31/12/1998";
+        Double longitude = -48.188821;
+        Double latitude  = 74.84371;
+        Date testDate=new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+        List<UserReward> userRewards = new ArrayList<>();
+        Location location = new Location(longitude,latitude);
+        VisitedLocation visitedLocation = new VisitedLocation( UUID.fromString(userId),location,testDate);
+        //Initialise Attraction
+        Attraction attraction = new Attraction("Tour Effeil", "Paris", "France", latitude,longitude);
+
+        //Initialise userReward list
+        UserReward userReward = new UserReward(visitedLocation,attraction);
+        userRewards.add(userReward);
+        Mockito.when(tourGuideService.getUserRewards(any(User.class))).thenReturn(userRewards);
+        mockMvc.perform(get("/getRewards?userName=" + user))
+                .andExpect(status().isOk());
+    }
 }

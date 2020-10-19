@@ -31,7 +31,7 @@ public class TestPerformanceProxy {
     private GpsUtilProxyService gpsUtilProxyService;
 
    // @Disabled("Integration")
-    @Test
+    //@Test
     public void highVolumeTrackLocationNew() {
         Locale.setDefault(Locale.US);
         logger.debug("Start highVolumeTrackLocation");

@@ -14,11 +14,11 @@ public class Attraction extends Location {
 <span class="fc" id="L14">    }</span>
 
     public Attraction(String attractionName, String city, String state, double latitude, double longitude) {
-<span class="nc" id="L17">        super(latitude, longitude);</span>
-<span class="nc" id="L18">        this.attractionName = attractionName;</span>
-<span class="nc" id="L19">        this.city = city;</span>
-<span class="nc" id="L20">        this.state = state;</span>
-<span class="nc" id="L21">    }</span>
+<span class="fc" id="L17">        super(latitude, longitude);</span>
+<span class="fc" id="L18">        this.attractionName = attractionName;</span>
+<span class="fc" id="L19">        this.city = city;</span>
+<span class="fc" id="L20">        this.state = state;</span>
+<span class="fc" id="L21">    }</span>
 <span class="nc" id="L22">    public Attraction(String attractionName, String city, String state, UUID attractionId) {</span>
 <span class="nc" id="L23">        this.attractionName = attractionName;</span>
 <span class="nc" id="L24">        this.city = city;</span>
@@ -26,7 +26,7 @@ public class Attraction extends Location {
 <span class="nc" id="L26">        this.attractionId = attractionId;</span>
 <span class="nc" id="L27">    }</span>
     public String getAttractionName() {
-<span class="nc" id="L29">        return attractionName;</span>
+<span class="fc" id="L29">        return attractionName;</span>
     }
 
     public void setAttractionName(String attractionName) {
@@ -34,7 +34,7 @@ public class Attraction extends Location {
 <span class="fc" id="L34">    }</span>
 
     public String getCity() {
-<span class="nc" id="L37">        return city;</span>
+<span class="fc" id="L37">        return city;</span>
     }
 
     public void setCity(String city) {
@@ -42,7 +42,7 @@ public class Attraction extends Location {
 <span class="fc" id="L42">    }</span>
 
     public String getState() {
-<span class="nc" id="L45">        return state;</span>
+<span class="fc" id="L45">        return state;</span>
     }
 
     public void setState(String state) {
@@ -50,7 +50,7 @@ public class Attraction extends Location {
 <span class="fc" id="L50">    }</span>
 
     public UUID getAttractionId() {
-<span class="nc" id="L53">        return attractionId;</span>
+<span class="fc" id="L53">        return attractionId;</span>
     }
 
     public void setAttractionId(UUID attractionId) {

@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 //import gpsUtil.GpsUtil;
 //import gpsUtil.location.Attraction;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import tourGuide.model.external.Attraction;
 //import gpsUtil.location.VisitedLocation;
 import tourGuide.beans.VisitedLocation;
@@ -25,6 +26,7 @@ import tourGuide.service.*;
 import tourGuide.user.User;
 
 @SpringBootTest
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 //@ContextConfiguration(classes = {PerfConfig.class})
 //@ContextConfiguration(classes = {TourGuideModule.class})
 //@EnableAutoConfiguration
@@ -94,7 +96,7 @@ public class TestPerformance {
 		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral); //FEIGN
 
 		// Users should be incremented up to 100,000, and test finishes within 15 minutes
-		InternalTestHelper.setInternalUserNumber(1000);
+		InternalTestHelper.setInternalUserNumber(100);
 		//TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService);
 		TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService); //FEIGN
 		List<User> allUsers = new ArrayList<>();
@@ -133,7 +135,7 @@ public class TestPerformance {
 		//RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral()); //FEIGN
 		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral); //FEIGN
 		// Users should be incremented up to 100,000, and test finishes within 20 minutes
-		InternalTestHelper.setInternalUserNumber(1000);
+		InternalTestHelper.setInternalUserNumber(100);
 //position historique des stopWatch ci dessous
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();

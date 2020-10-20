@@ -5,16 +5,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import tourGuide.service.RewardsService;
 
 
+/**
+ * User for controller exception
+ */
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class UserNameNotFoundException extends Exception {
-<span class="fc" id="L13">    private Logger logger = LoggerFactory.getLogger(UserNameNotFoundException.class);</span>
+<span class="fc" id="L15">    private Logger logger = LoggerFactory.getLogger(UserNameNotFoundException.class);</span>
 
     public UserNameNotFoundException(String s) {
-<span class="fc" id="L16">        super(s);</span>
-<span class="fc" id="L17">        logger.error(s);</span>
-<span class="fc" id="L18">    }</span>
+<span class="fc" id="L18">        super(s);</span>
+<span class="fc" id="L19">        logger.error(s);</span>
+<span class="fc" id="L20">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

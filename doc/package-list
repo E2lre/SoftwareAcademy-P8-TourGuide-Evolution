@@ -1,0 +1,12 @@
+tourGuide
+tourGuide.TI
+tourGuide.TP
+tourGuide.TU
+tourGuide.exceptions
+tourGuide.helper
+tourGuide.model
+tourGuide.model.external
+tourGuide.proxies
+tourGuide.service
+tourGuide.tracker
+tourGuide.user

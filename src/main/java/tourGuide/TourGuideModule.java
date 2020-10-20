@@ -4,16 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//import gpsUtil.GpsUtil;
 import org.springframework.context.annotation.Primary;
-import rewardCentral.RewardCentral;
-//import tourGuide.proxies.GpsUtilProxy;
 import tourGuide.proxies.GpsUtilProxy;
 import tourGuide.service.*;
-
+/*
 @Configuration
 public class TourGuideModule {
-/*
+
 
 
 	@Bean
@@ -37,6 +34,7 @@ public class TourGuideModule {
 	public RewardCentral getRewardCentral() {
 		return new RewardCentral();
 	}
-*/
+
 
 }
+*/

@@ -10,38 +10,30 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import tourGuide.beans.Location;
-import tourGuide.beans.VisitedLocation;
+import tourGuide.model.external.Location;
+import tourGuide.model.external.VisitedLocation;
 import tourGuide.model.UserPreferenceDTO;
 import tourGuide.model.external.Attraction;
 import tourGuide.service.TourGuideService;
 import tourGuide.user.User;
 import tourGuide.user.UserReward;
 
-import java.security.Timestamp;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-//@ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 public class TestTourGuideControlerTU {
     @Autowired
     private MockMvc mockMvc;
-  //  private MockMvc mockMvc;
     @Autowired
     private WebApplicationContext webApplicationContext;
 
@@ -62,10 +54,7 @@ public class TestTourGuideControlerTU {
 
     @Test
     public void getUserPreference_existingUserName_UserPreferenceIsDone() throws Exception{
-        //setUpEach();
-        //GIVEN : Give a person to get
-        //mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-        Mockito.when(tourGuideService.getUser(anyString())).thenReturn(user);
+         Mockito.when(tourGuideService.getUser(anyString())).thenReturn(user);
         Mockito.when(tourGuideService.getUserPreference(anyString())).thenReturn(userPreferenceDTO);
         //WHEN //THEN return the user préference
         mockMvc.perform(get("/getUserPreference?userName="+user))
@@ -74,8 +63,7 @@ public class TestTourGuideControlerTU {
     /*------------------------------ Get ------------------------------*/
     @Test
     public void getRewards_existingUserName_RewardIsDone() throws Exception {
-//"019b04a9-067a-4c76-8817-ee75088c3822": {"longitude":-48.188821,"latitude":74.84371}
-        // initliaze VisitedLocation
+
 
         String userId="019b04a9-067a-4c76-8817-ee75088c3822";
         String sDate="31/12/1998";

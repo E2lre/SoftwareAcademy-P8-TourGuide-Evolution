@@ -14,8 +14,6 @@ apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'jacoco'
-//apply plugin: "spotbugs"
-
 
 bootJar {
     baseName = 'tourGuide'
@@ -30,9 +28,8 @@ repositories {
     }
 }
 
-//Ajout ede feign
+//Ajout EDE feign
 ext {
-    //set('springCloudVersion', "Greenwich.SR6")
     set('springCloudVersion', "Hoxton.SR8")
 }
 
@@ -48,20 +45,18 @@ dependencies {
 
     compile ("com.google.code.gson:gson:2.8.5")
 
-    compile(name:'gpsUtil', ext:'jar')
-    compile(name:'RewardCentral', ext:'jar')
-    compile(name:'TripPricer', ext:'jar')
-    
-    //testCompile("junit:junit")
+    //Ajout EDE pour remplacer les JAR
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+
+
+    //Ajout EDE pour jUnit5
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.2.5.RELEASE'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 
-    // https://mvnrepository.com/artifact/org.jacoco/org.jacoco.agent //EDE ajout
+    //EDE ajout
     testCompile group: 'org.jacoco', name: 'org.jacoco.agent', version: '0.8.4'
-    // https://mvnrepository.com/artifact/org.jacoco/org.jacoco.ant//EDE ajout
     testCompile group: 'org.jacoco', name: 'org.jacoco.ant', version: '0.8.4'
-    // https://mvnrepository.com/artifact/org.modelmapper/modelmapper//EDE ajout
     compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.8'
 
      //Ajout EDE pour Feign
@@ -70,44 +65,27 @@ dependencies {
     compile 'io.github.openfeign:feign-httpclient'
     compile 'io.github.openfeign:feign-jackson'
 
-
-
 }
 
-//Ajout ede feign
+//Ajout EDE feign
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
 }
 
-//Ajout EDE
-/*
-spotbugs {
-    toolVersion = '4.5.0'
-}
-*/
-
 jacoco {
     toolVersion = "0.8.4"
-    //toolVersion = "0.8.5"
     reportsDir = file("${buildDir}/customJacocoReportDir")
 }
 
 test {
     useJUnitPlatform()// report is always generated after tests run
-//    exclude "**/TestPerformance.class"
-//    jacoco {
-//        enabled = true
-//        excludes = ['**/TP/**'] /// Ne fonctionne pas ...
-//    }
     finalizedBy jacocoTestReport
 }
 
 jacocoTestReport {
     reports {
-  /*      xml.enabled true
-        csv.enabled false*/
         xml.enabled true
         csv.enabled false
         html.destination file("${buildDir}/jacocoHtml")

@@ -2,21 +2,21 @@
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
-import tourGuide.proxies.GpsUtilProxy;
+
 import tourGuide.proxies.RewardCentralProxy;
 
+/**
+ * see REwardCentralProxy for more information
+ */
 @Service
-<span class="fc" id="L10">public class RewardCentralProxyServiceImpl implements RewardCentralProxyService {</span>
+<span class="fc" id="L12">public class RewardCentralProxyServiceImpl implements RewardCentralProxyService {</span>
     @Autowired
     private RewardCentralProxy rewardCentralProxy;
     @Override
     public int getAttractionRewardPoints(String attractionId, String userId) {
 
-<span class="fc" id="L16">        return rewardCentralProxy.getAttractionRewardPoints(attractionId, userId);</span>
+<span class="fc" id="L18">        return rewardCentralProxy.getAttractionRewardPoints(attractionId, userId);</span>
 
     }
-
-
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

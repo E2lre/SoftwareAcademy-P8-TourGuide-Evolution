@@ -5,14 +5,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-
+/**
+ * User for controller exception
+ */
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class UserPreferenceEmptyException extends Exception {
-<span class="nc" id="L11">    private Logger logger = LoggerFactory.getLogger(UserPreferenceEmptyException.class);</span>
+<span class="nc" id="L13">    private Logger logger = LoggerFactory.getLogger(UserPreferenceEmptyException.class);</span>
 
     public UserPreferenceEmptyException(String s) {
-<span class="nc" id="L14">        super(s);</span>
-<span class="nc" id="L15">        logger.error(s);</span>
-<span class="nc" id="L16">    }</span>
+<span class="nc" id="L16">        super(s);</span>
+<span class="nc" id="L17">        logger.error(s);</span>
+<span class="nc" id="L18">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

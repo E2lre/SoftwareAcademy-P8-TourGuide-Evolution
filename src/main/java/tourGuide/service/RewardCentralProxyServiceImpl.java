@@ -2,10 +2,12 @@ package tourGuide.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
-import tourGuide.proxies.GpsUtilProxy;
+
 import tourGuide.proxies.RewardCentralProxy;
 
+/**
+ * see REwardCentralProxy for more information
+ */
 @Service
 public class RewardCentralProxyServiceImpl implements RewardCentralProxyService {
     @Autowired
@@ -16,6 +18,4 @@ public class RewardCentralProxyServiceImpl implements RewardCentralProxyService 
         return rewardCentralProxy.getAttractionRewardPoints(attractionId, userId);
 
     }
-
-
 }

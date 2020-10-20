@@ -4,12 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tourGuide.model.external.Provider;
 import tourGuide.proxies.TripPricerProxy;
-//import tripPricer.Provider;
-
 
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * see GTripPricerProxy for more information
+ */
 @Service
 public class TripPricerProxyServiceImpl implements TripPricerProxyService{
     @Autowired

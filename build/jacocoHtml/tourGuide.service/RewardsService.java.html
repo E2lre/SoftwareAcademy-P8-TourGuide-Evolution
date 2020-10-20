@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RewardsService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">TourGuide</a> &gt; <a href="index.source.html" class="el_package">tourGuide.service</a> &gt; <span class="el_source">RewardsService.java</span></div><h1>RewardsService.java</h1><pre class="source lang-java linenums">package tourGuide.service;
 
-//import gpsUtil.location.Attraction;
 import tourGuide.model.external.Attraction;
-//import gpsUtil.location.Location;
-import tourGuide.beans.Location;
-//import gpsUtil.location.VisitedLocation;
-import tourGuide.beans.VisitedLocation;
+import tourGuide.model.external.Location;
+import tourGuide.model.external.VisitedLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-//import tourGuide.proxies.GpsUtilProxy;
 import tourGuide.user.User;
 import tourGuide.user.UserReward;
 
@@ -21,240 +17,130 @@ import java.util.concurrent.*;
 
 @Service
 public class RewardsService  {
-//	public class RewardsService extends Thread {
     private static final double STATUTE_MILES_PER_NAUTICAL_MILE = 1.15077945;
-	public CompletableFuture&lt;Void&gt; completableFuture;
-<span class="fc" id="L27">	ExecutorService executorService = Executors.newFixedThreadPool(1000);</span>
-
-<span class="fc" id="L29">	static Semaphore semaphore = new Semaphore(1);</span>
-
 	//ADD EDE
-<span class="fc" id="L32">	private ExecutorService executor</span>
-<span class="fc" id="L33">			= Executors.newSingleThreadExecutor();</span>
+<span class="fc" id="L22">	private ExecutorService executor</span>
+<span class="fc" id="L23">			= Executors.newSingleThreadExecutor();</span>
 
-<span class="fc" id="L35">	private Logger logger = LoggerFactory.getLogger(RewardsService.class);</span>
+<span class="fc" id="L25">	private Logger logger = LoggerFactory.getLogger(RewardsService.class);</span>
 	// proximity in miles
-<span class="fc" id="L37">    private int defaultProximityBuffer = 10;</span>
-<span class="fc" id="L38">	private int proximityBuffer = defaultProximityBuffer;</span>
-<span class="fc" id="L39">	private int attractionProximityRange = 20000; //TODO EDE a enlever</span>
-	//private final GpsUtil gpsUtil;
+<span class="fc" id="L27">    private int defaultProximityBuffer = 10;</span>
+<span class="fc" id="L28">	private int proximityBuffer = defaultProximityBuffer;</span>
+<span class="fc" id="L29">	private int attractionProximityRange = 20000; //TODO EDE a enlever</span>
 
-	//@Qualifier(&quot;gpsUtilProxyServiceImpl&quot;)
 	@Autowired
 	private GpsUtilProxyService gpsUtil;
-	//private final GpsUtilProxy gpsUtil;
-	//private  GpsUtilProxy gpsUtil;
 
-	//private final RewardCentral rewardsCentral;
 	@Autowired
 	private RewardCentralProxyService rewardsCentral;
-	//private final RewardCentralProxy rewardsCentral;
-	//private  RewardCentralProxy rewardsCentral;
-	
-	//public RewardsService(GpsUtil gpsUtil, RewardCentral rewardCentral) {
-	//public RewardsService(@Qualifier(&quot;gpsUtilProxyServiceImpl&quot;) GpsUtilProxyService gpsUtil, RewardCentral rewardCentral) { //FEIGN
-	//public RewardsService(GpsUtilProxyService gpsUtil, RewardCentral rewardCentral) { //FEIGN
-	//public RewardsService(GpsUtilProxy gpsUtil, RewardCentralProxy rewardCentral) { //FEIGN
-<span class="fc" id="L58">	public RewardsService(GpsUtilProxyService gpsUtil, RewardCentralProxyService rewardCentral) { //FEIGN</span>
-<span class="fc" id="L59">		this.gpsUtil = gpsUtil;</span>
-<span class="fc" id="L60">		this.rewardsCentral = rewardCentral;</span>
-<span class="fc" id="L61">	}</span>
 
-	//Ajout EDE
-<span class="fc" id="L64">	public RewardsService() { //FEIGN</span>
+<span class="fc" id="L37">	public RewardsService(GpsUtilProxyService gpsUtil, RewardCentralProxyService rewardCentral) {</span>
+<span class="fc" id="L38">		this.gpsUtil = gpsUtil;</span>
+<span class="fc" id="L39">		this.rewardsCentral = rewardCentral;</span>
+<span class="fc" id="L40">	}</span>
 
-<span class="fc" id="L66">	}</span>
+<span class="fc" id="L42">	public RewardsService() {</span>
+
+<span class="fc" id="L44">	}</span>
 	
 	public void setProximityBuffer(int proximityBuffer) {
-<span class="fc" id="L69">		this.proximityBuffer = proximityBuffer;</span>
-<span class="fc" id="L70">	}</span>
+<span class="fc" id="L47">		this.proximityBuffer = proximityBuffer;</span>
+<span class="fc" id="L48">	}</span>
 	
 	public void setDefaultProximityBuffer() {
-<span class="nc" id="L73">		proximityBuffer = defaultProximityBuffer;</span>
-<span class="nc" id="L74">	}</span>
+<span class="nc" id="L51">		proximityBuffer = defaultProximityBuffer;</span>
+<span class="nc" id="L52">	}</span>
 
-
+	/**
+	 * Calculate reward for a list of users. If list size is greater than 11, treatment will be asynchron
+	 * @param users
+	 */
 	public  void calculateRewardsList(List&lt;User&gt; users) {
-<span class="fc" id="L78">		Locale.setDefault(Locale.US);</span>
-		//logger.debug(&quot;calculateRewardsList Start&quot;);
-<span class="pc bpc" id="L80" title="1 of 2 branches missed.">		if (users.size() &lt;11) { //Call en synchrone</span>
-<span class="nc" id="L81">			logger.debug(&quot;calculateRewardsList SYNCHRONE&quot;);</span>
-<span class="nc bnc" id="L82" title="All 2 branches missed.">			for (User user : users) {</span>
-<span class="nc" id="L83">					calculateRewards_standard(user);</span>
-<span class="nc" id="L84">				};</span>
+<span class="fc" id="L59">		Locale.setDefault(Locale.US);</span>
+<span class="pc bpc" id="L60" title="1 of 2 branches missed.">		if (users.size() &lt;11) { //Call en synchrone</span>
+<span class="nc" id="L61">			logger.debug(&quot;calculateRewardsList SYNCHRONE&quot;);</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">			for (User user : users) {</span>
+<span class="nc" id="L63">					calculateRewards_standard(user);</span>
+<span class="nc" id="L64">				};</span>
 		} else {
-<span class="fc" id="L86">			logger.debug(&quot;calculateRewardsList AAAAAASYNCHRONE&quot;);</span>
-<span class="fc" id="L87">			ExecutorService executorServiceLocal = Executors.newFixedThreadPool(1000);</span>
-<span class="fc bfc" id="L88" title="All 2 branches covered.">			for (User user : users) {</span>
-<span class="fc" id="L89">				Runnable runnableTask = () -&gt; {</span>
-					//logger.debug(&quot;run-------------------------- Start&quot;);
-<span class="fc" id="L91">					calculateRewards_standard(user);</span>
-					//logger.debug(&quot;run-------------------------- End&quot;);
-<span class="fc" id="L93">				};</span>
-				//logger.debug(&quot;execute&quot;);
-<span class="fc" id="L95">				executorServiceLocal.execute(runnableTask);</span>
-<span class="fc" id="L96">			}</span>
+<span class="fc" id="L66">			logger.debug(&quot;calculateRewardsList AAAAAASYNCHRONE&quot;);</span>
+<span class="fc" id="L67">			ExecutorService executorServiceLocal = Executors.newFixedThreadPool(1000);</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">			for (User user : users) {</span>
+<span class="fc" id="L69">				Runnable runnableTask = () -&gt; {</span>
+<span class="fc" id="L70">					calculateRewards_standard(user);</span>
+<span class="fc" id="L71">				};</span>
 
-			//logger.debug(&quot;shutdown&quot;);
-<span class="fc" id="L99">			executorServiceLocal.shutdown();</span>
-			//logger.debug(&quot;calculateRewardsList waiting&quot;);
+<span class="fc" id="L73">				executorServiceLocal.execute(runnableTask);</span>
+<span class="fc" id="L74">			}</span>
+<span class="fc" id="L75">			executorServiceLocal.shutdown();</span>
+
 			try {
-				//if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
-<span class="pc bpc" id="L103" title="1 of 2 branches missed.">				if (!executorServiceLocal.awaitTermination(20, TimeUnit.MINUTES)) { //15 minutes est notre objectif</span>
-					//System.out.println(&quot;**********************************************************************************************************&quot;);
-<span class="nc" id="L105">					System.out.println(&quot;************************ WARNING - TIME OUT ON calculateRewardsList - WARNING ****************************&quot;);</span>
-					//System.out.println(&quot;**********************************************************************************************************&quot;);
-<span class="nc" id="L107">					executorServiceLocal.shutdownNow();</span>
+				
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">				if (!executorServiceLocal.awaitTermination(20, TimeUnit.MINUTES)) { //20 minutes est notre objectif</span>
+					
+<span class="nc" id="L81">					System.out.println(&quot;************************ WARNING - TIME OUT ON calculateRewardsList - WARNING ****************************&quot;);</span>
+<span class="nc" id="L82">					executorServiceLocal.shutdownNow();</span>
 				}
-<span class="nc" id="L109">			} catch (InterruptedException e) {</span>
-				//System.out.println(&quot;**********************************************************************************************************&quot;);
-<span class="nc" id="L111">				System.out.println(&quot;************************ WARNING - Exception ON calculateRewardsList - WARNING ***************************&quot;);</span>
-				//System.out.println(&quot;message : &quot; + e.getMessage());
-<span class="nc" id="L113">				System.out.println(&quot;localized message : &quot; + e.getLocalizedMessage());</span>
-<span class="nc" id="L114">				executorServiceLocal.shutdownNow();</span>
-<span class="fc" id="L115">			}</span>
+<span class="nc" id="L84">			} catch (InterruptedException e) {</span>
+<span class="nc" id="L85">				System.out.println(&quot;************************ WARNING - Exception ON calculateRewardsList - WARNING ***************************&quot;);</span>
+<span class="nc" id="L86">				System.out.println(&quot;localized message : &quot; + e.getLocalizedMessage());</span>
+<span class="nc" id="L87">				executorServiceLocal.shutdownNow();</span>
+<span class="fc" id="L88">			}</span>
 		}
 
-<span class="fc" id="L118">	}</span>
+<span class="fc" id="L91">	}</span>
 	public  void calculateRewards(User user) {
-<span class="fc" id="L120">		calculateRewards_standard(user);</span>
-<span class="fc" id="L121">	}</span>
+<span class="fc" id="L93">		calculateRewards_standard(user);</span>
+<span class="fc" id="L94">	}</span>
 
 	public  void calculateRewards_standard(User user) {
-//E2LRE August 2020 :Correction to avoid ConcurrentModificationException in TestPerform
-/*		 List&lt;VisitedLocation&gt; userLocations = user.getVisitedLocations();
-		 List&lt;Attraction&gt; attractions = gpsUtil.getAttractions();
-*/
-		//logger.debug(&quot;calculateRewards_standard start&quot;);
-<span class="fc" id="L129">		CopyOnWriteArrayList&lt;VisitedLocation&gt; userLocations = new CopyOnWriteArrayList&lt;&gt;();</span>
-<span class="fc" id="L130">		userLocations.addAll(user.getVisitedLocations());</span>
+	//E2LRE August 2020 :Correction to avoid ConcurrentModificationException in TestPerform
 
-<span class="fc" id="L132">		CopyOnWriteArrayList&lt;Attraction&gt; attractions = new CopyOnWriteArrayList&lt;&gt;();</span>
-		//attractions.addAll(gpsUtil.getAttractions());
-<span class="fc" id="L134">		logger.debug(&quot;calculateRewards_standard call proxy&quot;);</span>
-<span class="fc" id="L135">		attractions.addAll(gpsUtil.getAttractions()); //feign icici</span>
-<span class="fc" id="L136">		logger.debug(&quot;calculateRewards_standard call proxy End&quot;);</span>
+<span class="fc" id="L99">		CopyOnWriteArrayList&lt;VisitedLocation&gt; userLocations = new CopyOnWriteArrayList&lt;&gt;();</span>
+<span class="fc" id="L100">		userLocations.addAll(user.getVisitedLocations());</span>
 
-		/****** Mise en place de Executor Services ****************/
-		//ExecutorService executor = Executors.newFixedThreadPool(1000);
+<span class="fc" id="L102">		CopyOnWriteArrayList&lt;Attraction&gt; attractions = new CopyOnWriteArrayList&lt;&gt;();</span>
 
-<span class="fc" id="L141">logger.debug(&quot;calculate rewards start&quot;);</span>
-<span class="fc" id="L142">		userLocations.stream().forEach(visitedLocation -&gt; {</span>
-<span class="fc" id="L143">				attractions.stream().forEach(attraction -&gt; {</span>
-<span class="fc bfc" id="L144" title="All 2 branches covered.">				if (user.getUserRewards().stream().filter(r -&gt; r.attraction.attractionName.equals(attraction.attractionName)).count() == 0) { //TODO voir efficacitÃ© du parallel ==&gt;0</span>
-<span class="fc bfc" id="L145" title="All 2 branches covered.">					if (nearAttraction(visitedLocation, attraction)) {</span>
-<span class="fc" id="L146">						logger.debug(&quot;calculate rewards start&quot;);</span>
-<span class="fc" id="L147">							user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));</span>
+<span class="fc" id="L104">		logger.debug(&quot;calculateRewards_standard call proxy&quot;);</span>
+<span class="fc" id="L105">		attractions.addAll(gpsUtil.getAttractions());</span>
+<span class="fc" id="L106">		logger.debug(&quot;calculateRewards_standard call proxy End&quot;);</span>
+
+<span class="fc" id="L108">			userLocations.stream().forEach(visitedLocation -&gt; {</span>
+<span class="fc" id="L109">				attractions.stream().forEach(attraction -&gt; {</span>
+<span class="fc bfc" id="L110" title="All 2 branches covered.">				if (user.getUserRewards().stream().filter(r -&gt; r.attraction.attractionName.equals(attraction.attractionName)).count() == 0) {</span>
+<span class="fc bfc" id="L111" title="All 2 branches covered.">					if (nearAttraction(visitedLocation, attraction)) {</span>
+<span class="fc" id="L112">						logger.debug(&quot;calculate rewards start&quot;);</span>
+<span class="fc" id="L113">							user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));</span>
 					}
 				}
-<span class="fc" id="L150">			});</span>
-<span class="fc" id="L151">		});</span>
-<span class="fc" id="L152">logger.debug(&quot;calculate rewards start&quot;);</span>
-		//logger.debug(&quot;End of calculateRewards&quot;);
-		//logger.debug(&quot;calculateRewards_standard End&quot;);
-<span class="fc" id="L155">	}</span>
-/*	public  void calculateRewards_async(User user) {
-//E2LRE August 2020 :Correction to avoid ConcurrentModificationException in TestPerform
+<span class="fc" id="L116">			});</span>
+<span class="fc" id="L117">		});</span>
 
-		CopyOnWriteArrayList&lt;VisitedLocation&gt; userLocations = new CopyOnWriteArrayList&lt;&gt;();
-		userLocations.addAll(user.getVisitedLocations());
-
-		CopyOnWriteArrayList&lt;Attraction&gt; attractions = new CopyOnWriteArrayList&lt;&gt;();
-		attractions.addAll(gpsUtil.getAttractions());
-
-		*//****** Mise en place de Executor Services ****************//*
-		//ExecutorService executor = Executors.newFixedThreadPool(1000);
-
-		//userLocations.parallelStream().forEach(visitedLocation -&gt; rewardsService.calculateRewards(u));
-		//for (VisitedLocation visitedLocation : userLocations) {
-		//userLocations.parallelStream().forEach(visitedLocation -&gt; {
-		userLocations.stream().forEach(visitedLocation -&gt; {
-			//for (Attraction attraction : attractions) {
-			//attractions.parallelStream().forEach(attraction -&gt; {
-			attractions.stream().forEach(attraction -&gt; {
-				if (user.getUserRewards().stream().filter(r -&gt; r.attraction.attractionName.equals(attraction.attractionName)).count() == 0) { //TODO voir efficacitÃ© du parallel ==&gt;0
-					//if (user.getUserRewards().parallelStream().filter(r -&gt; r.attraction.attractionName.equals(attraction.attractionName)).count() == 0) {
-					if (nearAttraction(visitedLocation, attraction)) {
-						//Ajout de l'async
-
-//						user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
-								Runnable runnableTask = () -&gt; {
-									logger.debug(&quot;run- calculateRewards_async------------------------- start&quot;+ user.getUserName());
-									user.addUserReward(new UserReward(visitedLocation, attraction, getRewardPoints(attraction, user)));
-									logger.debug(&quot;run- calculateRewards_async------------------------- end&quot;+ user.getUserName());
-								};
-						//logger.debug(&quot;exec &quot;);
-								executorService.execute(runnableTask);
-
-					}
-				}
-			});
-		});
-
-			logger.debug(&quot;calculateRewards_async shutdown&quot;);
-			executorService.shutdown();
-
-			try {
-				//if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
-				if (!executorService.awaitTermination(1, TimeUnit.MINUTES)) { //15 minutes est notre objectif
-					logger.debug(&quot;************* calculateRewards_async end now REward********************&quot;);
-					executorService.shutdownNow();
-				}
-			} catch (InterruptedException e) {
-				logger.debug(&quot;************* calculateRewards_async end now catch REward *************&quot;);
-				executorService.shutdownNow();
-			}
-			logger.debug(&quot; calculateRewards_async end&quot;);
-		*//****** fin de Mise en place de Executor Services ****************//*
-		//logger.debug(&quot;End of calculateRewards&quot;);
-	}*/
+<span class="fc" id="L119">	}</span>
 	public boolean isWithinAttractionProximity(Attraction attraction, Location location) {
-<span class="pc bpc" id="L212" title="1 of 2 branches missed.">		return getDistance(attraction, location) &gt; attractionProximityRange ? false : true;</span>
+<span class="pc bpc" id="L121" title="1 of 2 branches missed.">		return getDistance(attraction, location) &gt; attractionProximityRange ? false : true;</span>
 	}
 	
 	private boolean nearAttraction(VisitedLocation visitedLocation, Attraction attraction) {
-<span class="fc bfc" id="L216" title="All 2 branches covered.">		return getDistance(attraction, visitedLocation.location) &gt; proximityBuffer ? false : true;</span>
+<span class="fc bfc" id="L125" title="All 2 branches covered.">		return getDistance(attraction, visitedLocation.location) &gt; proximityBuffer ? false : true;</span>
 	}
 
 	public int getRewardPoints(Attraction attraction, User user) {
-<span class="fc" id="L220">		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId.toString(), user.getUserId().toString());</span>
-	//	return getRewardPoints_Async(attraction, user);
-
+<span class="fc" id="L129">		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId.toString(), user.getUserId().toString());</span>
 	}
-/*
-	public int getRewardPoints_exec(Attraction attraction, User user) {
-		return rewardsCentral.getAttractionRewardPoints(attraction.attractionId.toString(), user.getUserId().toString());
-	}
-*/
 
-/*
-	public int getRewardPoints_Async(Attraction attraction, User user) {
-		logger.debug(&quot;getRewardPoints_Async start Ascyn&quot;);
-		String result =&quot;&quot;;
-		int res = 0;
-
-		//CompletableFuture&lt;String&gt; completableFuture = CompletableFuture.supplyAsync(new Supplier&lt;String&gt;() {
-
-
-		return res;
-	}
-*/
-
-
-	
 	public double getDistance(Location loc1, Location loc2) {
-<span class="fc" id="L246">        double lat1 = Math.toRadians(loc1.latitude);</span>
-<span class="fc" id="L247">        double lon1 = Math.toRadians(loc1.longitude);</span>
-<span class="fc" id="L248">        double lat2 = Math.toRadians(loc2.latitude);</span>
-<span class="fc" id="L249">        double lon2 = Math.toRadians(loc2.longitude);</span>
+<span class="fc" id="L133">        double lat1 = Math.toRadians(loc1.latitude);</span>
+<span class="fc" id="L134">        double lon1 = Math.toRadians(loc1.longitude);</span>
+<span class="fc" id="L135">        double lat2 = Math.toRadians(loc2.latitude);</span>
+<span class="fc" id="L136">        double lon2 = Math.toRadians(loc2.longitude);</span>
 
-<span class="fc" id="L251">        double angle = Math.acos(Math.sin(lat1) * Math.sin(lat2)</span>
-<span class="fc" id="L252">                               + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));</span>
+<span class="fc" id="L138">        double angle = Math.acos(Math.sin(lat1) * Math.sin(lat2)</span>
+<span class="fc" id="L139">                               + Math.cos(lat1) * Math.cos(lat2) * Math.cos(lon1 - lon2));</span>
 
-<span class="fc" id="L254">        double nauticalMiles = 60 * Math.toDegrees(angle);</span>
-<span class="fc" id="L255">        double statuteMiles = STATUTE_MILES_PER_NAUTICAL_MILE * nauticalMiles;</span>
-<span class="fc" id="L256">        return statuteMiles;</span>
+<span class="fc" id="L141">        double nauticalMiles = 60 * Math.toDegrees(angle);</span>
+<span class="fc" id="L142">        double statuteMiles = STATUTE_MILES_PER_NAUTICAL_MILE * nauticalMiles;</span>
+<span class="fc" id="L143">        return statuteMiles;</span>
 	}
-
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

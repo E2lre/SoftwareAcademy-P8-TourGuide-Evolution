@@ -1,8 +1,6 @@
 package tourGuide.service;
 
-import org.springframework.web.bind.annotation.RequestParam;
 import tourGuide.model.external.Provider;
-//import tripPricer.Provider;
 
 import java.util.List;
 import java.util.UUID;

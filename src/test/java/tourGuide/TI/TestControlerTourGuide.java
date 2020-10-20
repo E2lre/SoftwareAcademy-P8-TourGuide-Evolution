@@ -12,8 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.bind.annotation.RequestParam;
-import tourGuide.beans.VisitedLocation;
 import tourGuide.helper.InternalTestHelper;
 import tourGuide.model.UserPreferenceDTO;
 import tourGuide.service.GpsUtilProxyService;
@@ -22,7 +20,6 @@ import tourGuide.service.RewardsService;
 import tourGuide.service.TourGuideService;
 import tourGuide.user.User;
 
-import java.util.Locale;
 import java.util.UUID;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -53,41 +50,15 @@ public class TestControlerTourGuide {
         user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
         userPreferenceDTO = new UserPreferenceDTO(1, "US", 0.0d, 1000.0d, 5, 2, 1, 1);
         userName = "internalUser2";
-        //userName = "jon";
         badUserName = "internalUser99999999";
-
-/*        Locale.setDefault(Locale.US);
-        //RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral);
-        rewardsService = new RewardsService(gpsUtil, rewardCentral);
-        InternalTestHelper.setInternalUserNumber(0);
-        //TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService);
-        tourGuideService = new TourGuideService(gpsUtil, rewardsService);
-        tourGuideService.addUser(user);
-        VisitedLocation visitedLocation = tourGuideService.trackUserLocation(user);
-        tourGuideService.tracker.stopTracking();*/
     }
 
-    /*------------------------------ Get ------------------------------*/
-   // @Test
-    public void getUserPreference_existingUserName_UserPreferenceIsDone() throws Exception {
-        //GIVEN : for a existing user
-        //WHEN call Controller
-        //THEN return is OK
-        //userName = "internalUser3";
-        //InternalTestHelper.setInternalUserNumber(0);
-        InternalTestHelper.setInternalUserNumber(1);
-        //userName = tourGuideService.getAllUsers().get(0).getUserName();
-        mockMvc.perform(get("/getUserPreference?userName=" + userName))
-                .andExpect(status().isOk());
-        //tourGuideService.tracker.stopTracking();
-    }
 
     @Test
     public void getUserPreference_inexistingUserName_errorIsReturn() throws Exception {
         //GIVEN : for a existing user
         //WHEN call Controller
         //THEN return is OK
-        //userName = "internalUser4";
         InternalTestHelper.setInternalUserNumber(0);
         mockMvc.perform(get("/getUserPreference?userName=" + badUserName))
                 .andExpect(status().isNotFound());
@@ -95,16 +66,11 @@ public class TestControlerTourGuide {
     /*------------------------------ Get ------------------------------*/
     @Test
     public void getTripDeals_existingUserName_aTripIsDone() throws Exception {
-        //InternalTestHelper.setInternalUserNumber(0);
         mockMvc.perform(get("/getTripDeals?userName=" + userName))
                 .andExpect(status().isOk());
     }
 
- /*   @Test
-    public void getTripDeals_inexistingUserName_errorIsReturn() throws Exception {
-        mockMvc.perform(get("/getTripDeals?userName=" + badUserName))
-                .andExpect(status().isNotFound());
-    }*/
+
      /*------------------------------ Get ------------------------------*/
      @Test
      public void getLocation_existingUserName_aLocationIsDone() throws Exception {
@@ -112,22 +78,7 @@ public class TestControlerTourGuide {
                  .andExpect(status().isOk());
 
     }
-    /*------------------------------ Get ------------------------------*/
-/*    @Test
-    public void getRewards_existingUserName_RewardIsDone() throws Exception {
-        //InternalTestHelper.setInternalUserNumber(1);
-        mockMvc.perform(get("/getRewards?userName=" + userName))
-                .andExpect(status().isOk());
-    }*/
-    /*------------------------------ Get ------------------------------*/
-/*
-    @Test
-    public void getRewards_inexistingUserName_RewardIsDone() throws Exception {
-        //InternalTestHelper.setInternalUserNumber(1);
-        mockMvc.perform(get("/getRewards?userName=" + badUserName))
-                .andExpect(status().isOk());
-    }
-*/
+
 
     /*------------------------------ Get ------------------------------*/
     @Test

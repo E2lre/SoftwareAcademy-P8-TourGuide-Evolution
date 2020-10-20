@@ -7,15 +7,12 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
-//import org.junit.Test;
 import org.junit.jupiter.api.Test;
-//import gpsUtil.GpsUtil;
-//import gpsUtil.location.Attraction;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import tourGuide.model.external.Attraction;
-//import gpsUtil.location.VisitedLocation;
-import tourGuide.beans.VisitedLocation;
+
+import tourGuide.model.external.VisitedLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,17 +29,13 @@ import tourGuide.user.UserReward;
 public class TestRewardsService {
 	private Logger logger = LoggerFactory.getLogger(TestRewardsService.class);
 	@Autowired
-	//private GpsUtilProxy gpsUtil;
 	private GpsUtilProxyService gpsUtil;
 	@Autowired
-	//private RewardCentralProxy rewardCentral;
 	private RewardCentralProxyService rewardCentral;
 
 	@Test
 	public void userGetRewards() {
 		Locale.setDefault(Locale.US);
-		//GpsUtil gpsUtil = new GpsUtil();
-		//RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral);
 
 		InternalTestHelper.setInternalUserNumber(0);
@@ -59,23 +52,17 @@ public class TestRewardsService {
 	
 	@Test
 	public void isWithinAttractionProximity() {
-		//GpsUtil gpsUtil = new GpsUtil();
-		//RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral);
 		Attraction attraction = gpsUtil.getAttractions().get(0);
 		assertTrue(rewardsService.isWithinAttractionProximity(attraction, attraction));
 	}
 	
-	//@Ignore // Needs fixed - can throw ConcurrentModificationException
 	//EDE (August 2020) - test correction : correction dans addUserReward pour supprimer la negation
 	@Test
 	public void nearAllAttractions() {
-		//GpsUtil gpsUtil = new GpsUtil();
-		//RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral);
 		rewardsService.setProximityBuffer(Integer.MAX_VALUE);
 
-		//InternalTestHelper.setInternalUserNumber(1);
 		InternalTestHelper.setInternalUserNumber(1);
 		TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService);
 		tourGuideService.tracker.stopTracking(); //Deplacement ede
@@ -92,26 +79,5 @@ public class TestRewardsService {
 
 		assertEquals(gpsUtil.getAttractions().size(), userRewards.size());
 
-	}
-	//@Test
-	public void nearAllAttractionsNew() {
-		//GpsUtil gpsUtil = new GpsUtil();
-		//RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
-		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral);
-		rewardsService.setProximityBuffer(Integer.MAX_VALUE);
-
-		//InternalTestHelper.setInternalUserNumber(1);
-		InternalTestHelper.setInternalUserNumber(1);
-		TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService);
-
-		rewardsService.calculateRewards(tourGuideService.getAllUsers().get(0));
-		List<UserReward> userRewards = tourGuideService.getUserRewards(tourGuideService.getAllUsers().get(0));
-		tourGuideService.tracker.stopTracking();
-
-
-		logger.debug( "getAttractions : " + gpsUtil.getAttractions().size());
-		logger.debug( "userRewards : " + userRewards.size());
-		//assertEquals(gpsUtil.getAttractions().size(), userRewards.size());
-		assertEquals(47, userRewards.size()); //TODO pourquoi 47 au lieu de 26 ?
 	}
 }

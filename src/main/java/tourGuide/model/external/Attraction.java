@@ -1,9 +1,10 @@
 package tourGuide.model.external;
 
-import tourGuide.beans.Location;
-
 import java.util.UUID;
 
+/**
+ * Use by proxies
+ */
 public class Attraction extends Location {
     public  String attractionName;
     public  String city;

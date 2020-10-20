@@ -14,12 +14,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-//import gpsUtil.location.Attraction;
 import tourGuide.model.external.Attraction;
-//import gpsUtil.location.Location;
-import tourGuide.beans.Location;
-//import gpsUtil.location.VisitedLocation;
-import tourGuide.beans.VisitedLocation;
+import tourGuide.model.external.Location;
+import tourGuide.model.external.VisitedLocation;
 import tourGuide.helper.InternalTestHelper;
 import tourGuide.helper.Util;
 import tourGuide.model.*;
@@ -27,45 +24,21 @@ import tourGuide.tracker.Tracker;
 import tourGuide.user.User;
 import tourGuide.user.UserPreferences;
 import tourGuide.user.UserReward;
-//import tripPricer.Provider;
 import tourGuide.model.external.Provider;
 
 @Service
 public class TourGuideService {
 	private Logger logger = LoggerFactory.getLogger(TourGuideService.class);
-	//private final GpsUtil gpsUtil;
-
-	//@Qualifier("gpsUtilProxyServiceImpl")
-	//@Autowired
-	//private GpsUtilProxyService gpsUtilProxyService;
 	private final GpsUtilProxyService gpsUtilProxyService;
-	//private GpsUtilProxy gpsUtilProxyService;
-	/*@Autowired
-	private RewardCentralProxyService rewardCentralProxy;*/
 
 	private final RewardsService rewardsService;
-	//private final TripPricer tripPricer = new TripPricer();
 	@Autowired
 	private TripPricerProxyService tripPricer;
 
 	public final Tracker tracker;
 	boolean testMode = true;
 	
-	/*public TourGuideService(GpsUtil gpsUtil, RewardsService rewardsService) {
-		this.gpsUtil = gpsUtil;
-		this.rewardsService = rewardsService;
-
-		if(testMode) {
-			logger.info("TestMode enabled");
-			logger.debug("Initializing users");
-			initializeInternalUsers();
-			logger.debug("Finished initializing users");
-		}
-		tracker = new Tracker(this);
-		addShutDownHook();
-	}*/
-	public TourGuideService(GpsUtilProxyService gpsUtil, RewardsService rewardsService) { //FEIGN
-	//public TourGuideService(GpsUtilProxy gpsUtil, RewardsService rewardsService) { //FEIGN
+	public TourGuideService(GpsUtilProxyService gpsUtil, RewardsService rewardsService) {
 		Locale.setDefault(Locale.US);
 
 		this.gpsUtilProxyService = gpsUtil;
@@ -80,21 +53,6 @@ public class TourGuideService {
 		tracker = new Tracker(this);
 		addShutDownHook();
 	}
-	//Ajout EDE
-/*	public TourGuideService() { //FEIGN
-
-
-		if(testMode) {
-			logger.info("TestMode enabled");
-			logger.debug("Initializing users");
-			initializeInternalUsers();
-			logger.debug("Finished initializing users");
-		}
-		rewardsService = new RewardsService(gpsUtilProxyService, rewardCentralProxy);
-
-		tracker = new Tracker(this);
-		addShutDownHook();
-	}*/
 
 	public List<UserReward> getUserRewards(User user) {
 		return user.getUserRewards();
@@ -158,57 +116,44 @@ public class TourGuideService {
 				providersResult.add(provider);
 			}
 		}
-
-		//user.setTripDeals(providers);
-		//return providers;
 		user.setTripDeals(providersResult);
 		return providersResult;
 
 	}
 	
 	public VisitedLocation trackUserLocation(User user) {
-		//logger.debug("trackUserLocation start" + user.getUserName());
-		//VisitedLocation visitedLocation = gpsUtil.getUserLocation(user.getUserId());
-		VisitedLocation visitedLocation = gpsUtilProxyService.getUserLocation(user.getUserId()); //FEIGN
+		VisitedLocation visitedLocation = gpsUtilProxyService.getUserLocation(user.getUserId());
 		user.addToVisitedLocations(visitedLocation);
 		rewardsService.calculateRewards(user);
-		//logger.debug("trackUserLocation end"+ user.getUserName());
 		return visitedLocation;
 	}
+
+	/**
+	 * track user location for a list of users. If list size is greater than 11, treatment will be asynchron
+	 * @param users list of users
+	 */
 	public void trackUserLocationList(List<User> users) {
-		//logger.debug("trackUserLocationList start List : " + users.size());
 		if (users.size() <11) { //Call en synchrone
 			logger.debug("trackUserLocationList SYNCHRONE");
 			for (User user: users) {
-					//logger.debug("run-Synchone trackUserLocationList------------------------- Start");
 					trackUserLocation(user);
-					//logger.debug("run-Synchone trackUserLocationList------------------------- End");
 				};
 		} else { //Call en asynchrone
 			ExecutorService executorService = Executors.newFixedThreadPool(1000);
 			logger.debug("trackUserLocationList AAAAAASYNCHRONE");
 			for (User user : users) {
 				Runnable runnableTask = () -> {
-					//logger.debug("run-ASYNC trackUserLocationList------------------------- Start");
 					trackUserLocation(user);
-					//logger.debug("run-ASYNC trackUserLocationList------------------------- End");
 				};
-				//logger.debug("trackUserLocationList execute");
 				executorService.execute(runnableTask);
 			}
-			//logger.debug("trackUserLocationList shutdown");
 			executorService.shutdown();
-			//logger.debug("trackUserLocationList waiting");
 			try {
-				//if (!executor.awaitTermination(800, TimeUnit.MILLISECONDS)) {
 				if (!executorService.awaitTermination(15, TimeUnit.MINUTES)) { //15 minutes est notre objectif
-					//System.out.println("**********************************************************************************************************");
 					System.out.println("************************ WARNING - TIME OUT ON trackUserLocationList - WARNING ****************************");
-					//System.out.println("**********************************************************************************************************");
 					executorService.shutdownNow();
 				}
 			} catch (InterruptedException e) {
-				//System.out.println("**********************************************************************************************************");
 				System.out.println("************************ WARNING - Exception ON trackUserLocationList - WARNING ***************************");
 				System.out.println("message : " + e.getMessage() +" -- localized message : " + e.getLocalizedMessage());
 				executorService.shutdownNow();
@@ -216,18 +161,6 @@ public class TourGuideService {
 		}
 		return;
 	}
-/* retreive by EDE*/
-/*	public List<Attraction> getNearByAttractions(VisitedLocation visitedLocation) {
-		List<Attraction> nearbyAttractions = new ArrayList<>();
-		for(Attraction attraction : gpsUtil.getAttractions()) {
-			if(rewardsService.isWithinAttractionProximity(attraction, visitedLocation.location)) {
-				nearbyAttractions.add(attraction);
-			}
-		}
-
-		return nearbyAttractions;
-	}*/
-
 
 //EDE Add for getNearbyAttractions
 	/**
@@ -241,55 +174,26 @@ public class TourGuideService {
 		List<NearestAttraction> nearestAttractionList = new ArrayList();
 		List<NearestAttraction> nearestAttractionFinal= new ArrayList();
 
-
 		Util util = new Util();
 		UserDTO userDto = util.convertToDto(user);
 
-		//userDto = util.convertToDto(user);
-		logger.debug("start test");
+		List<Attraction> attractionListLambda = gpsUtilProxyService.getAttractions().parallelStream().collect(Collectors.toList()); //FEIGN
+		attractionListLambda.parallelStream().forEach(attractionLb -> {
+			Location locationAttraction = new Location(attractionLb.latitude, attractionLb.longitude);
+			NearestAttraction nearestAttraction = new NearestAttraction(attractionLb, rewardsService.getDistance(locationAttraction, userDto.getLastVisitedLocation().location), 0);
+			nearestAttractions.add(nearestAttraction);
+		});
 
-
-
-
-					//List<Attraction> attractionListLambda = gpsUtil.getAttractions().parallelStream().collect(Collectors.toList());
-					List<Attraction> attractionListLambda = gpsUtilProxyService.getAttractions().parallelStream().collect(Collectors.toList()); //FEIGN
-					logger.debug("fin lambda");
-					//users.forEach(u -> tourGuideService.trackUserLocation(u));
-					attractionListLambda.parallelStream().forEach(attractionLb -> {
-						logger.debug("	start loop");
-						Location locationAttraction = new Location(attractionLb.latitude, attractionLb.longitude);
-						logger.debug("		fin Location");
-						//NearestAttraction nearestAttraction = new NearestAttraction(attractionLb, rewardsService.getDistance(locationAttraction, userDto.getLastVisitedLocation().location), rewardsService.getRewardPoints(attractionLb, user));
-						NearestAttraction nearestAttraction = new NearestAttraction(attractionLb, rewardsService.getDistance(locationAttraction, userDto.getLastVisitedLocation().location), 0);
-						logger.debug("		fin nearestAttraction");
-						//GetREward had bad performance. th reward will be call only for the 5 destination, not for all
-						//NearestAttraction nearestAttraction = new NearestAttraction(attraction,rewardsService.getDistance(locationAttraction, userDto.getLastVisitedLocation().location),0);
-						nearestAttractions.add(nearestAttraction);
-						logger.debug("	End loop");
-					});
-
-
-
-
-		logger.debug("end count");
 		nearestAttractionList = util.selectFiveProxyAttraction(nearestAttractions);
-
-		logger.debug("nearestAttractionList.size : "+nearestAttractionList.size());
 
 		nearestAttractionList.parallelStream().forEach(na->{
 			int reward =0;
 			reward = rewardsService.getRewardPoints(na.getAttraction(), user);
-			logger.debug("reward : "+reward);
 			na.setRewardPoints(reward);
 			nearestAttractionFinal.add(na);
 		});
-		//}
 
-		logger.debug("end 5");
-		//NearestAttractionsForUser nearestAttractionsForUserResult = new NearestAttractionsForUser(userDto.convertToDto(user),nearestAttractionList);
 		NearestAttractionsForUser nearestAttractionsForUserResult = new NearestAttractionsForUser(userDto,nearestAttractionFinal);
-		//NearestAttractionsForUser nearestAttractionsForUserResult = new NearestAttractionsForUser(userDto,nearestAttractionList);
-		logger.debug("end test");
 		return nearestAttractionsForUserResult;
 	}
 
@@ -312,10 +216,10 @@ public class TourGuideService {
 	 * @return new preference
 	 */
 	public UserPreferenceDTO setUserPreference(String userName, UserPreferenceDTO userPreference){
-		UserPreferences userPreferenceResult = null;
+		//UserPreferences userPreferenceResult = null;
 		User curentUser = getUser(userName);
 
-		UserPreferences curentUserPreference = curentUser.getUserPreferences();
+		//UserPreferences curentUserPreference = curentUser.getUserPreferences();
 		Util util = new Util();
 		curentUser.setUserPreferences(util.convertDtoToUserPreference(userPreference));
 		return util.convertUserPreferenceToDto(curentUser.getUserPreferences());

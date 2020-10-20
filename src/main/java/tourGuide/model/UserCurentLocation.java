@@ -1,8 +1,6 @@
 package tourGuide.model;
 
-//import gpsUtil.location.Location;
-import tourGuide.beans.Location;
-
+import tourGuide.model.external.Location;
 import java.util.UUID;
 
 public class UserCurentLocation {

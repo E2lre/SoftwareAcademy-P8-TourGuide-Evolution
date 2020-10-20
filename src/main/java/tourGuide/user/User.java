@@ -5,9 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-//import gpsUtil.location.VisitedLocation;
-import tourGuide.beans.VisitedLocation;
-//import tripPricer.Provider;
+import tourGuide.model.external.VisitedLocation;
 import tourGuide.model.external.Provider;
 
 public class User {

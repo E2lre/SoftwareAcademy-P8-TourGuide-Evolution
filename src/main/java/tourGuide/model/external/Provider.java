@@ -2,6 +2,9 @@ package tourGuide.model.external;
 
 import java.util.UUID;
 
+/**
+ * Use by proxies
+ */
 public class Provider {
     public String name;
     public double price;

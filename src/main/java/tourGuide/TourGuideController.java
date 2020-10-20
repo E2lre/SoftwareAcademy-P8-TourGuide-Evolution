@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.jsoniter.output.JsonStream;
 
-//import gpsUtil.location.VisitedLocation;
-import tourGuide.beans.VisitedLocation;
+import tourGuide.model.external.VisitedLocation;
 
 import tourGuide.exceptions.UserNameNotFoundException;
 import tourGuide.exceptions.UserPreferenceEmptyException;
@@ -21,8 +20,6 @@ import tourGuide.model.UserCurentLocation;
 import tourGuide.model.UserPreferenceDTO;
 import tourGuide.service.TourGuideService;
 import tourGuide.user.User;
-import tourGuide.user.UserPreferences;
-//import tripPricer.Provider;
 import tourGuide.model.external.Provider;
 
 @RestController
@@ -37,8 +34,13 @@ public class TourGuideController {
     public String index() {
         return "Greetings from TourGuide!";
     }
-    
-    @RequestMapping("/getLocation") 
+
+    /**
+     * get location for a user
+     * @param userName user Name to get location
+     * @return lorcation for the user
+     */
+    @RequestMapping("/getLocation")
     public String getLocation(@RequestParam String userName) {
     	VisitedLocation visitedLocation = tourGuideService.getUserLocation(getUser(userName));
 		return JsonStream.serialize(visitedLocation.location);
@@ -53,12 +55,12 @@ public class TourGuideController {
         // The distance in miles between the user's location and each of the attractions.
         // The reward points for visiting each Attraction.
         //    Note: Attraction reward points can be gathered from RewardsCentral
- /* Retreive By EDE */
-/*    @RequestMapping("/getNearbyAttractions")
-    public String getNearbyAttractions(@RequestParam String userName) {
-    	VisitedLocation visitedLocation = tourGuideService.getUserLocation(getUser(userName));
-    	return JsonStream.serialize(tourGuideService.getNearByAttractions(visitedLocation));
-    }*/
+
+    /**
+     * get Near by Attraction for a user
+     * @param userName User name to get near by attraction
+     * @return near by attraction for the user
+     */
     @RequestMapping("/getNearbyAttractions")
     public NearestAttractionsForUser getNearbyAttractionsV2(@RequestParam String userName) {
         NearestAttractionsForUser nearestAttractionsForUserResult;
@@ -70,14 +72,22 @@ public class TourGuideController {
         return nearestAttractionsForUserResult;
 
     }
-    
+
+    /**
+     * get reward for a user
+     * @param userName user name to get reward
+     * @return reward sor the user
+     */
     @RequestMapping("/getRewards") 
     public String getRewards(@RequestParam String userName) {
     	return JsonStream.serialize(tourGuideService.getUserRewards(getUser(userName)));
     }
-    
+
+    /**
+     * get all current location for all users
+      * @return all current locations
+     */
     @RequestMapping("/getAllCurrentLocations")
-    //public String getAllCurrentLocations() {
     public List<UserCurentLocation> getAllCurrentLocations() {
     	// TODO: Get a list of every user's most recent location as JSON ==> Done
     	//- Note: does not use gpsUtil to query for their current location, 
@@ -91,9 +101,13 @@ public class TourGuideController {
     	
     	return tourGuideService.getAllCurrentLocations();
     }
-    
+
+    /**
+     * get trip deals for a user
+     * @param userName user name to get trip deals
+     * @return trip deals for the user
+     */
     @RequestMapping("/getTripDeals")
- //   public String getTripDeals(@RequestParam String userName) {
     public List<Provider> getTripDeals(@RequestParam String userName) {
         List<Provider> providers = tourGuideService.getTripDeals(getUser(userName));
     	//return JsonStream.serialize(providers);
@@ -113,6 +127,14 @@ public class TourGuideController {
 
     }
 
+    /**
+     * Post user predference for a user
+     * @param userName user name to update
+     * @param userPreference new user préférence
+     * @return user preference updated
+     * @throws UserNameNotFoundException user name not found
+     * @throws UserPreferenceEmptyException incorrect user preference
+     */
     @PostMapping("/setUserPreference")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public UserPreferenceDTO setUserPreference(@RequestParam String userName, @RequestBody UserPreferenceDTO userPreference) throws UserNameNotFoundException, UserPreferenceEmptyException {
@@ -121,12 +143,6 @@ public class TourGuideController {
             logger.error(message);
             throw new UserNameNotFoundException(message);
         }
-   /*     if (userPreference == null ) {
-            String message = " userPreference is empty  ";
-            logger.error(message);
-            throw new UserPreferenceEmptyException(message);
-        }*/
-
         return tourGuideService.setUserPreference(userName,userPreference);
     }
 

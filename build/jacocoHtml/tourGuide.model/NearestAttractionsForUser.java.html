@@ -10,44 +10,38 @@ import java.util.List;
  */
 public class NearestAttractionsForUser {
 
-    // Name of Tourist attraction, //TODO commentaire Ã  supprimer
-    // Tourist attractions lat/long,
-    // The user's location lat/long,
-    // The distance in miles between the user's location and each of the attractions.
-    // The reward points for visiting each Attraction.
-    //    Note: Attraction reward points can be gathered from RewardsCentral
 
 
     private UserDTO user;
     private List&lt;NearestAttraction&gt; nearestAttractions;
 
 
-<span class="fc" id="L25">    public NearestAttractionsForUser(UserDTO user, List&lt;NearestAttraction&gt; nearestAttractions) {</span>
-<span class="fc" id="L26">        this.user = user;</span>
-<span class="fc" id="L27">        this.nearestAttractions = nearestAttractions;</span>
-<span class="fc" id="L28">    }</span>
+<span class="fc" id="L19">    public NearestAttractionsForUser(UserDTO user, List&lt;NearestAttraction&gt; nearestAttractions) {</span>
+<span class="fc" id="L20">        this.user = user;</span>
+<span class="fc" id="L21">        this.nearestAttractions = nearestAttractions;</span>
+<span class="fc" id="L22">    }</span>
 
     public UserDTO getUser() {
-<span class="fc" id="L31">        return user;</span>
+<span class="fc" id="L25">        return user;</span>
     }
 
     public void setUser(UserDTO user) {
-<span class="nc" id="L35">        this.user = user;</span>
-<span class="nc" id="L36">    }</span>
+<span class="nc" id="L29">        this.user = user;</span>
+<span class="nc" id="L30">    }</span>
 
 
     public List&lt;NearestAttraction&gt; getNearestAttractions() {
-<span class="fc" id="L40">        return nearestAttractions;</span>
+<span class="fc" id="L34">        return nearestAttractions;</span>
     }
 
     public void setNearestAttractions(List&lt;NearestAttraction&gt; nearestAttractions) {
-<span class="nc" id="L44">        this.nearestAttractions = nearestAttractions;</span>
-<span class="nc" id="L45">    }</span>
+<span class="nc" id="L38">        this.nearestAttractions = nearestAttractions;</span>
+<span class="nc" id="L39">    }</span>
 
 
     @Override
     public String toString() {
-<span class="nc" id="L50">        return &quot;NearestAttractionsForUser{&quot; +</span>
+<span class="nc" id="L44">        return &quot;NearestAttractionsForUser{&quot; +</span>
                 &quot;user=&quot; + user +
                 &quot;, nearestAttractions=&quot; + nearestAttractions +
                 '}';

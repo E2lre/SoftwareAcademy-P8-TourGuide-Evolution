@@ -1,7 +1,6 @@
 package tourGuide.model;
 
-//import gpsUtil.location.VisitedLocation;
-import tourGuide.beans.VisitedLocation;
+import tourGuide.model.external.VisitedLocation;
 import org.modelmapper.ModelMapper;
 import tourGuide.user.User;
 
@@ -9,8 +8,6 @@ import java.util.Date;
 import java.util.UUID;
 
 public class UserDTO {
-
-
 
     private UUID userId;
     private String userName;

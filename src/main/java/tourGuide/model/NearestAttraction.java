@@ -1,21 +1,11 @@
 package tourGuide.model;
 
-//import gpsUtil.location.Attraction;
 import tourGuide.model.external.Attraction;
 
 /**
  * Give information about 1 nearest attraction
  */
 public class NearestAttraction {
-// Name of Tourist attraction, //TODO commentaire à supprimer
-    // Tourist attractions lat/long, ==>Yes
-    // The user's location lat/long,==>No
-    // The distance in miles between the user's location and each of the attractions.==>Yes
-    // The reward points for visiting each Attraction.==>Yes
-    //    Note: Attraction reward points can be gathered from RewardsCentral
-
-    //private  User attraction;
-
 
     private Attraction attraction;
     private Double distance;

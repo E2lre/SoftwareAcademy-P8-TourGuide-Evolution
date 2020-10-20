@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tourGuide.TI.TestControlerTourGuide" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-10-19T15:19:59" hostname="PO709427VW10SC2" time="43.988">
+<testsuite name="tourGuide.TI.TestControlerTourGuide" tests="7" skipped="0" failures="0" errors="0" timestamp="2020-10-20T09:58:48" hostname="PO709427VW10SC2" time="38.099">
   <properties/>
-  <testcase name="getLocation_existingUserName_aLocationIsDone()" classname="tourGuide.TI.TestControlerTourGuide" time="9.077"/>
-  <testcase name="setUserPreference_existingUserName_okdIsDone()" classname="tourGuide.TI.TestControlerTourGuide" time="7.189"/>
-  <testcase name="getAllCurrentLocations_inAllCase_okdIsDone()" classname="tourGuide.TI.TestControlerTourGuide" time="5.039"/>
-  <testcase name="setUserPreference_inexistingUserName_errorISReturn()" classname="tourGuide.TI.TestControlerTourGuide" time="4.693"/>
-  <testcase name="getNearbyAttractionsV2_existingUserName_okdIsDone()" classname="tourGuide.TI.TestControlerTourGuide" time="7.83"/>
-  <testcase name="getTripDeals_existingUserName_aTripIsDone()" classname="tourGuide.TI.TestControlerTourGuide" time="5.539"/>
-  <testcase name="getUserPreference_inexistingUserName_errorIsReturn()" classname="tourGuide.TI.TestControlerTourGuide" time="4.584"/>
-  <system-out><![CDATA[17:19:35.627 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-17:19:35.720 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-17:19:35.986 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [tourGuide.TI.TestControlerTourGuide] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
-17:19:36.048 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [tourGuide.TI.TestControlerTourGuide], using SpringBootContextLoader
-17:19:36.064 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [tourGuide.TI.TestControlerTourGuide]: class path resource [tourGuide/TI/TestControlerTourGuide-context.xml] does not exist
-17:19:36.064 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [tourGuide.TI.TestControlerTourGuide]: class path resource [tourGuide/TI/TestControlerTourGuideContext.groovy] does not exist
-17:19:36.064 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [tourGuide.TI.TestControlerTourGuide]: no resource found for suffixes {-context.xml, Context.groovy}.
-17:19:36.086 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [tourGuide.TI.TestControlerTourGuide]: TestControlerTourGuide does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-17:19:36.408 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [tourGuide.TI.TestControlerTourGuide]
-17:19:37.034 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\DEV\Git\SoftwareAcademie\P8\SoftwareAcademy-P8-TourGuide-Evolution\build\classes\java\main\tourGuide\Application.class]
-17:19:37.142 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration tourGuide.Application for test class tourGuide.TI.TestControlerTourGuide
-17:19:37.533 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [tourGuide.TI.TestControlerTourGuide]: using defaults.
-17:19:37.533 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-17:19:37.627 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
-17:19:37.627 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
-17:19:37.627 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@52280243, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1642994b, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@502a4c25, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1bcedc70, org.springframework.test.context.support.DirtiesContextTestExecutionListener@966ff50, org.springframework.test.context.event.EventPublishingTestExecutionListener@b6ca7f6, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@9a589da, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@64e5e9c2, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5ac71671, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@34fa59c8, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@11b4edd4]
-17:19:37.642 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@44febee7 testClass = TestControlerTourGuide, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@27f44885 testClass = TestControlerTourGuide, locations = '{}', classes = '{class tourGuide.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@4b3fa0b3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@71a09bba, [ImportsContextCustomizer@3aa7189e key = [org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@683d0e98, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6bf72c1e, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@3ca6bd42], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [true] with mode [BEFORE_EACH_TEST_METHOD].
-17:19:37.845 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=-1}
+  <testcase name="getLocation_existingUserName_aLocationIsDone()" classname="tourGuide.TI.TestControlerTourGuide" time="7.056"/>
+  <testcase name="setUserPreference_existingUserName_okdIsDone()" classname="tourGuide.TI.TestControlerTourGuide" time="6.814"/>
+  <testcase name="getAllCurrentLocations_inAllCase_okdIsDone()" classname="tourGuide.TI.TestControlerTourGuide" time="5.321"/>
+  <testcase name="setUserPreference_inexistingUserName_errorISReturn()" classname="tourGuide.TI.TestControlerTourGuide" time="4.497"/>
+  <testcase name="getNearbyAttractionsV2_existingUserName_okdIsDone()" classname="tourGuide.TI.TestControlerTourGuide" time="6.551"/>
+  <testcase name="getTripDeals_existingUserName_aTripIsDone()" classname="tourGuide.TI.TestControlerTourGuide" time="4.042"/>
+  <testcase name="getUserPreference_inexistingUserName_errorIsReturn()" classname="tourGuide.TI.TestControlerTourGuide" time="3.727"/>
+  <system-out><![CDATA[11:58:28.810 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+11:58:28.936 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+11:58:29.154 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [tourGuide.TI.TestControlerTourGuide] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+11:58:29.248 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [tourGuide.TI.TestControlerTourGuide], using SpringBootContextLoader
+11:58:29.265 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [tourGuide.TI.TestControlerTourGuide]: class path resource [tourGuide/TI/TestControlerTourGuide-context.xml] does not exist
+11:58:29.265 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [tourGuide.TI.TestControlerTourGuide]: class path resource [tourGuide/TI/TestControlerTourGuideContext.groovy] does not exist
+11:58:29.280 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [tourGuide.TI.TestControlerTourGuide]: no resource found for suffixes {-context.xml, Context.groovy}.
+11:58:29.296 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [tourGuide.TI.TestControlerTourGuide]: TestControlerTourGuide does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:58:29.623 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [tourGuide.TI.TestControlerTourGuide]
+11:58:29.951 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\DEV\Git\SoftwareAcademie\P8\SoftwareAcademy-P8-TourGuide-Evolution\build\classes\java\main\tourGuide\Application.class]
+11:58:30.045 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration tourGuide.Application for test class tourGuide.TI.TestControlerTourGuide
+11:58:30.466 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [tourGuide.TI.TestControlerTourGuide]: using defaults.
+11:58:30.466 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+11:58:30.545 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
+11:58:30.545 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+11:58:30.560 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5519353, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2f28c8dc, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4cd6a537, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1bf05477, org.springframework.test.context.support.DirtiesContextTestExecutionListener@12328751, org.springframework.test.context.event.EventPublishingTestExecutionListener@7b35d3e3, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2b32eaf, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@1bf98162, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1df79543, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@4808e7d5, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@53d56e2d]
+11:58:30.576 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@67888dc8 testClass = TestControlerTourGuide, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@464819d6 testClass = TestControlerTourGuide, locations = '{}', classes = '{class tourGuide.Application}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@4b3fa0b3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@1889bf2d, [ImportsContextCustomizer@633c32 key = [org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7d1acfde, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@2c847de6, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@4e2a42e4], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [true] with mode [BEFORE_EACH_TEST_METHOD].
+11:58:30.669 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=-1}
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -35,22 +35,22 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.5.RELEASE)
 
-2020-10-19 17:19:45.720  INFO 11624 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=a5c34365-6e83-300b-9a14-dbc442384649
-2020-10-19 17:19:46.395  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:19:46.395  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:19:46.395  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:19:50.636  INFO 11624 --- [    Test worker] o.j.m.DefaultMonetaryContextFactory      : Using custom MathContext: precision=256, roundingMode=HALF_EVEN
-2020-10-19 17:19:54.217  WARN 11624 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
-2020-10-19 17:19:54.248  WARN 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-10-19 17:19:54.264  INFO 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-10-19 17:19:54.310  WARN 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-10-19 17:19:54.310  INFO 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-10-19 17:19:55.822  INFO 11624 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-19 17:19:58.021  INFO 11624 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2020-10-19 17:19:58.021  INFO 11624 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2020-10-19 17:19:58.053  INFO 11624 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-10-19 17:19:58.224  INFO 11624 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 203 ms
-2020-10-19 17:19:59.240  INFO 11624 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-10-20 11:58:38.139  INFO 6328 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c574c398-d071-3fd2-bc0f-fa32cd0d4f1e
+2020-10-20 11:58:38.623  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:58:38.623  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:58:38.623  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:58:41.607  INFO 6328 --- [    Test worker] o.j.m.DefaultMonetaryContextFactory      : Using custom MathContext: precision=256, roundingMode=HALF_EVEN
+2020-10-20 11:58:44.013  WARN 6328 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
+2020-10-20 11:58:44.014  WARN 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-10-20 11:58:44.014  INFO 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-10-20 11:58:44.077  WARN 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-10-20 11:58:44.077  INFO 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-10-20 11:58:45.614  INFO 6328 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-20 11:58:47.285  INFO 6328 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2020-10-20 11:58:47.285  INFO 6328 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2020-10-20 11:58:47.332  INFO 6328 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-10-20 11:58:47.457  INFO 6328 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 172 ms
+2020-10-20 11:58:48.175  INFO 6328 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -60,19 +60,19 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.5.RELEASE)
 
-2020-10-19 17:20:01.382  INFO 11624 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=a5c34365-6e83-300b-9a14-dbc442384649
-2020-10-19 17:20:01.490  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:01.490  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:01.506  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:04.208  WARN 11624 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
-2020-10-19 17:20:04.208  WARN 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-10-19 17:20:04.208  INFO 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-10-19 17:20:04.677  INFO 11624 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-19 17:20:06.100  INFO 11624 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2020-10-19 17:20:06.114  INFO 11624 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2020-10-19 17:20:06.131  INFO 11624 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-10-19 17:20:06.177  INFO 11624 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 63 ms
-2020-10-19 17:20:08.333  INFO 11624 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-10-20 11:58:50.004  INFO 6328 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c574c398-d071-3fd2-bc0f-fa32cd0d4f1e
+2020-10-20 11:58:50.035  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:58:50.050  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:58:50.113  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:58:52.110  WARN 6328 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
+2020-10-20 11:58:52.112  WARN 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-10-20 11:58:52.115  INFO 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-10-20 11:58:52.778  INFO 6328 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-20 11:58:53.592  INFO 6328 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2020-10-20 11:58:53.592  INFO 6328 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2020-10-20 11:58:53.625  INFO 6328 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-10-20 11:58:53.716  INFO 6328 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 110 ms
+2020-10-20 11:58:55.294  INFO 6328 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -82,19 +82,19 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.5.RELEASE)
 
-2020-10-19 17:20:10.286  INFO 11624 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=a5c34365-6e83-300b-9a14-dbc442384649
-2020-10-19 17:20:10.349  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:10.349  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:10.349  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:12.604  WARN 11624 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
-2020-10-19 17:20:12.608  WARN 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-10-19 17:20:12.610  INFO 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-10-19 17:20:13.436  INFO 11624 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-19 17:20:14.937  INFO 11624 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2020-10-19 17:20:14.937  INFO 11624 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2020-10-19 17:20:14.972  INFO 11624 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-10-19 17:20:15.034  INFO 11624 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 97 ms
-2020-10-19 17:20:15.504  INFO 11624 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-10-20 11:58:57.091  INFO 6328 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c574c398-d071-3fd2-bc0f-fa32cd0d4f1e
+2020-10-20 11:58:57.138  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:58:57.138  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:58:57.153  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:58:59.148  WARN 6328 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
+2020-10-20 11:58:59.150  WARN 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-10-20 11:58:59.151  INFO 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-10-20 11:58:59.758  INFO 6328 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-20 11:59:00.725  INFO 6328 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2020-10-20 11:59:00.725  INFO 6328 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2020-10-20 11:59:00.741  INFO 6328 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-10-20 11:59:01.008  INFO 6328 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 283 ms
+2020-10-20 11:59:02.117  INFO 6328 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -104,19 +104,19 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.5.RELEASE)
 
-2020-10-19 17:20:17.083  INFO 11624 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=a5c34365-6e83-300b-9a14-dbc442384649
-2020-10-19 17:20:17.113  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:17.129  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:17.129  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:18.355  WARN 11624 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
-2020-10-19 17:20:18.368  WARN 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-10-19 17:20:18.368  INFO 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-10-19 17:20:18.901  INFO 11624 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-19 17:20:20.091  INFO 11624 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2020-10-19 17:20:20.091  INFO 11624 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2020-10-19 17:20:20.106  INFO 11624 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-10-19 17:20:20.152  INFO 11624 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 61 ms
-2020-10-19 17:20:20.544  INFO 11624 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-10-20 11:59:03.772  INFO 6328 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c574c398-d071-3fd2-bc0f-fa32cd0d4f1e
+2020-10-20 11:59:03.836  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:59:03.836  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:59:03.836  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:59:05.439  WARN 6328 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
+2020-10-20 11:59:05.439  WARN 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-10-20 11:59:05.439  INFO 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-10-20 11:59:05.791  INFO 6328 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-20 11:59:06.823  INFO 6328 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2020-10-20 11:59:06.823  INFO 6328 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2020-10-20 11:59:06.837  INFO 6328 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-10-20 11:59:07.024  INFO 6328 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 201 ms
+2020-10-20 11:59:07.431  INFO 6328 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -126,21 +126,21 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.5.RELEASE)
 
-2020-10-19 17:20:22.026  INFO 11624 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=a5c34365-6e83-300b-9a14-dbc442384649
-2020-10-19 17:20:22.182  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:22.182  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:22.199  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:23.378  WARN 11624 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
-2020-10-19 17:20:23.409  WARN 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-10-19 17:20:23.409  INFO 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-10-19 17:20:23.629  INFO 11624 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-19 17:20:24.597  INFO 11624 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2020-10-19 17:20:24.614  INFO 11624 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2020-10-19 17:20:24.628  INFO 11624 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-10-19 17:20:24.660  INFO 11624 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 46 ms
-2020-10-19 17:20:25.238 ERROR 11624 --- [    Test worker] tourGuide.TourGuideController            :  this username does not exist : internalUser99999999
-2020-10-19 17:20:25.238 ERROR 11624 --- [    Test worker] t.exceptions.UserNameNotFoundException   :  this username does not exist : internalUser99999999
-2020-10-19 17:20:25.254  INFO 11624 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-10-20 11:59:08.526  INFO 6328 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c574c398-d071-3fd2-bc0f-fa32cd0d4f1e
+2020-10-20 11:59:08.587  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:59:08.603  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:59:08.603  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:59:10.079  WARN 6328 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
+2020-10-20 11:59:10.080  WARN 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-10-20 11:59:10.080  INFO 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-10-20 11:59:10.855  INFO 6328 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-20 11:59:11.574  INFO 6328 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2020-10-20 11:59:11.589  INFO 6328 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2020-10-20 11:59:11.606  INFO 6328 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-10-20 11:59:11.652  INFO 6328 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 63 ms
+2020-10-20 11:59:11.917 ERROR 6328 --- [    Test worker] tourGuide.TourGuideController            :  this username does not exist : internalUser99999999
+2020-10-20 11:59:11.917 ERROR 6328 --- [    Test worker] t.exceptions.UserNameNotFoundException   :  this username does not exist : internalUser99999999
+2020-10-20 11:59:11.932  INFO 6328 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -150,19 +150,19 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.5.RELEASE)
 
-2020-10-19 17:20:26.285  INFO 11624 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=a5c34365-6e83-300b-9a14-dbc442384649
-2020-10-19 17:20:26.394  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:26.394  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:26.394  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:29.079  WARN 11624 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
-2020-10-19 17:20:29.079  WARN 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-10-19 17:20:29.079  INFO 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-10-19 17:20:29.423  INFO 11624 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-19 17:20:30.064  INFO 11624 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2020-10-19 17:20:30.064  INFO 11624 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2020-10-19 17:20:30.095  INFO 11624 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-10-19 17:20:30.157  INFO 11624 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 77 ms
-2020-10-19 17:20:33.072  INFO 11624 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-10-20 11:59:12.901  INFO 6328 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c574c398-d071-3fd2-bc0f-fa32cd0d4f1e
+2020-10-20 11:59:13.010  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:59:13.010  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:59:13.026  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:59:14.583  WARN 6328 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
+2020-10-20 11:59:14.583  WARN 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-10-20 11:59:14.583  INFO 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-10-20 11:59:14.740  INFO 6328 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-20 11:59:15.350  INFO 6328 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2020-10-20 11:59:15.350  INFO 6328 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2020-10-20 11:59:15.364  INFO 6328 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-10-20 11:59:15.427  INFO 6328 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 77 ms
+2020-10-20 11:59:18.486  INFO 6328 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -172,19 +172,19 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.5.RELEASE)
 
-2020-10-19 17:20:34.884  INFO 11624 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=a5c34365-6e83-300b-9a14-dbc442384649
-2020-10-19 17:20:34.931  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:34.931  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:34.947  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:36.500  WARN 11624 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
-2020-10-19 17:20:36.502  WARN 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-10-19 17:20:36.502  INFO 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-10-19 17:20:36.830  INFO 11624 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-19 17:20:37.611  INFO 11624 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2020-10-19 17:20:37.611  INFO 11624 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2020-10-19 17:20:37.643  INFO 11624 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-10-19 17:20:37.705  INFO 11624 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 94 ms
-2020-10-19 17:20:38.612  INFO 11624 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-10-20 11:59:19.721  INFO 6328 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c574c398-d071-3fd2-bc0f-fa32cd0d4f1e
+2020-10-20 11:59:19.751  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:59:19.751  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:59:19.751  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:59:21.136  WARN 6328 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
+2020-10-20 11:59:21.152  WARN 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-10-20 11:59:21.152  INFO 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-10-20 11:59:21.323  INFO 6328 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-20 11:59:21.948  INFO 6328 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2020-10-20 11:59:21.948  INFO 6328 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2020-10-20 11:59:21.981  INFO 6328 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-10-20 11:59:22.026  INFO 6328 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 78 ms
+2020-10-20 11:59:22.530  INFO 6328 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -194,20 +194,20 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.5.RELEASE)
 
-2020-10-19 17:20:40.318  INFO 11624 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=a5c34365-6e83-300b-9a14-dbc442384649
-2020-10-19 17:20:40.392  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:40.392  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:40.392  INFO 11624 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-19 17:20:41.760  WARN 11624 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
-2020-10-19 17:20:41.760  WARN 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-10-19 17:20:41.760  INFO 11624 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-10-19 17:20:41.994  INFO 11624 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-19 17:20:42.635  INFO 11624 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2020-10-19 17:20:42.635  INFO 11624 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2020-10-19 17:20:42.651  INFO 11624 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-10-19 17:20:42.713  INFO 11624 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 77 ms
-2020-10-19 17:20:43.182 ERROR 11624 --- [    Test worker] tourGuide.TourGuideController            :  this username does not exist : internalUser99999999
-2020-10-19 17:20:43.182 ERROR 11624 --- [    Test worker] t.exceptions.UserNameNotFoundException   :  this username does not exist : internalUser99999999
+2020-10-20 11:59:23.562  INFO 6328 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c574c398-d071-3fd2-bc0f-fa32cd0d4f1e
+2020-10-20 11:59:23.626  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:59:23.626  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:59:23.626  INFO 6328 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-10-20 11:59:25.072  WARN 6328 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
+2020-10-20 11:59:25.072  WARN 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-10-20 11:59:25.072  INFO 6328 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-10-20 11:59:25.243  INFO 6328 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-10-20 11:59:25.852  INFO 6328 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2020-10-20 11:59:25.946  INFO 6328 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2020-10-20 11:59:25.962  INFO 6328 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-10-20 11:59:26.010  INFO 6328 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 64 ms
+2020-10-20 11:59:26.259 ERROR 6328 --- [    Test worker] tourGuide.TourGuideController            :  this username does not exist : internalUser99999999
+2020-10-20 11:59:26.259 ERROR 6328 --- [    Test worker] t.exceptions.UserNameNotFoundException   :  this username does not exist : internalUser99999999
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

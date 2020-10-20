@@ -69,9 +69,6 @@ public class Util {
      * @return list of  5 proxy attraction
      */
     public List<NearestAttraction> selectFiveProxyAttraction (List<NearestAttraction> nearestAttractions) {
-/*        Map<NearestAttraction,Integer> table = new HashMap<NearestAttraction,Integer>();
-        ValueComparator comparator = new ValueComparator();
-        TreeMap<NearestAttraction,Integer> mapSort = new TreeMap<NearestAttraction,Integer>(comparator);*/
         List<NearestAttraction> nearestAttractionListResult = new ArrayList<>();
 
         Map<Double,NearestAttraction> table = new HashMap<Double,NearestAttraction>();

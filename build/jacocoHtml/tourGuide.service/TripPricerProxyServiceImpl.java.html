@@ -4,24 +4,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tourGuide.model.external.Provider;
 import tourGuide.proxies.TripPricerProxy;
-//import tripPricer.Provider;
-
 
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * see GTripPricerProxy for more information
+ */
 @Service
-<span class="fc" id="L14">public class TripPricerProxyServiceImpl implements TripPricerProxyService{</span>
+<span class="fc" id="L15">public class TripPricerProxyServiceImpl implements TripPricerProxyService{</span>
     @Autowired
     private TripPricerProxy tripPricerProxy;
     @Override
     public List&lt;Provider&gt; getPrice(String apiKey, UUID attractionId, int adults, int children, int nightsStay, int rewardsPoints) {
-<span class="fc" id="L19">        return tripPricerProxy.getPrice(apiKey, attractionId,  adults,  children,  nightsStay,  rewardsPoints);</span>
+<span class="fc" id="L20">        return tripPricerProxy.getPrice(apiKey, attractionId,  adults,  children,  nightsStay,  rewardsPoints);</span>
     }
 
     @Override
     public String getProviderName(String apiKey, int adults) {
-<span class="fc" id="L24">        return tripPricerProxy.getProviderName(apiKey, adults);</span>
+<span class="fc" id="L25">        return tripPricerProxy.getProviderName(apiKey, adults);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

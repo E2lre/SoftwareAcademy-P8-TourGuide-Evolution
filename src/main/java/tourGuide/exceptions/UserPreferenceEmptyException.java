@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 /**
  * User for controller exception
  */
+/*
 @ResponseStatus(HttpStatus.NOT_FOUND)
 public class UserPreferenceEmptyException extends Exception {
     private Logger logger = LoggerFactory.getLogger(UserPreferenceEmptyException.class);
@@ -17,3 +18,4 @@ public class UserPreferenceEmptyException extends Exception {
         logger.error(s);
     }
 }
+*/

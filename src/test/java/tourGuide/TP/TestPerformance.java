@@ -58,7 +58,7 @@ public class TestPerformance {
 
 		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral); //FEIGN
 
-		InternalTestHelper.setInternalUserNumber(100);
+		InternalTestHelper.setInternalUserNumber(100000);
 		TourGuideService tourGuideService = new TourGuideService(gpsUtil, rewardsService); //FEIGN
 		List<User> allUsers = new ArrayList<>();
 		allUsers = tourGuideService.getAllUsers();
@@ -85,7 +85,7 @@ public class TestPerformance {
 	public void highVolumeGetRewardsNew() {
 		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral); //FEIGN
 		// Users should be incremented up to 100,000, and test finishes within 20 minutes
-		InternalTestHelper.setInternalUserNumber(100);
+		InternalTestHelper.setInternalUserNumber(100000);
 		//position historique des stopWatch ci dessous
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();

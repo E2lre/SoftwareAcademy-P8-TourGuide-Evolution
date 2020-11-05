@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">1</div>
+<div class="counter">3</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.037s</div>
+<div class="counter">0.189s</div>
 <p>duration</p>
 </div>
 </td>
@@ -78,8 +78,18 @@
 </tr>
 </thead>
 <tr>
-<td class="success">getProviderName_giveinfo_returnProvider()</td>
-<td class="success">0.037s</td>
+<td class="success">getAttractions_noData_returnAttraction()</td>
+<td class="success">0.029s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getProviderName_giveInfo_returnProvider()</td>
+<td class="success">0.051s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">getUserLocation_giveUUIDUser_returnVisitedLocation()</td>
+<td class="success">0.109s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -87,12 +97,12 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2020-10-20 11:59:26.290  INFO 6328 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [tourGuide.TI.TestProxiesService], using SpringBootContextLoader
-2020-10-20 11:59:26.290  INFO 6328 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [tourGuide.TI.TestProxiesService]: no resource found for suffixes {-context.xml, Context.groovy}.
-2020-10-20 11:59:26.290  INFO 6328 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [tourGuide.TI.TestProxiesService]: TestProxiesService does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2020-10-20 11:59:26.307  INFO 6328 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration tourGuide.Application for test class tourGuide.TI.TestProxiesService
-2020-10-20 11:59:26.307  INFO 6328 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2020-10-20 11:59:26.321  INFO 6328 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3e2e29c9, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1d7c09a, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@300e9e97, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2daac568, org.springframework.test.context.support.DirtiesContextTestExecutionListener@6205c175, org.springframework.test.context.event.EventPublishingTestExecutionListener@5de91ebf, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1957d9b3, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@62adce74, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@2e6fb53d, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3be64aa9, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1c5b8627]
+<pre>2020-10-21 08:57:29.066  INFO 10852 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [tourGuide.TI.TestProxiesService], using SpringBootContextLoader
+2020-10-21 08:57:29.066  INFO 10852 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [tourGuide.TI.TestProxiesService]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-10-21 08:57:29.066  INFO 10852 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [tourGuide.TI.TestProxiesService]: TestProxiesService does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2020-10-21 08:57:29.066  INFO 10852 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration tourGuide.Application for test class tourGuide.TI.TestProxiesService
+2020-10-21 08:57:29.081  INFO 10852 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-10-21 08:57:29.081  INFO 10852 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3fcf6050, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4f893746, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@78543b3a, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@176722d8, org.springframework.test.context.support.DirtiesContextTestExecutionListener@536e1d84, org.springframework.test.context.event.EventPublishingTestExecutionListener@555b23a8, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@c8f4fd2, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2250dd79, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1f1768a, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@d3b437f, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7bbc6cd5]
 </pre>
 </span>
 </div>
@@ -104,7 +114,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 5.6.2</a> at 20 oct. 2020 11:59:56</p>
+<a href="http://www.gradle.org">Gradle 5.6.2</a> at 21 oct. 2020 08:57:56</p>
 </div>
 </div>
 </body>

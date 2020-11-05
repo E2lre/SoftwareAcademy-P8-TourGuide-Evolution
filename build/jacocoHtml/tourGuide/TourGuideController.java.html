@@ -14,7 +14,7 @@ import com.jsoniter.output.JsonStream;
 import tourGuide.model.external.VisitedLocation;
 
 import tourGuide.exceptions.UserNameNotFoundException;
-import tourGuide.exceptions.UserPreferenceEmptyException;
+//import tourGuide.exceptions.UserPreferenceEmptyException;
 import tourGuide.model.NearestAttractionsForUser;
 import tourGuide.model.UserCurentLocation;
 import tourGuide.model.UserPreferenceDTO;
@@ -32,7 +32,7 @@ import tourGuide.model.external.Provider;
 	
     @RequestMapping(&quot;/&quot;)
     public String index() {
-<span class="nc" id="L35">        return &quot;Greetings from TourGuide!&quot;;</span>
+<span class="fc" id="L35">        return &quot;Greetings from TourGuide!&quot;;</span>
     }
 
     /**
@@ -137,17 +137,18 @@ import tourGuide.model.external.Provider;
      */
     @PostMapping(&quot;/setUserPreference&quot;)
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public UserPreferenceDTO setUserPreference(@RequestParam String userName, @RequestBody UserPreferenceDTO userPreference) throws UserNameNotFoundException, UserPreferenceEmptyException {
-<span class="fc bfc" id="L141" title="All 2 branches covered.">        if (tourGuideService.getUser(userName) == null ) {</span>
-<span class="fc" id="L142">            String message = &quot; this username does not exist : &quot;+ userName;</span>
-<span class="fc" id="L143">            logger.error(message);</span>
-<span class="fc" id="L144">            throw new UserNameNotFoundException(message);</span>
+    //public UserPreferenceDTO setUserPreference(@RequestParam String userName, @RequestBody UserPreferenceDTO userPreference) throws UserNameNotFoundException, UserPreferenceEmptyException {
+    public UserPreferenceDTO setUserPreference(@RequestParam String userName, @RequestBody UserPreferenceDTO userPreference) throws UserNameNotFoundException {
+<span class="fc bfc" id="L142" title="All 2 branches covered.">        if (tourGuideService.getUser(userName) == null ) {</span>
+<span class="fc" id="L143">            String message = &quot; this username does not exist : &quot;+ userName;</span>
+<span class="fc" id="L144">            logger.error(message);</span>
+<span class="fc" id="L145">            throw new UserNameNotFoundException(message);</span>
         }
-<span class="fc" id="L146">        return tourGuideService.setUserPreference(userName,userPreference);</span>
+<span class="fc" id="L147">        return tourGuideService.setUserPreference(userName,userPreference);</span>
     }
 
     private User getUser(String userName) {
-<span class="fc" id="L150">    	return tourGuideService.getUser(userName);</span>
+<span class="fc" id="L151">    	return tourGuideService.getUser(userName);</span>
     }
    
 

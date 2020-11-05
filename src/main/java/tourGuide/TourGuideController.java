@@ -14,7 +14,7 @@ import com.jsoniter.output.JsonStream;
 import tourGuide.model.external.VisitedLocation;
 
 import tourGuide.exceptions.UserNameNotFoundException;
-import tourGuide.exceptions.UserPreferenceEmptyException;
+//import tourGuide.exceptions.UserPreferenceEmptyException;
 import tourGuide.model.NearestAttractionsForUser;
 import tourGuide.model.UserCurentLocation;
 import tourGuide.model.UserPreferenceDTO;
@@ -133,11 +133,11 @@ public class TourGuideController {
      * @param userPreference new user préférence
      * @return user preference updated
      * @throws UserNameNotFoundException user name not found
-     * @throws UserPreferenceEmptyException incorrect user preference
      */
     @PostMapping("/setUserPreference")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public UserPreferenceDTO setUserPreference(@RequestParam String userName, @RequestBody UserPreferenceDTO userPreference) throws UserNameNotFoundException, UserPreferenceEmptyException {
+    //public UserPreferenceDTO setUserPreference(@RequestParam String userName, @RequestBody UserPreferenceDTO userPreference) throws UserNameNotFoundException, UserPreferenceEmptyException {
+    public UserPreferenceDTO setUserPreference(@RequestParam String userName, @RequestBody UserPreferenceDTO userPreference) throws UserNameNotFoundException {
         if (tourGuideService.getUser(userName) == null ) {
             String message = " this username does not exist : "+ userName;
             logger.error(message);

@@ -60,6 +60,15 @@ public class TestTourGuideControlerTU {
         mockMvc.perform(get("/getUserPreference?userName="+user))
                 .andExpect(status().isOk());
     }
+    /*---------------------------------------- Get-------------------------------*/
+
+    @Test
+    public void getIndex_noCondition_okIsDone() throws Exception{
+        //Given
+        //WHEN //THEN return ok
+        mockMvc.perform(get("/"))
+                .andExpect(status().isOk());
+    }
     /*------------------------------ Get ------------------------------*/
     @Test
     public void getRewards_existingUserName_RewardIsDone() throws Exception {

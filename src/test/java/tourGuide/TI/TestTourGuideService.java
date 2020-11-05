@@ -1,8 +1,5 @@
 package tourGuide.TI;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
@@ -18,6 +15,8 @@ import tourGuide.model.UserPreferenceDTO;
 import tourGuide.service.*;
 import tourGuide.user.User;
 import tourGuide.model.external.Provider;
+
+import static org.junit.Assert.*;
 
 @SpringBootTest
 public class TestTourGuideService {
@@ -151,7 +150,7 @@ public class TestTourGuideService {
 		
 		//THEN
 		assertEquals(5, providers.size()); //getprice ne retourne que 5 providers
-
+		assertNotNull(providers.get(0).toString());
 	}
 
 	@Test

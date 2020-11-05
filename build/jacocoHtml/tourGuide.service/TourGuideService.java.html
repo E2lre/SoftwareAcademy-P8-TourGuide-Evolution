@@ -153,10 +153,10 @@ public class TourGuideService {
 <span class="nc" id="L153">					System.out.println(&quot;************************ WARNING - TIME OUT ON trackUserLocationList - WARNING ****************************&quot;);</span>
 <span class="nc" id="L154">					executorService.shutdownNow();</span>
 				}
-<span class="nc" id="L156">			} catch (InterruptedException e) {</span>
-<span class="nc" id="L157">				System.out.println(&quot;************************ WARNING - Exception ON trackUserLocationList - WARNING ***************************&quot;);</span>
-<span class="nc" id="L158">				System.out.println(&quot;message : &quot; + e.getMessage() +&quot; -- localized message : &quot; + e.getLocalizedMessage());</span>
-<span class="nc" id="L159">				executorService.shutdownNow();</span>
+<span class="fc" id="L156">			} catch (InterruptedException e) {</span>
+<span class="fc" id="L157">				System.out.println(&quot;************************ WARNING - Exception ON trackUserLocationList - WARNING ***************************&quot;);</span>
+<span class="fc" id="L158">				System.out.println(&quot;message : &quot; + e.getMessage() +&quot; -- localized message : &quot; + e.getLocalizedMessage());</span>
+<span class="fc" id="L159">				executorService.shutdownNow();</span>
 <span class="fc" id="L160">			}</span>
 		}
 <span class="fc" id="L162">		return;</span>

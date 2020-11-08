@@ -139,7 +139,7 @@ public class TourGuideService {
 					trackUserLocation(user);
 				};
 		} else { //Call en asynchrone
-			ExecutorService executorService = Executors.newFixedThreadPool(1000);
+			ExecutorService executorService = Executors.newFixedThreadPool(1000); 
 			logger.debug("trackUserLocationList AAAAAASYNCHRONE");
 			for (User user : users) {
 				Runnable runnableTask = () -> {

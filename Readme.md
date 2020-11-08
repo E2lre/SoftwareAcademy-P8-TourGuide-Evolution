@@ -10,7 +10,7 @@ This app use SPRINT BOOT, FeignClient.
 
 What things you need to install the software and how to install them
 
-- Java 1.8
+- Java 1.8 or later
 - Spring Boot 2.2.6
 - Gradle 2.2.5
 
@@ -28,7 +28,8 @@ And start the application
 - java -jar Tourguide-0.0.1-SNAPSHOT.jar
 
 # Architecture Diagram
-![ScreenShot](Architecture.png)
+![alt text](Architecture.png)
+
 
 # URI
 ## Get Location

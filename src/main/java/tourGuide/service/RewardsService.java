@@ -64,7 +64,7 @@ public class RewardsService  {
 				};
 		} else {
 			logger.debug("calculateRewardsList AAAAAASYNCHRONE");
-			ExecutorService executorServiceLocal = Executors.newFixedThreadPool(50);
+			ExecutorService executorServiceLocal = Executors.newFixedThreadPool(50); 
 			for (User user : users) {
 				Runnable runnableTask = () -> {
 					calculateRewards_standard(user);

@@ -42,6 +42,7 @@ public class TourGuideController {
      */
     @RequestMapping("/getLocation")
     public String getLocation(@RequestParam String userName) {
+        logger.info("Start getLocation");
     	VisitedLocation visitedLocation = tourGuideService.getUserLocation(getUser(userName));
 		return JsonStream.serialize(visitedLocation.location);
     }
@@ -64,7 +65,7 @@ public class TourGuideController {
     @RequestMapping("/getNearbyAttractions")
     public NearestAttractionsForUser getNearbyAttractionsV2(@RequestParam String userName) {
         NearestAttractionsForUser nearestAttractionsForUserResult;
-
+        logger.info("Start getNearbyAttractions");
         User user = getUser(userName);
         VisitedLocation visitedLocation = tourGuideService.getUserLocation(getUser(userName));
         nearestAttractionsForUserResult = tourGuideService.getNearByAttractionsForUSer(user, visitedLocation);
@@ -80,6 +81,7 @@ public class TourGuideController {
      */
     @RequestMapping("/getRewards") 
     public String getRewards(@RequestParam String userName) {
+        logger.info("Start getRewards");
     	return JsonStream.serialize(tourGuideService.getUserRewards(getUser(userName)));
     }
 
@@ -98,7 +100,7 @@ public class TourGuideController {
     	//        "019b04a9-067a-4c76-8817-ee75088c3822": {"longitude":-48.188821,"latitude":74.84371} 
     	//        ...
     	//     }
-    	
+        logger.info("Start getAllCurrentLocations");
     	return tourGuideService.getAllCurrentLocations();
     }
 
@@ -109,15 +111,15 @@ public class TourGuideController {
      */
     @RequestMapping("/getTripDeals")
     public List<Provider> getTripDeals(@RequestParam String userName) {
+        logger.info("Start getTripDeals");
         List<Provider> providers = tourGuideService.getTripDeals(getUser(userName));
-    	//return JsonStream.serialize(providers);
         return providers ;
     }
 
     @RequestMapping("/getUserPreference")
     @ResponseStatus(HttpStatus.OK)
     public UserPreferenceDTO getUserPreference(@RequestParam String userName) throws UserNameNotFoundException {
-
+        logger.info("Start getUserPreference");
         if (tourGuideService.getUser(userName) == null ) {
             String message = " this username does not exist : "+ userName;
             logger.error(message);

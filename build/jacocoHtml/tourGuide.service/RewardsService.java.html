@@ -64,7 +64,7 @@ public class RewardsService  {
 <span class="nc" id="L64">				};</span>
 		} else {
 <span class="fc" id="L66">			logger.debug(&quot;calculateRewardsList AAAAAASYNCHRONE&quot;);</span>
-<span class="fc" id="L67">			ExecutorService executorServiceLocal = Executors.newFixedThreadPool(1000);</span>
+<span class="fc" id="L67">			ExecutorService executorServiceLocal = Executors.newFixedThreadPool(50); </span>
 <span class="fc bfc" id="L68" title="All 2 branches covered.">			for (User user : users) {</span>
 <span class="fc" id="L69">				Runnable runnableTask = () -&gt; {</span>
 <span class="fc" id="L70">					calculateRewards_standard(user);</span>

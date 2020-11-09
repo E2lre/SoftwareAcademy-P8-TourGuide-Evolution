@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tourGuide.TI.TestTourGuideService" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-10-21T06:57:46" hostname="PO709427VW10SC2" time="1.854">
+<testsuite name="tourGuide.TI.TestTourGuideService" tests="8" skipped="0" failures="0" errors="0" timestamp="2020-11-09T16:52:42" hostname="PC-Eric" time="1.905">
   <properties/>
-  <testcase name="getUserLocation()" classname="tourGuide.TI.TestTourGuideService" time="0.045"/>
-  <testcase name="addUser()" classname="tourGuide.TI.TestTourGuideService" time="0.005"/>
-  <testcase name="getUserPreference()" classname="tourGuide.TI.TestTourGuideService" time="0.005"/>
-  <testcase name="getTripDeals()" classname="tourGuide.TI.TestTourGuideService" time="0.067"/>
+  <testcase name="getUserLocation()" classname="tourGuide.TI.TestTourGuideService" time="0.126"/>
+  <testcase name="addUser()" classname="tourGuide.TI.TestTourGuideService" time="0.004"/>
+  <testcase name="getUserPreference()" classname="tourGuide.TI.TestTourGuideService" time="0.004"/>
+  <testcase name="getTripDeals()" classname="tourGuide.TI.TestTourGuideService" time="0.079"/>
   <testcase name="getAllUsers()" classname="tourGuide.TI.TestTourGuideService" time="0.004"/>
-  <testcase name="getAllCurrentLocations()" classname="tourGuide.TI.TestTourGuideService" time="0.061"/>
-  <testcase name="trackUser()" classname="tourGuide.TI.TestTourGuideService" time="0.113"/>
-  <testcase name="getNearbyAttractions()" classname="tourGuide.TI.TestTourGuideService" time="1.546"/>
-  <system-out><![CDATA[2020-10-21 08:57:44.033  INFO 10852 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [tourGuide.TI.TestTourGuideService], using SpringBootContextLoader
-2020-10-21 08:57:44.033  INFO 10852 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [tourGuide.TI.TestTourGuideService]: no resource found for suffixes {-context.xml, Context.groovy}.
-2020-10-21 08:57:44.033  INFO 10852 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [tourGuide.TI.TestTourGuideService]: TestTourGuideService does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2020-10-21 08:57:44.033  INFO 10852 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration tourGuide.Application for test class tourGuide.TI.TestTourGuideService
-2020-10-21 08:57:44.047  INFO 10852 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2020-10-21 08:57:44.047  INFO 10852 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4f8cb144, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1dd66280, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@63bdf931, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@25075ff6, org.springframework.test.context.support.DirtiesContextTestExecutionListener@f2bdc83, org.springframework.test.context.event.EventPublishingTestExecutionListener@21476d84, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2dbf6cec, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@32d86e42, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@63c6635e, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@79f719ef, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@2f79d231]
-
+  <testcase name="getAllCurrentLocations()" classname="tourGuide.TI.TestTourGuideService" time="0.129"/>
+  <testcase name="trackUser()" classname="tourGuide.TI.TestTourGuideService" time="0.101"/>
+  <testcase name="getNearbyAttractions()" classname="tourGuide.TI.TestTourGuideService" time="1.449"/>
+  <system-out><![CDATA[
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
@@ -24,15 +18,19 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.5.RELEASE)
 
-2020-10-21 08:57:44.891  INFO 10852 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=5a5033d8-d5c9-3a30-ac70-a737cec4d952
-2020-10-21 08:57:44.908  INFO 10852 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.GpsUtilProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-21 08:57:44.908  INFO 10852 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.RewardCentralProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-21 08:57:44.908  INFO 10852 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'tourGuide.proxies.TripPricerProxy' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-10-21 08:57:45.439  WARN 10852 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
-2020-10-21 08:57:45.439  WARN 10852 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-10-21 08:57:45.439  INFO 10852 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-10-21 08:57:45.704  INFO 10852 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-21 08:57:46.393  INFO 10852 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-11-09 17:52:39.698  INFO 21448 --- [    Test worker] tourGuide.TI.TestTourGuideService        : No active profile set, falling back to default profiles: default
+2020-11-09 17:52:40.457  INFO 21448 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2020-11-09 17:52:40.590  WARN 21448 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-11-09 17:52:40.592  INFO 21448 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-11-09 17:52:42.494  INFO 21448 --- [    Test worker] tourGuide.TI.TestTourGuideService        : Started TestTourGuideService in 5.414 seconds (JVM running for 88.005)
+2020-11-09 17:52:42.504  INFO 21448 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2020-11-09 17:52:42.629  INFO 21448 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2020-11-09 17:52:42.634  INFO 21448 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2020-11-09 17:52:42.639  INFO 21448 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2020-11-09 17:52:42.721  INFO 21448 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2020-11-09 17:52:42.727  INFO 21448 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2020-11-09 17:52:42.856  INFO 21448 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
+2020-11-09 17:52:42.959  INFO 21448 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tourGuide.TU.TestTourGuideControlerTU" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-10-21T06:57:55" hostname="PO709427VW10SC2" time="0.137">
+<testsuite name="tourGuide.TU.TestTourGuideControlerTU" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-11-09T16:52:54" hostname="PC-Eric" time="0.088">
   <properties/>
-  <testcase name="getIndex_noCondition_okIsDone()" classname="tourGuide.TU.TestTourGuideControlerTU" time="0.009"/>
-  <testcase name="getUserPreference_existingUserName_UserPreferenceIsDone()" classname="tourGuide.TU.TestTourGuideControlerTU" time="0.096"/>
-  <testcase name="getRewards_existingUserName_RewardIsDone()" classname="tourGuide.TU.TestTourGuideControlerTU" time="0.026"/>
-  <system-out><![CDATA[2020-10-21 08:57:51.934  INFO 10852 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [tourGuide.TU.TestTourGuideControlerTU], using SpringBootContextLoader
-2020-10-21 08:57:51.934  INFO 10852 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [tourGuide.TU.TestTourGuideControlerTU]: no resource found for suffixes {-context.xml, Context.groovy}.
-2020-10-21 08:57:51.934  INFO 10852 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [tourGuide.TU.TestTourGuideControlerTU]: TestTourGuideControlerTU does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2020-10-21 08:57:51.981  INFO 10852 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration tourGuide.Application for test class tourGuide.TU.TestTourGuideControlerTU
-2020-10-21 08:57:51.981  INFO 10852 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2020-10-21 08:57:51.981  INFO 10852 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@27e6305b, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6f43b859, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@14c6dd10, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@74b2f30c, org.springframework.test.context.support.DirtiesContextTestExecutionListener@62406129, org.springframework.test.context.event.EventPublishingTestExecutionListener@10339c48, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@32bffd03, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@51f642cb, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@30de28f5, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3c03237a, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7199961c]
-
+  <testcase name="getIndex_noCondition_okIsDone()" classname="tourGuide.TU.TestTourGuideControlerTU" time="0.011"/>
+  <testcase name="getUserPreference_existingUserName_UserPreferenceIsDone()" classname="tourGuide.TU.TestTourGuideControlerTU" time="0.06"/>
+  <testcase name="getRewards_existingUserName_RewardIsDone()" classname="tourGuide.TU.TestTourGuideControlerTU" time="0.013"/>
+  <system-out><![CDATA[
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
@@ -19,15 +13,12 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.5.RELEASE)
 
-2020-10-21 08:57:53.091  INFO 10852 --- [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=c574c398-d071-3fd2-bc0f-fa32cd0d4f1e
-2020-10-21 08:57:54.592  WARN 10852 --- [    Test worker] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
-2020-10-21 08:57:54.592  WARN 10852 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2020-10-21 08:57:54.592  INFO 10852 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2020-10-21 08:57:54.764  INFO 10852 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-10-21 08:57:55.232  INFO 10852 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2020-10-21 08:57:55.247  INFO 10852 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2020-10-21 08:57:55.247  INFO 10852 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-10-21 08:57:55.293  INFO 10852 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 46 ms
+2020-11-09 17:52:51.233  INFO 21448 --- [    Test worker] tourGuide.TU.TestTourGuideControlerTU    : No active profile set, falling back to default profiles: default
+2020-11-09 17:52:52.528  WARN 21448 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-11-09 17:52:52.530  INFO 21448 --- [    Test worker] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-11-09 17:52:54.420  INFO 21448 --- [    Test worker] tourGuide.TU.TestTourGuideControlerTU    : Started TestTourGuideControlerTU in 5.8 seconds (JVM running for 99.93)
+2020-11-09 17:52:54.486  INFO 21448 --- [    Test worker] tourGuide.TourGuideController            : Start getUserPreference
+2020-11-09 17:52:54.511  INFO 21448 --- [    Test worker] tourGuide.TourGuideController            : Start getRewards
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,65 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tourGuide.TP.TestPerformance" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-10-21T06:57:48" hostname="PO709427VW10SC2" time="3.562">
+<testsuite name="tourGuide.TP.TestPerformance" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-11-09T16:52:44" hostname="PC-Eric" time="4.147">
   <properties/>
-  <testcase name="highVolumeGetRewardsNew()" classname="tourGuide.TP.TestPerformance" time="2.84"/>
-  <testcase name="highVolumeTrackLocationNew()" classname="tourGuide.TP.TestPerformance" time="0.721"/>
-  <system-out><![CDATA[2020-10-21 08:57:48.312  INFO 10852 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [tourGuide.TP.TestPerformance], using SpringBootContextLoader
-2020-10-21 08:57:48.312  INFO 10852 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [tourGuide.TP.TestPerformance]: no resource found for suffixes {-context.xml, Context.groovy}.
-2020-10-21 08:57:48.312  INFO 10852 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [tourGuide.TP.TestPerformance]: TestPerformance does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2020-10-21 08:57:48.328  INFO 10852 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration tourGuide.Application for test class tourGuide.TP.TestPerformance
-2020-10-21 08:57:48.328  INFO 10852 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2020-10-21 08:57:48.328  INFO 10852 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@ce5e6f2, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2aa6979, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@288857c7, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3336db40, org.springframework.test.context.support.DirtiesContextTestExecutionListener@10c769a2, org.springframework.test.context.event.EventPublishingTestExecutionListener@41773b62, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2b2b7ae4, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2ec2581a, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5e3be19, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@7d3739ec, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@d3b90f4]
+  <testcase name="highVolumeGetRewardsNew()" classname="tourGuide.TP.TestPerformance" time="3.269"/>
+  <testcase name="highVolumeTrackLocationNew()" classname="tourGuide.TP.TestPerformance" time="0.877"/>
+  <system-out><![CDATA[2020-11-09 17:52:44.424  INFO 21448 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
 ***** RESULT ***** RESULT ***** RESULT *****
 ************************ WARNING - Exception ON trackUserLocationList - WARNING ***************************
-highVolumeGetRewards: Time Elapsed: 2 seconds.
+highVolumeGetRewards: Time Elapsed: 3 seconds.
 *****   END  *****   END  *****   END  *****
 message : null -- localized message : null
+2020-11-09 17:52:47.695  INFO 21448 --- [    Test worker] tourGuide.service.TourGuideService       : TestMode enabled
 ***** RESULT ***** RESULT ***** RESULT *****
 highVolumeTrackLocation: Time Elapsed: 0 seconds.
 *****   END  *****   END  *****   END  *****
-************************ WARNING - Exception ON trackUserLocationList - WARNING ***************************
-message : null -- localized message : null
-2020-10-21 08:57:51.887  INFO 10852 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
 ]]></system-out>
-  <system-err><![CDATA[Exception in thread "pool-57-thread-76" feign.RetryableException: Socket Closed executing GET http://localhost:8082/getAttractions
-	at feign.FeignException.errorExecuting(FeignException.java:249)
-	at feign.SynchronousMethodHandler.executeAndDecode(SynchronousMethodHandler.java:129)
-	at feign.SynchronousMethodHandler.invoke(SynchronousMethodHandler.java:89)
-	at feign.ReflectiveFeign$FeignInvocationHandler.invoke(ReflectiveFeign.java:100)
-	at com.sun.proxy.$Proxy115.getAttractions(Unknown Source)
-	at tourGuide.service.GpsUtilProxyServiceImpl.getAttractions(GpsUtilProxyServiceImpl.java:27)
-	at tourGuide.service.RewardsService.calculateRewards_standard(RewardsService.java:105)
-	at tourGuide.service.RewardsService.calculateRewards(RewardsService.java:93)
-	at tourGuide.service.TourGuideService.trackUserLocation(TourGuideService.java:127)
-	at tourGuide.service.TourGuideService.lambda$trackUserLocationList$1(TourGuideService.java:146)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at java.lang.Thread.run(Thread.java:748)
-Caused by: java.net.SocketException: Socket Closed
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
-	at java.net.SocketInputStream.read(SocketInputStream.java:171)
-	at java.net.SocketInputStream.read(SocketInputStream.java:141)
-	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:137)
-	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:153)
-	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:280)
-	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:138)
-	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56)
-	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259)
-	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:163)
-	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:157)
-	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273)
-	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:272)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56)
-	at feign.httpclient.ApacheHttpClient.execute(ApacheHttpClient.java:83)
-	at feign.SynchronousMethodHandler.executeAndDecode(SynchronousMethodHandler.java:119)
-	... 11 more
-]]></system-err>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -61,7 +61,7 @@ public class TourGuideService {
 	public VisitedLocation getUserLocation(User user) {
 <span class="fc" id="L62">		logger.debug(&quot;getUserLocation Start&quot;);</span>
 <span class="pc bpc" id="L63" title="1 of 2 branches missed.">		VisitedLocation visitedLocation = (user.getVisitedLocations().size() &gt; 0) ?</span>
-<span class="pc" id="L64">			user.getLastVisitedLocation() :</span>
+<span class="fc" id="L64">			user.getLastVisitedLocation() :</span>
 <span class="pc" id="L65">			trackUserLocation(user);</span>
 <span class="fc" id="L66">		logger.debug(&quot;getUserLocation End&quot;);</span>
 <span class="fc" id="L67">		return visitedLocation;</span>
@@ -139,7 +139,7 @@ public class TourGuideService {
 <span class="fc" id="L139">					trackUserLocation(user);</span>
 <span class="fc" id="L140">				};</span>
 		} else { //Call en asynchrone
-<span class="fc" id="L142">			ExecutorService executorService = Executors.newFixedThreadPool(1000);</span>
+<span class="fc" id="L142">			ExecutorService executorService = Executors.newFixedThreadPool(1000); </span>
 <span class="fc" id="L143">			logger.debug(&quot;trackUserLocationList AAAAAASYNCHRONE&quot;);</span>
 <span class="fc bfc" id="L144" title="All 2 branches covered.">			for (User user : users) {</span>
 <span class="fc" id="L145">				Runnable runnableTask = () -&gt; {</span>

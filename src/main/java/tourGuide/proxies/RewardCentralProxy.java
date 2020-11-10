@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * FeignClient interface for RewardCentral proxy on port 8083
  */
-@FeignClient(name = "rewardCentral", url="localhost:8083")
+//@FeignClient(name = "rewardCentral", url="localhost:8083")
+@FeignClient(name = "rewardCentral", url="http://rewardcentral:8083")//for docker
 public interface RewardCentralProxy {
 
     /**

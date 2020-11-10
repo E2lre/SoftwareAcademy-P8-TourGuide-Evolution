@@ -13,7 +13,7 @@ What things you need to install the software and how to install them
 - Java 1.8 or later
 - Spring Boot 2.2.6
 - Gradle 2.2.5
-- Docker (Optional)
+- Docker 2.5.0.0 (Optional)
 
 # Installation
 
@@ -32,15 +32,18 @@ And start the application
 ## With Docker
 
 ### Docker construction in project directory
-- docker build --build-arg JAR_FILE=build/libs/*.jar -t springio/gs-spring-boot-docker-tourguide .
+- docker build --build-arg JAR_FILE=build/libs/*.jar -t tourguide .
 
 ### Start sub-micro-service
-- Gpsutil : docker run -p 8082:8082 --name GpsUtil springio/gs-spring-boot-docker-gpsutil
-- RewardCentral : docker run -p 8083:8083 --name RewardCentral springio/gs-spring-boot-docker-rewardcentral
-- TripPricer : docker run -p 8084:8084 --name TripPricer springio/gs-spring-boot-docker-trippricer
+- Gpsutil : docker run -p 8082:8082 --name GpsUtil gpsutil
+- RewardCentral : docker run -p 8083:8083 --name RewardCentral rewardcentral
+- TripPricer : docker run -p 8084:8084 --name TripPricer trippricer
 
-### And start TourGuide
-- TourGuide : docker run -p 8080:8080 --name TourGuide springio/gs-spring-boot-docker-tourguide
+### Start TourGuide
+- TourGuide : docker run -p 8080:8080 --name TourGuide tourguide
+
+### Or use Docker compose to avoid the 2 last points
+- execute command line to start all components: docker-compose up -d
 
 # Architecture Diagram
 ![alt text](Architecture.png)

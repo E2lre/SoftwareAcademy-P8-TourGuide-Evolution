@@ -13,7 +13,8 @@ import java.util.UUID;
  * FeignClient interface for tripPricer proxy on port 8084
  */
 
-@FeignClient(name = "tripPricer", url="localhost:8084")
+//@FeignClient(name = "tripPricer", url="localhost:8084")
+@FeignClient(name = "tripPricer", url="http://trippricer:8084") //for docker
 public interface TripPricerProxy {
 
     /**

@@ -12,7 +12,8 @@ import java.util.UUID;
 /**
  * FeignClient interface for GpsUtil proxy on port 8082
  */
-@FeignClient(name = "gpsUtil", url="localhost:8082")
+//@FeignClient(name = "gpsUtil", url="localhost:8082")
+@FeignClient(name = "gpsUtil", url="http://gpsutil:8082") //for docker
 public interface GpsUtilProxy {
 
     /**

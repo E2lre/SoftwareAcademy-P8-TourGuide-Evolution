@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tourGuide.TI.TestProxiesService" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-11-09T16:52:21" hostname="PC-Eric" time="0.147">
-  <properties/>
-  <testcase name="getProviderName_giveInfo_returnProvider()" classname="tourGuide.TI.TestProxiesService" time="0.03"/>
-  <testcase name="getUserLocation_giveUUIDUser_returnVisitedLocation()" classname="tourGuide.TI.TestProxiesService" time="0.091"/>
-  <testcase name="getAttractions_noData_returnAttraction()" classname="tourGuide.TI.TestProxiesService" time="0.024"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
